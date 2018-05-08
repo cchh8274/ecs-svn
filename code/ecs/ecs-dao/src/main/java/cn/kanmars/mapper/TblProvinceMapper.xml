@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.dao.TblProvinceMapper">
+
+    <resultMap type="cn.kanmars.entity.TblAreaInfo" id="area">
+       <id column="id" property="id"/>
+       <result column="area_code" property="areaCode"></result>
+       <result column="area_name" property="areaName"></result>
+       <result column="status" property="status"></result>
+       <result column="enable_levl" property="enableLevl"></result>
+       <result column="page_status" property="pageStatus"></result>
+       <result column="create_time" property="createTime"></result>
+       <result column="create_user" property="createUser"></result>
+       <result column="update_time" property="updateTime"></result>
+       <result column="up_user" property="upUser"></result>
+    </resultMap>
+    
+    <select id="region" resultMap="area">
+   		SELECT area_code,area_name,status,enable_levl FROM tbl_area_info
+   </select>
+	
+</mapper>
