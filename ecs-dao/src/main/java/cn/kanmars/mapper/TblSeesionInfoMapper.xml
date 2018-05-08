@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.dao.TblSeesionInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.entity.TblSeesionInfo">
+        <constructor>
+            <idArg column="session_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="open_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="session_status" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        session_id,open_id,server_id,status,session_status
+    </sql>
+    <select id="select" parameterType="cn.kanmars.entity.TblSeesionInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_seesion_info
+        where 1=1
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null and openId != '' ">
+            and open_id = #{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id = #{serverId,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="sessionStatus != null and sessionStatus != '' ">
+            and session_status = #{sessionStatus,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.entity.TblSeesionInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_seesion_info
+        where 1=1
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null and openId != '' ">
+            and open_id = #{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id = #{serverId,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="sessionStatus != null and sessionStatus != '' ">
+            and session_status = #{sessionStatus,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.entity.TblSeesionInfo" >
+        insert into tbl_seesion_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sessionId != null ">
+                session_id,
+            </if>
+            <if test="openId != null ">
+                open_id,
+            </if>
+            <if test="serverId != null ">
+                server_id,
+            </if>
+            <if test="status != null ">
+                status,
+            </if>
+            <if test="sessionStatus != null ">
+                session_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sessionId != null ">
+                #{sessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="openId != null ">
+                #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="serverId != null ">
+                #{serverId,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null ">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="sessionStatus != null ">
+                #{sessionStatus,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.entity.TblSeesionInfo" >
+        update tbl_seesion_info
+        <set>
+            <if test="openId != null">
+                open_id = #{openId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="serverId != null">
+                server_id = #{serverId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR} ,
+            </if>
+            <if test="sessionStatus != null">
+                session_status = #{sessionStatus,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.entity.TblSeesionInfo" >
+        delete from tbl_seesion_info
+        where 1=1
+            <if test="sessionId != null and sessionId != '' ">
+                and session_id = #{sessionId,jdbcType=VARCHAR}
+            </if>
+            <if test="openId != null and openId != '' ">
+                and open_id = #{openId,jdbcType=VARCHAR}
+            </if>
+            <if test="serverId != null and serverId != '' ">
+                and server_id = #{serverId,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null and status != '' ">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="sessionStatus != null and sessionStatus != '' ">
+                and session_status = #{sessionStatus,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_seesion_info
+        where 1=1
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null and openId != '' ">
+            and open_id = #{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id = #{serverId,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="sessionStatus != null and sessionStatus != '' ">
+            and session_status = #{sessionStatus,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_seesion_info
+        where 1=1
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null and openId != '' ">
+            and open_id = #{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id = #{serverId,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="sessionStatus != null and sessionStatus != '' ">
+            and session_status = #{sessionStatus,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_seesion_info
+        <set>
+            <if test="openId_new != null">
+                open_id = #{openId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="serverId_new != null">
+                server_id = #{serverId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="status_new != null">
+                status = #{status_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="sessionStatus_new != null">
+                session_status = #{sessionStatus_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="sessionId != null ">
+                and session_id = #{sessionId,jdbcType=VARCHAR}
+            </if>
+            <if test="openId != null ">
+                and open_id = #{openId,jdbcType=VARCHAR}
+            </if>
+            <if test="serverId != null ">
+                and server_id = #{serverId,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null ">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="sessionStatus != null ">
+                and session_status = #{sessionStatus,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_seesion_info
+        where 1=1
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id like CONCAT(#{sessionId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="openId != null and openId != '' ">
+            and open_id like CONCAT(#{openId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id like CONCAT(#{serverId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="status != null and status != '' ">
+            and status like CONCAT(#{status,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="sessionStatus != null and sessionStatus != '' ">
+            and session_status like CONCAT(#{sessionStatus,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_seesion_info (session_id,open_id,server_id,status,session_status) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.sessionId},#{item.openId},#{item.serverId},#{item.status},#{item.sessionStatus}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_seesion_info
+            <set>
+                <if test="item.openId_new != null">
+                    open_id = #{item.openId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.serverId_new != null">
+                    server_id = #{item.serverId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.status_new != null">
+                    status = #{item.status_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.sessionStatus_new != null">
+                    session_status = #{item.sessionStatus_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.sessionId != null ">
+                    and session_id = #{item.sessionId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.openId != null ">
+                    and open_id = #{item.openId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.serverId != null ">
+                    and server_id = #{item.serverId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.status != null ">
+                    and status = #{item.status,jdbcType=VARCHAR}
+                </if>
+                <if test="item.sessionStatus != null ">
+                    and session_status = #{item.sessionStatus,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_seesion_info
+        where 1=1
+        and session_id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+
