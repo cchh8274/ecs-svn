@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.dao.TblMessageInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.entity.TblMessageInfo">
+        <constructor>
+            <idArg column="opend_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="message" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="message_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="session_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="state_zt" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        opend_id,message,message_time,session_id,state_zt,server_id
+    </sql>
+    <select id="select" parameterType="cn.kanmars.entity.TblMessageInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_message_info
+        where 1=1
+        <if test="opendId != null and opendId != '' ">
+            and opend_id = #{opendId,jdbcType=VARCHAR}
+        </if>
+        <if test="message != null and message != '' ">
+            and message = #{message,jdbcType=VARCHAR}
+        </if>
+        <if test="messageTime != null and messageTime != '' ">
+            and message_time = #{messageTime,jdbcType=VARCHAR}
+        </if>
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+        </if>
+        <if test="stateZt != null and stateZt != '' ">
+            and state_zt = #{stateZt,jdbcType=VARCHAR}
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id = #{serverId,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.entity.TblMessageInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_message_info
+        where 1=1
+        <if test="opendId != null and opendId != '' ">
+            and opend_id = #{opendId,jdbcType=VARCHAR}
+        </if>
+        <if test="message != null and message != '' ">
+            and message = #{message,jdbcType=VARCHAR}
+        </if>
+        <if test="messageTime != null and messageTime != '' ">
+            and message_time = #{messageTime,jdbcType=VARCHAR}
+        </if>
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+        </if>
+        <if test="stateZt != null and stateZt != '' ">
+            and state_zt = #{stateZt,jdbcType=VARCHAR}
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id = #{serverId,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.entity.TblMessageInfo" >
+        insert into tbl_message_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="opendId != null ">
+                opend_id,
+            </if>
+            <if test="message != null ">
+                message,
+            </if>
+            <if test="messageTime != null ">
+                message_time,
+            </if>
+            <if test="sessionId != null ">
+                session_id,
+            </if>
+            <if test="stateZt != null ">
+                state_zt,
+            </if>
+            <if test="serverId != null ">
+                server_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="opendId != null ">
+                #{opendId,jdbcType=VARCHAR},
+            </if>
+            <if test="message != null ">
+                #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="messageTime != null ">
+                #{messageTime,jdbcType=VARCHAR},
+            </if>
+            <if test="sessionId != null ">
+                #{sessionId,jdbcType=VARCHAR},
+            </if>
+            <if test="stateZt != null ">
+                #{stateZt,jdbcType=VARCHAR},
+            </if>
+            <if test="serverId != null ">
+                #{serverId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.entity.TblMessageInfo" >
+        update tbl_message_info
+        <set>
+            <if test="message != null">
+                message = #{message,jdbcType=VARCHAR} ,
+            </if>
+            <if test="messageTime != null">
+                message_time = #{messageTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="sessionId != null">
+                session_id = #{sessionId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="stateZt != null">
+                state_zt = #{stateZt,jdbcType=VARCHAR} ,
+            </if>
+            <if test="serverId != null">
+                server_id = #{serverId,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and opend_id = #{opendId,jdbcType=VARCHAR}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.entity.TblMessageInfo" >
+        delete from tbl_message_info
+        where 1=1
+            <if test="opendId != null and opendId != '' ">
+                and opend_id = #{opendId,jdbcType=VARCHAR}
+            </if>
+            <if test="message != null and message != '' ">
+                and message = #{message,jdbcType=VARCHAR}
+            </if>
+            <if test="messageTime != null and messageTime != '' ">
+                and message_time = #{messageTime,jdbcType=VARCHAR}
+            </if>
+            <if test="sessionId != null and sessionId != '' ">
+                and session_id = #{sessionId,jdbcType=VARCHAR}
+            </if>
+            <if test="stateZt != null and stateZt != '' ">
+                and state_zt = #{stateZt,jdbcType=VARCHAR}
+            </if>
+            <if test="serverId != null and serverId != '' ">
+                and server_id = #{serverId,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_message_info
+        where 1=1
+        <if test="opendId != null and opendId != '' ">
+            and opend_id = #{opendId,jdbcType=VARCHAR}
+        </if>
+        <if test="message != null and message != '' ">
+            and message = #{message,jdbcType=VARCHAR}
+        </if>
+        <if test="messageTime != null and messageTime != '' ">
+            and message_time = #{messageTime,jdbcType=VARCHAR}
+        </if>
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+        </if>
+        <if test="stateZt != null and stateZt != '' ">
+            and state_zt = #{stateZt,jdbcType=VARCHAR}
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id = #{serverId,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_message_info
+        where 1=1
+        <if test="opendId != null and opendId != '' ">
+            and opend_id = #{opendId,jdbcType=VARCHAR}
+        </if>
+        <if test="message != null and message != '' ">
+            and message = #{message,jdbcType=VARCHAR}
+        </if>
+        <if test="messageTime != null and messageTime != '' ">
+            and message_time = #{messageTime,jdbcType=VARCHAR}
+        </if>
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id = #{sessionId,jdbcType=VARCHAR}
+        </if>
+        <if test="stateZt != null and stateZt != '' ">
+            and state_zt = #{stateZt,jdbcType=VARCHAR}
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id = #{serverId,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_message_info
+        <set>
+            <if test="message_new != null">
+                message = #{message_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="messageTime_new != null">
+                message_time = #{messageTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="sessionId_new != null">
+                session_id = #{sessionId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="stateZt_new != null">
+                state_zt = #{stateZt_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="serverId_new != null">
+                server_id = #{serverId_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="opendId != null ">
+                and opend_id = #{opendId,jdbcType=VARCHAR}
+            </if>
+            <if test="message != null ">
+                and message = #{message,jdbcType=VARCHAR}
+            </if>
+            <if test="messageTime != null ">
+                and message_time = #{messageTime,jdbcType=VARCHAR}
+            </if>
+            <if test="sessionId != null ">
+                and session_id = #{sessionId,jdbcType=VARCHAR}
+            </if>
+            <if test="stateZt != null ">
+                and state_zt = #{stateZt,jdbcType=VARCHAR}
+            </if>
+            <if test="serverId != null ">
+                and server_id = #{serverId,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_message_info
+        where 1=1
+        <if test="opendId != null and opendId != '' ">
+            and opend_id like CONCAT(#{opendId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="message != null and message != '' ">
+            and message like CONCAT(#{message,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="messageTime != null and messageTime != '' ">
+            and message_time like CONCAT(#{messageTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="sessionId != null and sessionId != '' ">
+            and session_id like CONCAT(#{sessionId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="stateZt != null and stateZt != '' ">
+            and state_zt like CONCAT(#{stateZt,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="serverId != null and serverId != '' ">
+            and server_id like CONCAT(#{serverId,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_message_info (opend_id,message,message_time,session_id,state_zt,server_id) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.opendId},#{item.message},#{item.messageTime},#{item.sessionId},#{item.stateZt},#{item.serverId}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_message_info
+            <set>
+                <if test="item.message_new != null">
+                    message = #{item.message_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.messageTime_new != null">
+                    message_time = #{item.messageTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.sessionId_new != null">
+                    session_id = #{item.sessionId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.stateZt_new != null">
+                    state_zt = #{item.stateZt_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.serverId_new != null">
+                    server_id = #{item.serverId_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.opendId != null ">
+                    and opend_id = #{item.opendId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.message != null ">
+                    and message = #{item.message,jdbcType=VARCHAR}
+                </if>
+                <if test="item.messageTime != null ">
+                    and message_time = #{item.messageTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.sessionId != null ">
+                    and session_id = #{item.sessionId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.stateZt != null ">
+                    and state_zt = #{item.stateZt,jdbcType=VARCHAR}
+                </if>
+                <if test="item.serverId != null ">
+                    and server_id = #{item.serverId,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_message_info
+        where 1=1
+        and opend_id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+    
+	<select id="queryMessagebyOpenid" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select message as message,state_zt as state,message_time as time from tbl_message_info where opend_id =#{id} order by message_time desc limit 10
+	</select>
+</mapper>
+
