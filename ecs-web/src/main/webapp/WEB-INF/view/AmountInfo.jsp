@@ -22,6 +22,13 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/ztree/js/jquery.ztree.excheck.js"></script>
 </head>
 <body>
+<!-- 新增页面 -->
+	 <div id="adduser_aminfo" data-options="iconCls:'icon-save',resizable:true,modal:true,closed:true">
+	</div>  
+		<div id="tb">
+		<a href="javascript:addUniversityInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
+      <div id="where" ></div>
+	</div>
    <div id="AmountInfo"></div>
    <script type="text/javascript">
       //查询数据---------------------------------------------------------
@@ -62,12 +69,122 @@
 	        {field:'accountId',title:'账户ID',width:100},    
 	        {field:'accountTime',title:'账户创建时间',width:100},    
 	        {field:'createUser',title:'创建时间',width:100},    
-	        {field:'isFreeze',title:'是否冻结',width:100}   
+	       // {field:'isFreeze',title:'是否冻结',width:100},
+	        {field:'isFreeze',title:'是否冻结',width:100,
+	            formatter: function(value,row,index){
+	                if (value=='1'){
+	                    return "已冻结";
+	                } else if (value=='2'){
+	                    return '正常';
+	                }
+	           }
+	        },
+	        {field : 'pz',title : '操作',formatter:function(value,rows,index){
+	         	  return '<a href="javaScript:aupdateaftInfo(\''+rows.id+'\')">修改</a>';
+	           }},
 	     
 	       
 	    ]]    
 	})
   }
+//修改数据
+  function aupdateaftInfo(id){
+	   /* var aa= $('#UniversityInfo').datagrid('getChecked');
+	   if(aa.length==1){
+		   for(var i=0;i<aa.length;i++){
+				var bb = aa[i].entId;
+			 }  */
+		 $('#adduser_aminfo').dialog({    
+			    title: '修改大学信息',    
+			    width: 500,    
+			    height: 500,    
+			    closed: false,    
+			    cache: false,    
+			    modal: true,
+			    //拿新增页面
+			    href:"<%=request.getContextPath()%>/amountInfo/updateAmountInfo.do?id="+id,
+				buttons:[{
+					text:'保存',
+					iconCls:'icon-save',
+					handler:function(){
+						$.ajax({
+			     			type:"post",
+			     			url:"<%=request.getContextPath()%>/amountInfo/addAmountInfo.do",
+			     			data:$("#addaftaxunForm1").serialize(),
+			     			dataType:"text",
+			     			success: function(){
+			     				aavv();
+			     				$('#adduser_aminfo').dialog("close");
+			     				/* $('#user_from').datagrid('reload');  */
+			     			}
+			     		})
+					}
+				},{
+					text:'取消',
+					iconCls:'icon-cancel',
+					handler:function(){
+						$('#adduser_aminfo').dialog("close");
+					}
+				}]
+			})
+		   
+	  /*  }else{
+		   alert("只能选中一个"); 
+	   }*/
+	   
+     }
+      
+     function addUniversityInfo(){
+    	//增加---------------------------------------------
+    			$('#adduser_aminfo').dialog({    
+    			    title: '增加用户信息',    
+    			    width: 500,    
+    			    height: 500,    
+    			    closed: false,    
+    			    cache: false,    
+    			    modal: true,
+    			    //拿新增页面
+			    href:"<%=request.getContextPath()%>/amountInfo/tiaoAmountInfoa.do",
+    				onClose: function(){
+    					/* $('#adduser_aminfo').html(""); */
+    				},
+    				buttons:[{
+    					text:'保存',
+    					iconCls:'submit',
+    					
+    					handler:function(){
+    						/* var entName =  $("#name").textbox('getValue');
+    				 var dizhi =  $("#name1").textbox('getValue');
+    				 var dianhua =  $("#name2").textbox('getValue');
+    					 	if(entName == null || entName == ""){
+    							return false;
+    						}else if(dizhi == null || dizhi == ""){
+    							return false;
+    						}else if(dianhua == null || dianhua == ""){
+    							return false;
+    						}else{*/
+    						$.ajax({ 
+    			     			type:"post",
+    			     			url:"<%=request.getContextPath()%>/amountInfo/insetAmountInfo.do",
+    			     			data:$("#inseaxunForm1").serialize(),
+    			     			dataType:"text",
+    			     			success: function(){
+    			     				aavv();
+    			     				$('#adduser_aminfo').dialog("close");
+    			     			}
+    			     		})
+    					/* } */
+    					}
+    				},{
+    					text:'取消',
+    					iconCls:'icon-cancel',
+    					handler:function(){
+    						$('#adduser_aminfo').dialog("close");
+    					}
+    				}]
+    			});   
+    		}  
+     
 	
    </script>
 </body>
