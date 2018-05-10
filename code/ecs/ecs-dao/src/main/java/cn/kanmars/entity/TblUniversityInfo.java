@@ -35,9 +35,9 @@ public class TblUniversityInfo implements java.io.Serializable{
 
     /**
      * 点的位置
-     * tbl_university_info.location
+     * tbl_university_info.backImg
      */
-    private String location;
+    private String backimg;
 
     /**
      * 创建时间
@@ -91,11 +91,11 @@ public class TblUniversityInfo implements java.io.Serializable{
 	public void setAreaId(String areaId) {
 		this.areaId = areaId;
 	}
-	public String getLocation() {
-		return location;
+	public String getBackimg() {
+		return backimg;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setBackimg(String backimg) {
+		this.backimg = backimg;
 	}
 	public String getCreateTime() {
 		return createTime;
@@ -151,7 +151,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 	public void setRzstase(String rzstase) {
 		this.rzstase = rzstase;
 	}
-	public TblUniversityInfo(String id, String univerName, String areaName, String areaId, String location,
+	public TblUniversityInfo(String id, String univerName, String areaName, String areaId, String backImg,
 			String createTime, String createUser, String upTime, String upUser, String code, String sy_me, String zme,
 			String myyjsr, String rzstase) {
 		super();
@@ -159,7 +159,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 		this.univerName = univerName;
 		this.areaName = areaName;
 		this.areaId = areaId;
-		this.location = location;
+		this.backimg = backimg;
 		this.createTime = createTime;
 		this.createUser = createUser;
 		this.upTime = upTime;
@@ -177,7 +177,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 	@Override
 	public String toString() {
 		return "TblUniversityInfo [id=" + id + ", univerName=" + univerName + ", areaName=" + areaName + ", areaId="
-				+ areaId + ", location=" + location + ", createTime=" + createTime + ", createUser=" + createUser
+				+ areaId + ", backImg=" + backimg + ", createTime=" + createTime + ", createUser=" + createUser
 				+ ", upTime=" + upTime + ", upUser=" + upUser + ", code=" + code + ", sy_me=" + sy_me + ", zme=" + zme
 				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + "]";
 	}
@@ -202,12 +202,12 @@ public class TblUniversityInfo implements java.io.Serializable{
    }
     
    /* public TblUniversityInfo(){super();}
-    public TblUniversityInfo(String id,String univerName,String areaName,String areaId,String location,String createTime,String createUser,String upTime,String upUser) {
+    public TblUniversityInfo(String id,String univerName,String areaName,String areaId,String backImg,String createTime,String createUser,String upTime,String upUser) {
         this.id = id;
         this.univerName = univerName;
         this.areaName = areaName;
         this.areaId = areaId;
-        this.location = location;
+        this.backImg = backImg;
         this.createTime = createTime;
         this.createUser = createUser;
         this.upTime = upTime;
@@ -279,18 +279,18 @@ public class TblUniversityInfo implements java.io.Serializable{
 
     *//**
      * 点的位置
-     * tbl_university_info.location
+     * tbl_university_info.backImg
      *//*
-    public String getLocation(){
-        return location;
+    public String getbackImg(){
+        return backImg;
     }
 
     *//**
      * 点的位置
-     * tbl_university_info.location
+     * tbl_university_info.backImg
      *//*
-    public void setLocation(String location){
-        this.location=location;
+    public void setbackImg(String backImg){
+        this.backImg=backImg;
     }
 
     *//**
@@ -377,7 +377,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 	@Override
 	public String toString() {
 		return "TblUniversityInfo [id=" + id + ", univerName=" + univerName + ", areaName=" + areaName + ", areaId="
-				+ areaId + ", location=" + location + ", createTime=" + createTime + ", createUser=" + createUser
+				+ areaId + ", backImg=" + backImg + ", createTime=" + createTime + ", createUser=" + createUser
 				+ ", upTime=" + upTime + ", upUser=" + upUser + ", limitStart=" + limitStart + ", limitSize="
 				+ limitSize + "]";
 	}*/

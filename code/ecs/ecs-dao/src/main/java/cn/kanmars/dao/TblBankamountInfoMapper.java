@@ -97,11 +97,13 @@ public interface TblBankamountInfoMapper {
     public void addBankamountInfo(HashMap<String, String> hmap);
   
   //查询当前有没有银行卡
-    public TblBankamountInfo seleBankamountInfo(String bankAmountNo);
+    public String seleBankamountInfo(String bankAmountNo);
   //查询该用户有几张银行卡
 	public List<TblBankamountInfo> seleAllBankamountInfo(String openid);
 	//查询选中的银行卡dangeBankamountInfo
 	public TblBankamountInfo dangeBankamountInfo(String bankAmountNo);
+	//回显银行卡
+	public TblBankamountInfo dangeBankamountInfohui(String openid);
 
 	
 

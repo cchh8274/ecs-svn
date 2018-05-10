@@ -27,7 +27,7 @@ import cn.kanmars.entity.TblUniversityInfo;
  */
 @Controller
 @RequestMapping(value = "earningsInfo")
-public class EarningsInfoController {
+public class EarningsInfoController extends BaseController{
 
 	@Autowired
 	private EarningsInfoService earningsInfoService;

@@ -20,22 +20,22 @@ import cn.kanmars.entity.TblUserCoffeemachine;
  *
  */
 @Controller
-@RequestMapping(value="coff",produces="text/html; charset=UTF-8")
+@RequestMapping(value="coff")
 public class UserCoffControlller extends BaseController {
 	@Autowired
 	private UserCoffService userCoffService;
 	/*
 	 * 查询我的咖啡机明细
 	 */
-	@RequestMapping(value="seleUserCoff")
+	@RequestMapping(value="seleUserCoff",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String seleUserCoff(String jsonStr)throws Exception{
-		String openid=jsonStr;
+		//String openid=jsonStr;
 		if(StringUtils.isEmpty(jsonStr)){
 			return this.toJSONString("error","不能为空");
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
-		//String openid = json.getString("openid");*/
+		String openid = json.getString("openid");
 		List<TblUserCoffeemachine> ucf = userCoffService.seleUserCoff(openid);
 		if(ucf ==null){
 			return this.toJSONString("erroe","当前没有咖啡机");

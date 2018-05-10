@@ -101,6 +101,8 @@ public interface TblEarningsInfoMapper {
 
 	public void delEarningsInfo(@Param("ids")String ids);
 
+	public List<TblEarningsInfo> detailEdearningsInfo(String openid);
+
     
 }
 

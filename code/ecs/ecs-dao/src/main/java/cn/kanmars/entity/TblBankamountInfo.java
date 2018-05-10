@@ -337,6 +337,7 @@ public class TblBankamountInfo implements java.io.Serializable{
 				+ ", updateTime=" + updateTime + ", updateUser=" + updateUser + ", limitStart=" + limitStart
 				+ ", limitSize=" + limitSize + "]";
 	}
+	
     
 }
 

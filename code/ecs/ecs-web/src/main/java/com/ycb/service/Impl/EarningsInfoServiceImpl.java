@@ -29,20 +29,11 @@ public class EarningsInfoServiceImpl implements EarningsInfoService{
 	public List<TblEarningsInfo> selectList(TblEarningsInfo tblEarningsInfo) {
 		return tblEarningsGatherMapper.selectList(tblEarningsInfo);
 	}
-
+//	收益明细
 	@Override
-	public void insetEarningsInfo(TblEarningsInfo tei) {
-		tblEarningsGatherMapper.insetEarningsInfo(tei);
-	}
-
-	@Override
-	public TblEarningsInfo queryEarningsInfo(String id) {
-		return tblEarningsGatherMapper.queryEarningsInfo(id);
-	}
-
-	@Override
-	public void updEarningsInfo(TblEarningsInfo tei) {
-		tblEarningsGatherMapper.updEarningsInfo(tei);
+	public List<TblEarningsInfo> detailEdearningsInfo(String openid) {
+		
+		return tblEarningsGatherMapper.detailEdearningsInfo(openid);
 	}
 
 	@Override

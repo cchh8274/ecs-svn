@@ -16,9 +16,131 @@
 
         </constructor>
     </resultMap>
+     <resultMap  id="zje" type="cn.kanmars.entity.TblAmountInfo">
+       <result property="accountMoney" column="account_money" javaType="string" jdbcType="VARCHAR"/>  
+       <result property="openid" column="openid" javaType="string" jdbcType="VARCHAR"/>  
+       <result property="isFreeze" column="is_freeze" javaType="string" jdbcType="VARCHAR"/>  
+    </resultMap>
     <sql id="Base_Column_List">
         id,user_name,openid,account_money,is_start,account_id,account_time,create_time,create_user,is_freeze
     </sql>
+    <!-- 新增数据 -->
+  <insert id="insetAmountInfo" parameterType="cn.kanmars.entity.TblAmountInfo" >
+        insert into tbl_amount_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="userName != null ">
+                user_name,
+            </if>
+            <if test="openid != null ">
+                openid,
+            </if>
+            <if test="accountMoney != null ">
+                account_money,
+            </if>
+            <if test="isStart != null ">
+                is_start,
+            </if>
+            <if test="accountId != null ">
+                account_id,
+            </if>
+            <if test="accountTime != null ">
+                account_time,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+            <if test="isFreeze != null ">
+                is_freeze,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null ">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="openid != null ">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="accountMoney != null ">
+                #{accountMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="isStart != null ">
+                #{isStart,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null ">
+                #{accountId,jdbcType=VARCHAR},
+            </if>
+            <if test="accountTime != null ">
+                #{accountTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="isFreeze != null ">
+                #{isFreeze,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <!-- 根据id进行修改 -->
+       <update id="addAmountInfo" parameterType="cn.kanmars.entity.TblAmountInfo" >
+        update tbl_amount_info
+        <set>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid != null">
+                openid = #{openid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountMoney != null">
+                account_money = #{accountMoney,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isStart != null">
+                is_start = #{isStart,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountId != null">
+                account_id = #{accountId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountTime != null">
+                account_time = #{accountTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isFreeze != null">
+                is_freeze = #{isFreeze,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 
+           id = #{id,jdbcType=VARCHAR}
+    </update>
+    <!-- 根据id查询修改的值 -->
+    <select id="updateAmountInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+     from tbl_amount_info
+     where id = #{id}
+    </select>
+    <!--  	我的钱包展示总金额-->
+    <select id="seleSumamountInfo" parameterType="java.lang.String" resultMap="zje">
+    select
+        account_money,is_freeze
+     from tbl_amount_info
+     where openid = #{openid}
+    </select>
     <select id="select" parameterType="cn.kanmars.entity.TblAmountInfo" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

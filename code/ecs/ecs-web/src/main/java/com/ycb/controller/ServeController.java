@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.ycb.service.ServreService;
 
 import cn.kanmars.entity.TblMessageInfo;
@@ -20,7 +18,7 @@ import cn.kanmars.entity.TblSeesionInfo;
 
 @Controller
 @RequestMapping(value = "servre")
-public class ServeController extends BaseController{
+public class ServeController {
 
 	@Autowired
 	private ServreService servreService;
@@ -86,15 +84,9 @@ public class ServeController extends BaseController{
 	 * @param ids
 	 * @return
 	 */
-	@RequestMapping(value="removeMassage",produces="text/html; charset=UTF-8")
+	@RequestMapping(value="removeMassage")
 	@ResponseBody
-	public String removeMassage(String jsonStr)throws Exception{
-		if(jsonStr ==null){
-			return this.toJSONString("error","不能为空");
-		}
-		JSONObject json = JSON.parseObject(jsonStr);
-		String id = json.getString("openid");
+	public void removeMassage(String id){
 		servreService.removeMassage(id);
-		return this.toJSONString("success","删除成功");
 	}
 }
