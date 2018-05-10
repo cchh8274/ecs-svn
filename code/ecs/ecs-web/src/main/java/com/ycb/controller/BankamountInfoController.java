@@ -68,13 +68,14 @@ public class BankamountInfoController extends BaseController {
 	@RequestMapping(value="huixianBankamountInfo",produces="text/html; charset=UTF-8")
     @ResponseBody
     public String huixianBankamountInfo(String jsonStr) throws Exception{
+		
    	 	//判断数据不为空
 		if(StringUtils.isEmpty(jsonStr)){
 			return this.toJSONString("error","数据不能为空");
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");//银行账户
-			//回显银行卡
+			//回显银行卡			
 			TblBankamountInfo bmt = bankamountInfoService.dangeBankamountInfohui(openid);
 			if(bmt!=null){
 				return this.toJSONString(bmt);
@@ -119,12 +120,10 @@ public class BankamountInfoController extends BaseController {
 	      /* TblLogin log = (TblLogin) request.getSession().getAttribute("user");
 			if(log == null){
 				return this.toJSONString("error","没有登录请登录");
-			}
-			hmap.put("createUser", log.getAdminName());
-			bankamountInfoService.addBankamountInfo(hmap);
-			List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
+			}*/
+			//List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);*/		
 		return "成功";
-	}*/
+	}
 	/*
 	 * 体现更换银行卡
 	 */
@@ -140,7 +139,7 @@ public class BankamountInfoController extends BaseController {
         	 //查询选中的银行卡
         	 TblBankamountInfo bmt = bankamountInfoService.dangeBankamountInfo(bankAmountNo);
         	 return this.toJSONString(bmt);
-         }
+        }
 		return this.toJSONString("error","最少传一个参数");
 	}
 }
