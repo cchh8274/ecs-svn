@@ -30,28 +30,33 @@ public class BankamountInfoServiceImpl implements BankamountInfoService{
 	  	tif.setLimitStart(page);
 	    return tblBankamountInfoMapper.selectpage(tif);
 	}
-	//²éÑ¯µ±Ç°ÓĞÃ»ÓĞÒøĞĞ¿¨//Ìí¼ÓÒøĞĞ¿¨
+	//ï¿½ï¿½Ñ¯ï¿½ï¿½Ç°ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¿ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¿ï¿½
 	@Override
-	public TblBankamountInfo seleBankamountInfo(String bankAmountNo) {
+	public String seleBankamountInfo(String bankAmountNo) {
 		
 		return tblBankamountInfoMapper.seleBankamountInfo(bankAmountNo);
 	}
-	//Ìí¼ÓÒøĞĞ¿¨
+	//ÃŒÃ­Â¼Ã“Ã’Ã¸ÃÃÂ¿Â¨
 	@Override
 	public void addBankamountInfo(HashMap<String, String> hmap) {
 		tblBankamountInfoMapper.addBankamountInfo(hmap);
 		
 	}
-	//²éÑ¯¸ÃÓÃ»§ÓĞ¼¸ÕÅÒøĞĞ¿¨
+	//Â²Ã©Ã‘Â¯Â¸ÃƒÃ“ÃƒÂ»Â§Ã“ÃÂ¼Â¸Ã•Ã…Ã’Ã¸ÃÃÂ¿Â¨
 	@Override
 	public List<TblBankamountInfo> seleAllBankamountInfo(String openid) {
 		
 		return tblBankamountInfoMapper.seleAllBankamountInfo(openid);
 	}
-	 //²éÑ¯Ñ¡ÖĞµÄÒøĞĞ¿¨
+	 //Â²Ã©Ã‘Â¯Ã‘Â¡Ã–ÃÂµÃ„Ã’Ã¸ÃÃÂ¿Â¨
 	@Override
 	public TblBankamountInfo dangeBankamountInfo(String bankAmountNo) {
 		
 		return tblBankamountInfoMapper.dangeBankamountInfo(bankAmountNo);
+	}
+	//å›æ˜¾é“¶è¡Œå¡
+	@Override
+	public TblBankamountInfo dangeBankamountInfohui(String openid) {
+		return tblBankamountInfoMapper.dangeBankamountInfohui(openid);
 	}
 }

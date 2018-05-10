@@ -24,9 +24,26 @@
 
         </constructor>
     </resultMap>
+    <resultMap type="cn.kanmars.entity.TblEarningsInfo" id="mingxi">
+       <result column="unversity_name" property="unversityName"></result>
+       <result column="maniche_name" property="manicheName"></result>
+       <result column="price" property="price"></result>
+       <result column="earing_month" property="earingMonth"></result>
+       <result column="openid" property="openid"></result>
+     </resultMap>
     <sql id="Base_Column_List">
         id,openid,wx_user_name,maniche_id,unversity_name,unversity_id,maniche_name,price,coffee_number,tolal_money,earing_month,earning_start_time,is_eaning_status,earning_send_time,create_time,create_user,update_time,update_user
     </sql>
+    <sql id="Base_Column_Listaa">
+    unversity_name,maniche_name,price,earing_month,openid
+    </sql>
+    <!-- 收益明细 -->
+    <select id="detailEdearningsInfo" parameterType="java.lang.String" resultMap="mingxi">
+        select
+    	 <include refid="Base_Column_Listaa"/>
+    	 from tbl_earnings_info
+    	 where openid = #{openid}
+    </select>
     <select id="select" parameterType="cn.kanmars.entity.TblEarningsInfo" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

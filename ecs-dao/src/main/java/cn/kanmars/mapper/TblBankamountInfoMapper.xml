@@ -23,13 +23,22 @@
        <result property="bankAmountNo" column="bank_amount_no" javaType="string" jdbcType="VARCHAR"/>  
        <result property="bankName" column="bank_name" javaType="string" jdbcType="VARCHAR"/>  
        <result property="userName" column="user_name" javaType="string" jdbcType="VARCHAR"/>  
+       <result property="openid" column="openid" javaType="string" jdbcType="VARCHAR"/>  
+       <result property="idcard" column="idcard" javaType="string" jdbcType="VARCHAR"/>  
     </resultMap>
     <sql id="Base_Column_List">
         id,user_name,idcard,phone,wx_name,openid,bank_amount_no,bank_name,bank_adress,create_time,create_user,update_time,update_user
     </sql>
     <sql id="Base_Column_Listaa">
-    bank_amount_no,bank_name,user_name
+     bank_amount_no,bank_name,user_name,openid
     </sql>
+    <!-- 回显银行卡 -->
+    <select id="dangeBankamountInfohui" parameterType="java.lang.String" resultMap="yhk">
+    	select  
+    	 idcard,user_name
+    	from tbl_bankamount_info 
+        where openid=#{openid}   limit 1
+    </select>
     <!--	//查询选中的银行卡dangeBankamountInfo  -->
     <select id="dangeBankamountInfo" parameterType="java.lang.String" resultMap="yhk">
     	select 
@@ -37,12 +46,12 @@
     	from tbl_bankamount_info
         where bank_amount_no=#{bankAmountNo}
     </select>
-    <!-- 查询当前有没有银行卡 -->
-    <select id="seleBankamountInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--添加 查询当前有没有银行卡 -->
+    <select id="seleBankamountInfo" parameterType="java.lang.String" resultType="java.lang.String">
     	select
-        <include refid="Base_Column_List" />
+      bank_amount_no
         from tbl_bankamount_info
-        where bank_amount_no=#{bankAmountNo}
+        where bank_amount_no=#{bankAmountNo} 
     </select>
     <!-- 添加银行卡 -->
      <insert id="addBankamountInfo" parameterType="java.util.HashMap">
@@ -136,6 +145,7 @@
         <include refid="Base_Column_Listaa" />
         from tbl_bankamount_info
         where openid = #{openid}
+        
     </select>
     <select id="select" parameterType="cn.kanmars.entity.TblBankamountInfo" resultMap="BaseResultMap">
         select

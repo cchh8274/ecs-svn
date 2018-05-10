@@ -260,5 +260,13 @@ public class TblAmountInfo implements java.io.Serializable{
     public void setLimitSize(Integer limitSize){
         this.limitSize = limitSize;
     }
+	@Override
+	public String toString() {
+		return "TblAmountInfo [id=" + id + ", userName=" + userName + ", openid=" + openid + ", accountMoney="
+				+ accountMoney + ", isStart=" + isStart + ", accountId=" + accountId + ", accountTime=" + accountTime
+				+ ", createTime=" + createTime + ", createUser=" + createUser + ", isFreeze=" + isFreeze
+				+ ", limitStart=" + limitStart + ", limitSize=" + limitSize + "]";
+	}
+    
 }
 

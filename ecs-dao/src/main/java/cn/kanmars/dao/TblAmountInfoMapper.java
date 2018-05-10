@@ -89,6 +89,14 @@ public interface TblAmountInfoMapper {
      * editInfo，空的update语句
      */
     public int editInfo(HashMap paramMap);
+//	我的钱包展示总金额seleSumamountInfo
+	public TblAmountInfo seleSumamountInfo(String openid);
+	//根据id查询修改的值
+	public TblAmountInfo updateAmountInfo(String id);
+//	 新增方法
+	public void addAmountInfo(TblAmountInfo taf);
+//	新增数据
+	public void insetAmountInfo(TblAmountInfo taf);
 
     
 }

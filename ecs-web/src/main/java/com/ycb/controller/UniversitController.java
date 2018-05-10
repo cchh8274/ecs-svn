@@ -33,7 +33,7 @@ import cn.kanmars.entity.TblUniversityInfo;
  *
  */
 @Controller
-@RequestMapping(value="Universit",produces="text/html; charset=UTF-8")
+@RequestMapping(value="Universit")
 public class UniversitController extends BaseController{
 	@Autowired
 	private UniversitService universitService;
@@ -84,7 +84,7 @@ public class UniversitController extends BaseController{
 	        universitService.insetUniversita(tui);
 		}
 		//大学信息
-		@RequestMapping(value="daxuediqubiao")
+		@RequestMapping(value="daxuediqubiao",produces="text/html; charset=UTF-8")
 		@ResponseBody
 		public String queryAddUniversita(String jsonStr) throws Exception{
 		
@@ -92,7 +92,6 @@ public class UniversitController extends BaseController{
 					return this.toJSONString("error","参数为空");
 			}
 			JSONObject json = JSON.parseObject(jsonStr);
-			//json.getString()
 			String ocad = "0"+ json.getString("areaId");
 			
 			//这个ocad就是数据的area_id字段
@@ -100,7 +99,7 @@ public class UniversitController extends BaseController{
 			return this.toJSONString(unv);
 		}
 		//大学详细信息
-		@RequestMapping(value="daXuXinXiXangQing")
+		@RequestMapping(value="daXuXinXiXangQing",produces="text/html; charset=UTF-8")
 		@ResponseBody
 		public String daXuXinXiXangQing(String jsonStr) throws Exception{
 			if(StringUtils.isEmpty(jsonStr)){

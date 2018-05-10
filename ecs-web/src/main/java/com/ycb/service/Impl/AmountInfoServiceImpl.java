@@ -31,4 +31,28 @@ public class AmountInfoServiceImpl implements AmountInfoService{
 		tai.setLimitStart(page);
 	    return tblAmountInfoMapper.selectpage(tai);
 	}
+//	我的钱包展示总金额
+	@Override
+	public TblAmountInfo seleSumamountInfo(String openid) {
+		
+		return tblAmountInfoMapper.seleSumamountInfo(openid);
+	}
+	//根据id查询修改的值
+	@Override
+	public TblAmountInfo updateAmountInfo(String id) {
+		return tblAmountInfoMapper.updateAmountInfo(id);
+	}
+//	 新增方法
+	@Override
+	public void addAmountInfo(TblAmountInfo taf) {
+		
+		tblAmountInfoMapper.addAmountInfo(taf);
+	}
+//	新增数据
+	@Override
+	public void insetAmountInfo(TblAmountInfo taf) {
+		tblAmountInfoMapper.insetAmountInfo(taf);
+		
+	}
+	
 }
