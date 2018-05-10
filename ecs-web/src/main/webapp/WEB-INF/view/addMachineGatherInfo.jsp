@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="MGIAddForm">
+<form id="MGIAddForm" method="post">
       	<table>
       		<tr>
       			<td>openid:</td>

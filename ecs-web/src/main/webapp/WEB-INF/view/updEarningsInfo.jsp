@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="EIUpdateForm">
+<form id="EIUpdateForm" method="post">
       	<table>
       		<tr>
       			<td>
