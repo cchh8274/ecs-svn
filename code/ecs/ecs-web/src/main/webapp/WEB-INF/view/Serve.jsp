@@ -93,11 +93,11 @@
 <script>
 	
 //五分钟刷新一次会话列表页
-setInterval(function(){
-	/*$("#message").load(location.href + " #message"); */
+var Interval1 = setInterval(function(){
 	$('#dg').datagrid('reload');
+	clearInterval(Interval1);
 	},300*1000); 
-	
+
 //会话列表页
 $('#dg').datagrid({    
 		    url:'<%=path%>/servre/querySurface.do',    
@@ -105,7 +105,9 @@ $('#dg').datagrid({
 		        {field:'id',title:'我的会话列表 ',width:'105%',checkbox:true},
 		        {field:'openId',title:'我的会话列表 ',width:'105%',hidden:true},
 		        {field:'sessionId',title:'会话列表 ',width:'105%',align: 'center',halign:'center',formatter:function(value,row,index){
-		        	var str=index+'-'+row.sessionId;
+		        	/* var str=index+'-'+row.sessionId;
+		        		\''+row.sessionId+'\'
+		        	*/
 		        	var mess=null;
 		        	if(row.status == '010'){
 		        		mess='已接待';
@@ -113,7 +115,7 @@ $('#dg').datagrid({
 					if(row.status == '020'){
 						mess='未接待';
 		        	}
-		        	return '<a onclick="masg(\''+str+'\')" href="javascript:void(0)"   >会话('+row.openId+')('+mess+')</a>';
+		        	return '<a onclick="masg()" href="javascript:void(0)"   >会话('+row.openId+')('+mess+')</a>';
 		        }} 
 		    ]],
 		    fit:true,
@@ -122,15 +124,16 @@ $('#dg').datagrid({
 		}); 
 	
 //消息页
-function masg(id){
+function masg(){
 	//id区的是会话的主键id
-	var arr=id.split('-');
+	var id = $('#dg').datagrid('getSelected').sessionId;
+	/* var arr=id.split('-');
 	$('#dg').datagrid("highlightRow",arr[0]);
-	$('#dg').datagrid("checkRow",arr[0]);
+	$('#dg').datagrid("checkRow",arr[0]); */
 	//消息框
 	$.ajax({
 		type:"get",
-		url:"<%=path%>/servre/queryMassage.do?id="+id.split('-')[1],
+		url:"<%=path%>/servre/queryMassage.do?id="+id,
 		success:function(data){
 			//data = eval("("+data+")");
 			var message = "";
@@ -146,7 +149,10 @@ function masg(id){
 			$("#message").html(message);
 		}
 	})
-	setInterval(function(){masg(id);}, 15000); 
+	var Interval2 =  setInterval(function(){
+		masg(id);
+		clearInterval(Interval2);
+		}, 15000); 
 	}
 	
 //输入框
