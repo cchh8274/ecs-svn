@@ -41,4 +41,19 @@ public class EarningsInfoServiceImpl implements EarningsInfoService{
 		tblEarningsGatherMapper.delEarningsInfo(ids);
 	}
 
+	@Override
+	public void insetEarningsInfo(TblEarningsInfo tei) {
+		tblEarningsGatherMapper.insetEarningsInfo(tei);
+	}
+
+	@Override
+	public TblEarningsInfo queryEarningsInfo(String id) {
+		return tblEarningsGatherMapper.queryEarningsInfo(id);
+	}
+
+	@Override
+	public void updEarningsInfo(TblEarningsInfo tei) {
+		tblEarningsGatherMapper.updEarningsInfo(tei);
+	}
+
 }

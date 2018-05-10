@@ -9,7 +9,7 @@ public interface EarningsInfoService {
 	List<TblEarningsInfo> selectpage(Integer page, Integer rows, TblEarningsInfo tblEarningsInfo);
 
 	List<TblEarningsInfo> selectList(TblEarningsInfo tblEarningsInfo);
-//	ÊÕÒæÃ÷Ï¸
+//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸
 	List<TblEarningsInfo> detailEdearningsInfo(String openid);
 
 	TblEarningsInfo queryEarningsInfo(String id);
@@ -17,5 +17,7 @@ public interface EarningsInfoService {
 	void updEarningsInfo(TblEarningsInfo tei);
 
 	void delEarningsInfo(String ids);
+
+	void insetEarningsInfo(TblEarningsInfo tei);
 
 }
