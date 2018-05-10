@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="EGAddForm">
+<form id="EGAddForm" method="post">
       	<table>
       		<tr>
       			<td>收益大学:</td>

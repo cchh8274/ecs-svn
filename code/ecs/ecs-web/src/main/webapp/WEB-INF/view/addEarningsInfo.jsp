@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="EIAddForm">
+<form id="EIAddForm" method="post">
       	<table>
       		<tr>
       			<td>openid:</td>

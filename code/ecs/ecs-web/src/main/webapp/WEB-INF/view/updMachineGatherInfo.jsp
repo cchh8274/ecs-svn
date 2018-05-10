@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="MGIUpdateForm">
+<form id="MGIUpdateForm" method="post">
       	<table>
       		<tr>
       			<td>

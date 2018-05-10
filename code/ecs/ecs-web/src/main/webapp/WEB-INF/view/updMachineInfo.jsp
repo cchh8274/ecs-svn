@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="updMachine">
+<form id="updMachine" method="post">
       	<table>
       		<tr>
       			<td>
