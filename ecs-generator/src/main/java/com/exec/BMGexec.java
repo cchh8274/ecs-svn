@@ -1,5 +1,6 @@
 package com.exec;
 
+import com.model.GenertorModel;
 import com.util.Genertor;
 
 /**
@@ -11,6 +12,8 @@ import com.util.Genertor;
 public class BMGexec {
 	public static void main(String[] args) {
 		Genertor genertor = new Genertor();
-		genertor.configuration();
+		GenertorModel model=new GenertorModel();
+		model.setTarget("");
+		genertor.configuration(model);
 	}
 }

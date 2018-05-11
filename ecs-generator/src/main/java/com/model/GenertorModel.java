@@ -1,17 +1,8 @@
 package com.model;
 
 public class GenertorModel {
-	private String  url;
 	
 	private String  target;
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
 
 	public String getTarget() {
 		return target;
@@ -21,5 +12,10 @@ public class GenertorModel {
 		this.target = target;
 	}
 	
+	public  String  getProjectTarger(){
+		String   project_url="/src/main/java";
+		
+		return target+project_url;
+	}
 	
 }
