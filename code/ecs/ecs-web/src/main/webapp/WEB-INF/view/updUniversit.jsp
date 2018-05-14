@@ -35,7 +35,7 @@
       		<tr>
       			<td>点的位置:</td>
       			<td>
-      				<input class="easyui-textbox" type="text" name="location" value="${tuif.location}" style="width:180px"> 
+      				<input class="easyui-textbox" type="text" name="backimg" value="${tuif.backimg}" style="width:180px"> 
       			</td>
       		</tr>
       		<tr>

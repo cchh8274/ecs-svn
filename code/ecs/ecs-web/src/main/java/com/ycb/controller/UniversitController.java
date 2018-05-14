@@ -17,11 +17,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.service.UniversitService;
+import com.ycb.utils.ConstantsBean;
+import com.ycb.utils.FileUtil;
 
 import cn.kanmars.entity.TblLogin;
 import cn.kanmars.entity.TblUniversityInfo;
@@ -110,5 +114,15 @@ public class UniversitController extends BaseController{
 			List<TblUniversityInfo> cd = universitService.daXuXinXiXangQing(code);
 			return this.toJSONString(cd);
 		}
+		
+		 /**
+	     * 图片
+	     */
+	    @RequestMapping(value="fileupload")
+	    @ResponseBody
+	    public String fileupload(@RequestParam MultipartFile file){
+	        String upFile = FileUtil.upFile(file, ConstantsBean.IMG_PATH);
+	        return ConstantsBean.IMG_SERVER_PATH+upFile;
+	    }
 
 }
