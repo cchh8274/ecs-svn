@@ -19,6 +19,7 @@ import cn.kanmars.entity.TblReflectInfo;
  * 账户明细表
  * @author xzkp
  */
+//备注
 @Controller
 @RequestMapping(value = "amountDetail")
 public class AmountDetailController {
