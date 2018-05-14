@@ -6,12 +6,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>易创吧</title>
+		
+		<script type="text/javascript" src="./jsjs/Js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="./jsjs/Js/js.js"></script>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
 		<link href="./Css/layout.css" rel="stylesheet" type="text/css">
 		<link href="./Css/login.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" src="./jsjs/Js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="./jsjs/Js/js.js"></script>
 		
 	</head>
 	<style>
