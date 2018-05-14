@@ -25,6 +25,13 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/ztree/css/zTreeStyle/zTreeStyle.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/ztree/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/ztree/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%=request.getContextPath()%>/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<%=request.getContextPath()%>/js/ueditor/ueditor.all.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="<%=request.getContextPath()%>/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <%--webuploader--%>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/webuploader-dist-v0.1.3/webuploader.css">
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/webuploader-dist-v0.1.3/webuploader.js"></script>
 </head>
 <body>
 <!-- 新增页面 -->
@@ -75,6 +82,10 @@
 	        {field:'createUser',title:'创建人',width:100},    
 	        {field:'upTime',title:'修改时间',width:100},    
 	        {field:'upUser',title:'修改人',width:100},
+	        {field:'headimg',title:'img',width:100,align:'center',formatter:function(value,row,index)
+                {
+                    return "<img width='50px' height='50px' src='"+value+"'/>";
+                }},
 	        {field : 'pz',title : '操作',formatter:function(value,rows,index){
 	         	  return '<a href="javaScript:aupdateUniversityInfo(\''+rows.id+'\')">修改</a>';
 	           }},
@@ -98,7 +109,7 @@
 			    cache: false,    
 			    modal: true,
 			    //拿新增页面
-			    href:"<%=request.getContextPath()%>/Universit/updateUniversit.do?id="+id,
+			 	 href:"<%=request.getContextPath()%>/Universit/updateUniversit.do?id="+id,
 				buttons:[{
 					text:'保存',
 					iconCls:'icon-save',
