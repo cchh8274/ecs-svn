@@ -7,10 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.jms.TopicRequestor;
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.service.UniversitService;
-import com.ycb.util.ConstantsBean;
-import com.ycb.util.FileUtil;
+import com.ycb.utils.ConstantsBean;
+import com.ycb.utils.FileUtil;
 
-import cn.kanmars.entity.TblEarningsGather;
-import cn.kanmars.entity.TblEarningsInfo;
 import cn.kanmars.entity.TblLogin;
-import cn.kanmars.entity.TblMachineGatherInfo;
 import cn.kanmars.entity.TblUniversityDetails;
 import cn.kanmars.entity.TblUniversityInfo;
 
@@ -95,8 +89,7 @@ public class UniversitController extends BaseController{
 		@RequestMapping(value="daxuediqubiao",produces="text/html; charset=UTF-8")
 		@ResponseBody
 		public String queryAddUniversita(String jsonStr) throws Exception{
-		
-			if(StringUtils.isEmpty(jsonStr)){
+					if(StringUtils.isEmpty(jsonStr)){
 					return this.toJSONString("error","参数为空");
 			}
 			JSONObject json = JSON.parseObject(jsonStr);
