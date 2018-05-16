@@ -1,9 +1,10 @@
 package com.ycb.service;
 
 import java.util.List;
-import java.util.Map;
 
-import cn.kanmars.entity.TblLogin;
+import com.alibaba.fastjson.JSONObject;
+
+import cn.kanmars.entity.TblUniversityDetails;
 import cn.kanmars.entity.TblUniversityInfo;
 
 public interface UniversitService {
@@ -21,5 +22,17 @@ public interface UniversitService {
 	List<TblUniversityInfo> queryAddUniversita(String ocad);
 	//大学详细信息
 	List<TblUniversityInfo> daXuXinXiXangQing(String code);
+
+	List<TblUniversityDetails> queryDetails(String id);
+
+	List<TblUniversityDetails> fyqueryDetails(Integer page, Integer rows, String id);
+
+	void insetUniversitDetails(TblUniversityDetails tud);
+
+	TblUniversityDetails upQueryUniversitDetails(String id);
+
+	void updUniversitDetails(TblUniversityDetails tud);
+
+	void delUniversitDetails(String ids);
 
 }

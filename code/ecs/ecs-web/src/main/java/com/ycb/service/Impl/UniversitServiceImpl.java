@@ -9,6 +9,7 @@ import com.ycb.service.UniversitService;
 
 import cn.kanmars.dao.TblUniversityInfoMapper;
 import cn.kanmars.entity.TblLogin;
+import cn.kanmars.entity.TblUniversityDetails;
 import cn.kanmars.entity.TblUniversityInfo;
 @Service
 public class UniversitServiceImpl implements UniversitService {
@@ -58,6 +59,38 @@ public class UniversitServiceImpl implements UniversitService {
 	public List<TblUniversityInfo> daXuXinXiXangQing(String code) {
 		
 		return tblUniversityInfoMapper.daXuXinXiXangQing(code);
+	}
+
+	public List<TblUniversityDetails> queryDetails(String id) {
+		return tblUniversityInfoMapper.queryDetails(id);
+	}
+
+	public List<TblUniversityDetails> fyqueryDetails(Integer page, Integer rows, String id) {
+		TblUniversityDetails tud = new TblUniversityDetails();
+		  page = (page-1)*rows;
+		  tud.setLimitSize(rows);
+		  tud.setLimitStart(page);
+	      return tblUniversityInfoMapper.fyqueryDetails(tud,id);
+	}
+
+	@Override
+	public void insetUniversitDetails(TblUniversityDetails tud) {
+		tblUniversityInfoMapper.insetUniversitDetails(tud);
+	}
+
+	@Override
+	public TblUniversityDetails upQueryUniversitDetails(String id) {
+		return tblUniversityInfoMapper.upQueryUniversitDetails(id);
+	}
+
+	@Override
+	public void updUniversitDetails(TblUniversityDetails tud) {
+		tblUniversityInfoMapper.updUniversitDetails(tud);
+	}
+
+	@Override
+	public void delUniversitDetails(String ids) {
+		tblUniversityInfoMapper.delUniversitDetails(ids);
 	}
 
 }
