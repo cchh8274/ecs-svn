@@ -65,6 +65,8 @@ public class TblUniversityInfo implements java.io.Serializable{
     private String rzstase;
     private String headimg;
 	
+	
+
 	public String getId() {
 		return id;
 	}
@@ -156,10 +158,9 @@ public class TblUniversityInfo implements java.io.Serializable{
 		this.headimg = headimg;
 	}
 	
-	
-	public TblUniversityInfo(String id, String univerName, String areaName, String areaId,
-			String createTime, String createUser, String upTime, String upUser, String code, String sy_me, String zme,
-			String myyjsr, String rzstase, String headimg) {
+	public TblUniversityInfo(String id, String univerName, String areaName, String areaId, String createTime,
+			String createUser, String upTime, String aurlb, String upUser, String code, String sy_me, String zme,
+			String myyjsr, String rzstase, String headimg, Integer limitStart, Integer limitSize) {
 		super();
 		this.id = id;
 		this.univerName = univerName;
@@ -179,13 +180,12 @@ public class TblUniversityInfo implements java.io.Serializable{
 		this.limitStart = limitStart;
 		this.limitSize = limitSize;
 	}
-	
 
 	public TblUniversityInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 
 	@Override
 	public String toString() {
