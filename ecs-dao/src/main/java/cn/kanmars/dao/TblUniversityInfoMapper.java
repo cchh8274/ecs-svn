@@ -7,7 +7,10 @@ package cn.kanmars.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import cn.kanmars.entity.TblLogin;
+import cn.kanmars.entity.TblUniversityDetails;
 import cn.kanmars.entity.TblUniversityInfo;
 /**
  * 大学表
@@ -104,6 +107,17 @@ public interface TblUniversityInfoMapper {
 	//大学详细信息
 	public List<TblUniversityInfo> daXuXinXiXangQing(String code);
 
+	public List<TblUniversityDetails> queryDetails(@Param("id")String id);
+
+	public List<TblUniversityDetails> fyqueryDetails(TblUniversityDetails tud,@Param("id") String id);
+
+	public void insetUniversitDetails(TblUniversityDetails tud);
+
+	public TblUniversityDetails upQueryUniversitDetails(@Param("id")String id);
+
+	public void updUniversitDetails(TblUniversityDetails tud);
+
+	public void delUniversitDetails(@Param("ids")String ids);
     
 }
 
