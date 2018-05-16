@@ -33,22 +33,22 @@
       				<input class="easyui-textbox" type="text" name="location"  style="width:180px"> 
       			</td>
       		</tr>
-      		<tr>
+      		<!-- <tr>
       			<td>头像:</td>
       			<td>
       				<input id="imgs" type="hidden" >
 				    <div id="img"></div>
 				    <div id="uploader-demo">
-				        <!--用来存放item-->
+				        用来存放item
 				        <div id="fileList" class="uploader-list"></div>
 				        <div id="filePicker">选择图片</div>
 				    </div>
       			</td>
-      		</tr>
+      		</tr> -->
       	</table>
      </form>
    
-   <script>
+   <%-- <script>
    $(function(){
    if($("#UniversityInfo").datagrid('getSelected')!=null){
        var tr=$("#UniversityInfo").datagrid('getSelected');
@@ -153,6 +153,6 @@
 
    });
    
-   </script>
+   </script> --%>
 </body>
 </html>
