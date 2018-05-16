@@ -24,10 +24,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.service.UniversitService;
-import com.ycb.utils.ConstantsBean;
-import com.ycb.utils.FileUtil;
+import com.ycb.util.ConstantsBean;
+import com.ycb.util.FileUtil;
 
+import cn.kanmars.entity.TblEarningsGather;
+import cn.kanmars.entity.TblEarningsInfo;
 import cn.kanmars.entity.TblLogin;
+import cn.kanmars.entity.TblMachineGatherInfo;
+import cn.kanmars.entity.TblUniversityDetails;
 import cn.kanmars.entity.TblUniversityInfo;
 
 /**
@@ -100,6 +104,7 @@ public class UniversitController extends BaseController{
 			
 			//这个ocad就是数据的area_id字段
 			List<TblUniversityInfo> unv = universitService.queryAddUniversita(ocad);
+			System.out.println(this.toJSONString(unv));
 			return this.toJSONString(unv);
 		}
 		//大学详细信息
@@ -124,5 +129,69 @@ public class UniversitController extends BaseController{
 	        String upFile = FileUtil.upFile(file, ConstantsBean.IMG_PATH);
 	        return ConstantsBean.IMG_SERVER_PATH+upFile;
 	    }
+	    
+	  //跳转大学详情页面
+	    @RequestMapping("universitDetails")
+	    public String universitDetails(HttpServletRequest request){
+	    String id=request.getParameter("id");
+	    request.setAttribute("id", id);
+	    return "universitDetails";
+	    }
+	   
+	  //查询大学详情
+	    @RequestMapping("queryDetails")
+	    @ResponseBody
+	    public Map<String,Object> queryDetails(Integer page,Integer rows,String id){
+	        Map<String,Object> map = new HashMap<String, Object>();
+	        map.put("total", universitService.queryDetails(id).size());
+	        map.put("rows", universitService.fyqueryDetails(page,rows,id));
+	        return map;
+	    }
+	    
+	    //跳转大学详情新增页面
+	    @RequestMapping("addUniversitDetails")
+	    public String addUniversitDetails(){
+	    return "addUniversitDetails";
+	    }
+	    
+	  //添加信息
+		@RequestMapping(value="insetUniversitDetails")
+		@ResponseBody
+		public void insetUniversitDetails(TblUniversityDetails tud,String idd){
+			String replaceAll = UUID.randomUUID().toString().replaceAll("-", "");
+			tud.setId(replaceAll);
+			tud.setUniversityId(idd);
+			universitService.insetUniversitDetails(tud);
+		}
+		
+		//跳转大学详情修改页面
+	    @RequestMapping(value="upQueryUniversitDetails")
+		public String upQueryUniversitDetails(String id,Model model){
+	    	TblUniversityDetails tud  = universitService.upQueryUniversitDetails(id);
+			model.addAttribute("tud", tud);
+			return "upQueryUniversitDetails";
+		}
+	    
+	  //修改
+	  	@RequestMapping(value="updUniversitDetails")
+	  	@ResponseBody
+	  	public void updUniversitDetails(TblUniversityDetails tud){
+	  		universitService.updUniversitDetails(tud);
+	  	}
+	  	
+	  //删除
+		@RequestMapping("delUniversitDetails")
+		@ResponseBody
+		public Map<String,Object> delUniversitDetails(String ids){
+			Map<String,Object> map = new HashMap<String, Object>();
+			try {
+				universitService.delUniversitDetails(ids);
+				map.put("success", true);
+			} catch (Exception e) {
+				e.printStackTrace();
+				map.put("success", false);
+			}
+			return map;
+		}
 
 }
