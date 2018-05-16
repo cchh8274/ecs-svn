@@ -56,6 +56,7 @@ public class TblUniversityInfo implements java.io.Serializable{
      * 修改人
      * tbl_university_info.up_user
      */
+    private String aurlb;
     private String upUser;
     private String code;
     private String sy_me;
@@ -63,6 +64,7 @@ public class TblUniversityInfo implements java.io.Serializable{
     private String myyjsr;
     private String rzstase;
     private String headimg;
+	
 	public String getId() {
 		return id;
 	}
@@ -104,6 +106,12 @@ public class TblUniversityInfo implements java.io.Serializable{
 	}
 	public void setUpTime(String upTime) {
 		this.upTime = upTime;
+	}
+	public String getAurlb() {
+		return aurlb;
+	}
+	public void setAurlb(String aurlb) {
+		this.aurlb = aurlb;
 	}
 	public String getUpUser() {
 		return upUser;
@@ -147,10 +155,8 @@ public class TblUniversityInfo implements java.io.Serializable{
 	public void setHeadimg(String headimg) {
 		this.headimg = headimg;
 	}
-	public TblUniversityInfo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
+	
 	public TblUniversityInfo(String id, String univerName, String areaName, String areaId,
 			String createTime, String createUser, String upTime, String upUser, String code, String sy_me, String zme,
 			String myyjsr, String rzstase, String headimg) {
@@ -162,6 +168,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 		this.createTime = createTime;
 		this.createUser = createUser;
 		this.upTime = upTime;
+		this.aurlb = aurlb;
 		this.upUser = upUser;
 		this.code = code;
 		this.sy_me = sy_me;
@@ -169,14 +176,27 @@ public class TblUniversityInfo implements java.io.Serializable{
 		this.myyjsr = myyjsr;
 		this.rzstase = rzstase;
 		this.headimg = headimg;
+		this.limitStart = limitStart;
+		this.limitSize = limitSize;
 	}
+	
+
+	public TblUniversityInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	@Override
 	public String toString() {
 		return "TblUniversityInfo [id=" + id + ", univerName=" + univerName + ", areaName=" + areaName + ", areaId="
-				+ areaId + ", createTime=" + createTime + ", createUser=" + createUser
-				+ ", upTime=" + upTime + ", upUser=" + upUser + ", code=" + code + ", sy_me=" + sy_me + ", zme=" + zme
-				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + ", headimg=" + headimg + "]";
+				+ areaId + ", createTime=" + createTime + ", createUser=" + createUser + ", upTime=" + upTime
+				+ ", aurlb=" + aurlb + ", upUser=" + upUser + ", code=" + code + ", sy_me=" + sy_me + ", zme=" + zme
+				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + ", headimg=" + headimg + ", limitStart=" + limitStart
+				+ ", limitSize=" + limitSize + "]";
 	}
+
+
 	/**
      * 自定义列，分页查询用
      */
