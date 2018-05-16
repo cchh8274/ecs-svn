@@ -151,7 +151,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TblUniversityInfo(String id, String univerName, String areaName, String areaId, String backImg,
+	public TblUniversityInfo(String id, String univerName, String areaName, String areaId,
 			String createTime, String createUser, String upTime, String upUser, String code, String sy_me, String zme,
 			String myyjsr, String rzstase, String headimg) {
 		super();
