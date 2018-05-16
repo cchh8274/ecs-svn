@@ -67,7 +67,7 @@ public interface TblWxUserInfoMapper {
      * 批量插入,如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用
      * 如果为MYSQL数据库，返回值为插入条数，如果为ORACLE，返回值为第一条更新语句的指定结果，并非所有批量插入的总影响行数
      */
-    public int insertBatch(List<HashMap> tblWxUserInfo);
+    public int insertBatch(List<HashMap> list);
 
     /**
      * 批量更新,如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用
