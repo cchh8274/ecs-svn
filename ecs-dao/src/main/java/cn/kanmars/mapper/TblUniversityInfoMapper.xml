@@ -31,6 +31,13 @@
        <result column="rzstase" property="rzstase"></result>
        <result column="aurlb" property="aurlb"></result>
      </resultMap>
+     
+      <resultMap type="cn.kanmars.entity.TblUniversityDetails" id="detail">
+       <result column="id" property="id"></result>
+       <result column="university_name" property="universityName"></result>
+       <result column="university_id" property="universityId"></result>
+       <result column="headimg" property="headimg"></result>
+     </resultMap>
     <sql id="Base_Column_List">
         id,univer_name,area_name,area_id,aurlb,create_time,create_user,up_time,up_user,
         code,sy_me,zme,myyjsr,rzstase
@@ -670,6 +677,34 @@
     <update id="editInfo" parameterType="java.util.HashMap">
     </update>
     
+    <select id="queryDetails" resultMap="detail">
+    	select * from tbl_university_details 
+    	where university_id = #{id}
+    </select>
+    
+    <select id="fyqueryDetails"  resultMap="detail">
+    	select * from tbl_university_details
+    	where university_id = #{id}
+    	<!-- limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL} -->
+    </select>
+    
+    <insert id="insetUniversitDetails"  parameterType="java.util.List">
+        insert into tbl_university_details values 
+        (#{id},#{universityName},#{universityId},#{headimg})
+    </insert>
+      
+     <select id="upQueryUniversitDetails" resultMap="detail">
+		select * from tbl_university_details where id = #{id}
+     </select>
+
+   <update id="updUniversitDetails">
+		update tbl_university_details set id = #{id},university_name = #{universityName},university_id = #{universityId},headimg = #{headimg}
+		where id=#{id}
+   </update>
+
+   <delete id="delUniversitDetails">
+    	delete from tbl_university_details where id=#{ids}
+    </delete>
 
 </mapper>
 

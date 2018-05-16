@@ -67,10 +67,10 @@
 	        {field:'createUser',title:'创建人',width:100},    
 	        {field:'upTime',title:'修改时间',width:100},    
 	        {field:'upUser',title:'修改人',width:100},
-	        {field:'headimg',title:'img',width:100,align:'center',formatter:function(value,row,index)
+	        /* {field:'headimg',title:'img',width:100,align:'center',formatter:function(value,row,index)
                 {
                     return "<img width='50px' height='50px' src='"+value+"'/>";
-                }},
+                }}, */
 	        {field : 'pz',title : '操作',formatter:function(value,rows,index){
 	         	  return '<a href="javaScript:aupdateUniversityInfo(\''+rows.id+'\')">修改</a>'+
 	         	 		 '<a href="javaScript:details(\''+rows.id+'\')">    详情</a>';
