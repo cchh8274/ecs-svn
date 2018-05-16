@@ -33,7 +33,7 @@ public class TblUniversityInfo implements java.io.Serializable{
      */
     private String areaId;
 
-   
+    
     /**
      * 创建时间
      * tbl_university_info.create_time
@@ -63,11 +63,7 @@ public class TblUniversityInfo implements java.io.Serializable{
     private String zme;
     private String myyjsr;
     private String rzstase;
-    private String headimg;
-	
-	
-
-	public String getId() {
+    public String getId() {
 		return id;
 	}
 	public void setId(String id) {
@@ -151,16 +147,9 @@ public class TblUniversityInfo implements java.io.Serializable{
 	public void setRzstase(String rzstase) {
 		this.rzstase = rzstase;
 	}
-	public String getHeadimg() {
-		return headimg;
-	}
-	public void setHeadimg(String headimg) {
-		this.headimg = headimg;
-	}
-	
 	public TblUniversityInfo(String id, String univerName, String areaName, String areaId, String createTime,
 			String createUser, String upTime, String aurlb, String upUser, String code, String sy_me, String zme,
-			String myyjsr, String rzstase, String headimg, Integer limitStart, Integer limitSize) {
+			String myyjsr, String rzstase) {
 		super();
 		this.id = id;
 		this.univerName = univerName;
@@ -176,45 +165,37 @@ public class TblUniversityInfo implements java.io.Serializable{
 		this.zme = zme;
 		this.myyjsr = myyjsr;
 		this.rzstase = rzstase;
-		this.headimg = headimg;
-		this.limitStart = limitStart;
-		this.limitSize = limitSize;
 	}
-
 	public TblUniversityInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-
 	@Override
 	public String toString() {
 		return "TblUniversityInfo [id=" + id + ", univerName=" + univerName + ", areaName=" + areaName + ", areaId="
 				+ areaId + ", createTime=" + createTime + ", createUser=" + createUser + ", upTime=" + upTime
 				+ ", aurlb=" + aurlb + ", upUser=" + upUser + ", code=" + code + ", sy_me=" + sy_me + ", zme=" + zme
-				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + ", headimg=" + headimg + ", limitStart=" + limitStart
-				+ ", limitSize=" + limitSize + "]";
+				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + "]";
 	}
-
-
-	/**
-     * 自定义列，分页查询用
-     */
-    private Integer limitStart;
-    public Integer getLimitStart(){
-        return limitStart;
-    }
-    public void setLimitStart(Integer limitStart){
-        this.limitStart = limitStart;
-    }
-    private Integer limitSize;
-    public Integer getLimitSize(){
-        return limitSize;
-    }
-    public void setLimitSize(Integer limitSize){
-        this.limitSize = limitSize;
-    }
+	
+  
 	
 
+   private Integer limitStart;
+   public Integer getLimitStart(){
+       return limitStart;
+   }
+   public void setLimitStart(Integer limitStart){
+       this.limitStart = limitStart;
+   }
+   private Integer limitSize;
+   public Integer getLimitSize(){
+       return limitSize;
+   }
+   public void setLimitSize(Integer limitSize){
+       this.limitSize = limitSize;
+   }
+    
+  
 }
 
