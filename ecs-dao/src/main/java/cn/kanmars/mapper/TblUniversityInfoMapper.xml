@@ -7,12 +7,10 @@
             <arg column="univer_name" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="area_name" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="area_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="backImg" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+           <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="up_time" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="up_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-           
             <arg column="code" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="sy_me" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="zme" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -30,22 +28,13 @@
        <result column="zme" property="zme"></result>
        <result column="myyjsr" property="myyjsr"></result>
        <result column="rzstase" property="rzstase"></result>
-       <result column="backImg" property="backImg"></result>
      </resultMap>
-     
-      <resultMap type="cn.kanmars.entity.TblUniversityDetails" id="detail">
-       <result column="id" property="id"></result>
-       <result column="university_name" property="universityName"></result>
-       <result column="university_id" property="universityId"></result>
-       <result column="headimg" property="headimg"></result>
-     </resultMap>
-     
     <sql id="Base_Column_List">
-        id,univer_name,area_name,area_id,backImg,create_time,create_user,up_time,up_user,
+        id,univer_name,area_name,area_id,create_time,create_user,up_time,up_user,
         code,sy_me,zme,myyjsr,rzstase,headimg
     </sql>
     <sql id="Base_Column_Lister">
-        univer_name,area_name,area_id,code,sy_me,zme,myyjsr,rzstase,backImg
+        univer_name,area_name,area_id,code,sy_me,zme,myyjsr,rzstase
     </sql>
     	<select id="queryAddUniversita" parameterType="java.lang.String" resultMap="daxue">
     		select 
@@ -87,9 +76,9 @@
             <if test="areaId != null">
                 area_id = #{areaId,jdbcType=VARCHAR} ,
             </if>
-            <if test="backImg != null">
-                backImg = #{backImg,jdbcType=VARCHAR} ,
-            </if>
+            <!-- <if test="areaNa != null">
+                area_na = #{areaNa,jdbcType=VARCHAR} ,
+            </if> -->
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=VARCHAR} ,
             </if>
@@ -121,9 +110,9 @@
             <if test="areaId != null ">
                 area_id,
             </if>
-            <if test="backImg != null ">
-                backImg,
-            </if>
+            <!-- <if test="areaNa != null ">
+                area_na,
+            </if> -->
             <if test="createTime != null ">
                 create_time,
             </if>
@@ -165,8 +154,8 @@
             <if test="areaId != null ">
                 #{areaId,jdbcType=VARCHAR},
             </if>
-            <if test="backImg != null ">
-                #{backImg,jdbcType=VARCHAR},
+            <if test="areaNa != null ">
+                #{areaNa,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null ">
                 #{createTime,jdbcType=VARCHAR},
@@ -207,7 +196,7 @@
     	 from tbl_university_info
     	where code= #{code}
     </select>
-    <select id="select" parameterType="cn.kanmars.entity.TblUniversityInfo" resultMap="BaseResultMap">
+   <!--  <select id="select" parameterType="cn.kanmars.entity.TblUniversityInfo" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from tbl_university_info
@@ -224,8 +213,8 @@
         <if test="areaId != null and areaId != '' ">
             and area_id = #{areaId,jdbcType=VARCHAR}
         </if>
-        <if test="backImg != null and backImg != '' ">
-            and backImg = #{backImg,jdbcType=VARCHAR}
+        <if test="areaNa != null and areaNa != '' ">
+            and area_na = #{areaNa,jdbcType=VARCHAR}
         </if>
         <if test="createTime != null and createTime != '' ">
             and create_time = #{createTime,jdbcType=VARCHAR}
@@ -257,8 +246,8 @@
         <if test="areaId != null and areaId != '' ">
             and area_id = #{areaId,jdbcType=VARCHAR}
         </if>
-        <if test="backImg != null and backImg != '' ">
-            and backImg = #{backImg,jdbcType=VARCHAR}
+        <if test="areaNa != null and areaNa != '' ">
+            and area_na = #{areaNa,jdbcType=VARCHAR}
         </if>
         <if test="createTime != null and createTime != '' ">
             and create_time = #{createTime,jdbcType=VARCHAR}
@@ -288,8 +277,8 @@
             <if test="areaId != null ">
                 area_id,
             </if>
-            <if test="backImg != null ">
-                backImg,
+            <if test="areaNa != null ">
+                area_na,
             </if>
             <if test="createTime != null ">
                 create_time,
@@ -317,8 +306,8 @@
             <if test="areaId != null ">
                 #{areaId,jdbcType=VARCHAR},
             </if>
-            <if test="backImg != null ">
-                #{backImg,jdbcType=VARCHAR},
+            <if test="areaNa != null ">
+                #{areaNa,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null ">
                 #{createTime,jdbcType=VARCHAR},
@@ -346,8 +335,8 @@
             <if test="areaId != null">
                 area_id = #{areaId,jdbcType=VARCHAR} ,
             </if>
-            <if test="backImg != null">
-                backImg = #{backImg,jdbcType=VARCHAR} ,
+            <if test="areaNa != null">
+                area_na = #{areaNa,jdbcType=VARCHAR} ,
             </if>
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=VARCHAR} ,
@@ -380,8 +369,8 @@
             <if test="areaId != null and areaId != '' ">
                 and area_id = #{areaId,jdbcType=VARCHAR}
             </if>
-            <if test="backImg != null and backImg != '' ">
-                and backImg = #{backImg,jdbcType=VARCHAR}
+            <if test="areaNa != null and areaNa != '' ">
+                and area_na = #{areaNa,jdbcType=VARCHAR}
             </if>
             <if test="createTime != null and createTime != '' ">
                 and create_time = #{createTime,jdbcType=VARCHAR}
@@ -413,8 +402,8 @@
         <if test="areaId != null and areaId != '' ">
             and area_id = #{areaId,jdbcType=VARCHAR}
         </if>
-        <if test="backImg != null and backImg != '' ">
-            and backImg = #{backImg,jdbcType=VARCHAR}
+        <if test="areaNa != null and areaNa != '' ">
+            and area_na = #{areaNa,jdbcType=VARCHAR}
         </if>
         <if test="createTime != null and createTime != '' ">
             and create_time = #{createTime,jdbcType=VARCHAR}
@@ -446,8 +435,8 @@
         <if test="areaId != null and areaId != '' ">
             and area_id = #{areaId,jdbcType=VARCHAR}
         </if>
-        <if test="backImg != null and backImg != '' ">
-            and backImg = #{backImg,jdbcType=VARCHAR}
+        <if test="areaNa != null and areaNa != '' ">
+            and area_na = #{areaNa,jdbcType=VARCHAR}
         </if>
         <if test="createTime != null and createTime != '' ">
             and create_time = #{createTime,jdbcType=VARCHAR}
@@ -474,8 +463,8 @@
             <if test="areaId_new != null">
                 area_id = #{areaId_new,jdbcType=VARCHAR} ,
             </if>
-            <if test="backImg_new != null">
-                backImg = #{backImg_new,jdbcType=VARCHAR} ,
+            <if test="areaNa_new != null">
+                area_na = #{areaNa_new,jdbcType=VARCHAR} ,
             </if>
             <if test="createTime_new != null">
                 create_time = #{createTime_new,jdbcType=VARCHAR} ,
@@ -503,8 +492,8 @@
             <if test="areaId != null ">
                 and area_id = #{areaId,jdbcType=VARCHAR}
             </if>
-            <if test="backImg != null ">
-                and backImg = #{backImg,jdbcType=VARCHAR}
+            <if test="areaNa != null ">
+                and area_na = #{areaNa,jdbcType=VARCHAR}
             </if>
             <if test="createTime != null ">
                 and create_time = #{createTime,jdbcType=VARCHAR}
@@ -541,8 +530,8 @@
         <if test="areaId != null and areaId != '' ">
             and area_id like CONCAT(#{areaId,jdbcType=VARCHAR},'%')
         </if>
-        <if test="backImg != null and backImg != '' ">
-            and backImg like CONCAT(#{backImg,jdbcType=VARCHAR},'%')
+        <if test="areaNa != null and areaNa != '' ">
+            and area_na like CONCAT(#{areaNa,jdbcType=VARCHAR},'%')
         </if>
         <if test="createTime != null and createTime != '' ">
             and create_time like CONCAT(#{createTime,jdbcType=VARCHAR},'%')
@@ -565,9 +554,9 @@
         ) as TMP_COUNT_TABLE
         </if>
     </select>
-    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
-    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
-    <!--
+    如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用
+    返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和
+    
         ORACLE的写法
         <insert id="insertBatch"  parameterType="java.util.List">
             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
@@ -583,16 +572,16 @@
         </insert>
         
         
-    -->
+   
     <insert id="insertBatch"  parameterType="java.util.List">
-        insert into tbl_university_info (id,univer_name,area_name,area_id,backImg,create_time,create_user,up_time,up_user) values 
+        insert into tbl_university_info (id,univer_name,area_name,area_id,area_na,create_time,create_user,up_time,up_user) values 
         <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
-            #{item.id},#{item.univerName},#{item.areaName},#{item.areaId},#{item.backImg},#{item.createTime},#{item.createUser},#{item.upTime},#{item.upUser}
+            #{item.id},#{item.univerName},#{item.areaName},#{item.areaId},#{item.areaNa},#{item.createTime},#{item.createUser},#{item.upTime},#{item.upUser}
         </foreach>
     </insert>
-    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
-    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
-    <!--
+    如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用
+    返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和
+    
          ORACLE的写法
          <update id="updateBatch"  parameterType="java.util.List">
              <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
@@ -615,7 +604,7 @@
          </update>
          
          
-    -->
+   
     <update id="updateBatch" parameterType="java.util.List" >
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
             update tbl_university_info
@@ -629,8 +618,8 @@
                 <if test="item.areaId_new != null">
                     area_id = #{item.areaId_new,jdbcType=VARCHAR} ,
                 </if>
-                <if test="item.backImg_new != null">
-                    backImg = #{item.backImg_new,jdbcType=VARCHAR} ,
+                <if test="item.areaNa_new != null">
+                    area_na = #{item.areaNa_new,jdbcType=VARCHAR} ,
                 </if>
                 <if test="item.createTime_new != null">
                     create_time = #{item.createTime_new,jdbcType=VARCHAR} ,
@@ -658,8 +647,8 @@
                 <if test="item.areaId != null ">
                     and area_id = #{item.areaId,jdbcType=VARCHAR}
                 </if>
-                <if test="item.backImg != null ">
-                    and backImg = #{item.backImg,jdbcType=VARCHAR}
+                <if test="item.areaNa != null ">
+                    and area_na = #{item.areaNa,jdbcType=VARCHAR}
                 </if>
                 <if test="item.createTime != null ">
                     and create_time = #{item.createTime,jdbcType=VARCHAR}
@@ -683,35 +672,8 @@
         and id = #{0}
     </select>
     <update id="editInfo" parameterType="java.util.HashMap">
-    </update>
+    </update> -->
     
-    <select id="queryDetails" resultMap="detail">
-    	select * from tbl_university_details 
-    	where university_id = #{id}
-    </select>
-    
-    <select id="fyqueryDetails"  resultMap="detail">
-    	select * from tbl_university_details
-    	where university_id = #{id}
-    	<!-- limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL} -->
-    </select>
-    
-    <insert id="insetUniversitDetails"  parameterType="java.util.List">
-        insert into tbl_university_details values 
-        (#{id},#{universityName},#{universityId},#{headimg})
-    </insert>
-      
-     <select id="upQueryUniversitDetails" resultMap="detail">
-		select * from tbl_university_details where id = #{id}
-     </select>
 
-   <update id="updUniversitDetails">
-		update tbl_university_details set id = #{id},university_name = #{universityName},university_id = #{universityId},headimg = #{headimg}
-		where id=#{id}
-   </update>
-
-   <delete id="delUniversitDetails">
-    	delete from tbl_university_details where id=#{ids}
-    </delete>
 </mapper>
 
