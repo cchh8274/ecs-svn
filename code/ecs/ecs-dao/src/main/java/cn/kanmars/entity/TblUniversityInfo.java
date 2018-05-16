@@ -33,12 +33,7 @@ public class TblUniversityInfo implements java.io.Serializable{
      */
     private String areaId;
 
-    /**
-     * 点的位置
-     * tbl_university_info.backImg
-     */
-    private String backImg;
-
+   
     /**
      * 创建时间
      * tbl_university_info.create_time
@@ -91,12 +86,6 @@ public class TblUniversityInfo implements java.io.Serializable{
 	}
 	public void setAreaId(String areaId) {
 		this.areaId = areaId;
-	}
-	public String getbackImg() {
-		return backImg;
-	}
-	public void setbackImg(String backImg) {
-		this.backImg = backImg;
 	}
 	public String getCreateTime() {
 		return createTime;
@@ -170,7 +159,6 @@ public class TblUniversityInfo implements java.io.Serializable{
 		this.univerName = univerName;
 		this.areaName = areaName;
 		this.areaId = areaId;
-		this.backImg = backImg;
 		this.createTime = createTime;
 		this.createUser = createUser;
 		this.upTime = upTime;
@@ -185,7 +173,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 	@Override
 	public String toString() {
 		return "TblUniversityInfo [id=" + id + ", univerName=" + univerName + ", areaName=" + areaName + ", areaId="
-				+ areaId + ", backImg=" + backImg + ", createTime=" + createTime + ", createUser=" + createUser
+				+ areaId + ", createTime=" + createTime + ", createUser=" + createUser
 				+ ", upTime=" + upTime + ", upUser=" + upUser + ", code=" + code + ", sy_me=" + sy_me + ", zme=" + zme
 				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + ", headimg=" + headimg + "]";
 	}
