@@ -35,9 +35,9 @@ public class TblUniversityInfo implements java.io.Serializable{
 
     /**
      * 点的位置
-     * tbl_university_info.backimg
+     * tbl_university_info.backImg
      */
-    private String backimg;
+    private String backImg;
 
     /**
      * 创建时间
@@ -92,11 +92,11 @@ public class TblUniversityInfo implements java.io.Serializable{
 	public void setAreaId(String areaId) {
 		this.areaId = areaId;
 	}
-	public String getbackimg() {
-		return backimg;
+	public String getbackImg() {
+		return backImg;
 	}
-	public void setbackimg(String backimg) {
-		this.backimg = backimg;
+	public void setbackImg(String backImg) {
+		this.backImg = backImg;
 	}
 	public String getCreateTime() {
 		return createTime;
@@ -162,7 +162,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TblUniversityInfo(String id, String univerName, String areaName, String areaId, String backimg,
+	public TblUniversityInfo(String id, String univerName, String areaName, String areaId, String backImg,
 			String createTime, String createUser, String upTime, String upUser, String code, String sy_me, String zme,
 			String myyjsr, String rzstase, String headimg) {
 		super();
@@ -170,7 +170,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 		this.univerName = univerName;
 		this.areaName = areaName;
 		this.areaId = areaId;
-		this.backimg = backimg;
+		this.backImg = backImg;
 		this.createTime = createTime;
 		this.createUser = createUser;
 		this.upTime = upTime;
@@ -185,7 +185,7 @@ public class TblUniversityInfo implements java.io.Serializable{
 	@Override
 	public String toString() {
 		return "TblUniversityInfo [id=" + id + ", univerName=" + univerName + ", areaName=" + areaName + ", areaId="
-				+ areaId + ", backimg=" + backimg + ", createTime=" + createTime + ", createUser=" + createUser
+				+ areaId + ", backImg=" + backImg + ", createTime=" + createTime + ", createUser=" + createUser
 				+ ", upTime=" + upTime + ", upUser=" + upUser + ", code=" + code + ", sy_me=" + sy_me + ", zme=" + zme
 				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + ", headimg=" + headimg + "]";
 	}
