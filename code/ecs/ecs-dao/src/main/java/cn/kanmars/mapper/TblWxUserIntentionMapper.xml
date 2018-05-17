@@ -19,11 +19,11 @@
     <include refid="Base_Column_List" />
     from tbl_wx_user_intention
   </select>
-  
+
   <select id="selectWxUserIntention" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from tbl_wx_user_intention
+    from tbl_wx_user_intention ORDER BY creation_time DESC
     limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
   </select>
   <!-- <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
