@@ -106,5 +106,7 @@ public interface TblEarningsGatherMapper {
 
 	public void delEarningsGather(String ids);
 
+	public List<TblEarningsGather> shouyimingxi(String openid);
+
 }
 

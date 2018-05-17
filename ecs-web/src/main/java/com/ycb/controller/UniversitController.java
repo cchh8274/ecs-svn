@@ -187,5 +187,15 @@ public class UniversitController extends BaseController{
 			}
 			return map;
 		}
+		
+		/**
+		 * 查询附近的大学现在是写死的支取三条
+		 */
+		@RequestMapping(value="fuJinuniversityDetails",produces="text/html; charset=UTF-8")
+		@ResponseBody
+		public String fuJinuniversityDetails(){
+			List<TblUniversityInfo> unv = universitService.fuJinuniversityDetails();
+			return this.toJSONString(unv);
+		}
 
 }

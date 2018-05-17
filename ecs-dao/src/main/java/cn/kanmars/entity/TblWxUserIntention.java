@@ -1,4 +1,5 @@
 package cn.kanmars.entity;
+
 /**
  * @author xzkp
  *	用户意向表

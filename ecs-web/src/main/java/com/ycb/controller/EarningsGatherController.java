@@ -29,7 +29,7 @@ import cn.kanmars.entity.TblLogin;
  */
 @Controller
 @RequestMapping(value = "earningsGather")
-public class EarningsGatherController {
+public class EarningsGatherController extends BaseController{
 
 	@Autowired
 	private EarningsGatherService earningsGatherService;
@@ -93,4 +93,15 @@ public class EarningsGatherController {
 					}
 					return map;
 				}
+				
+				/**
+				 * 收益明细
+				 */
+			@RequestMapping(value="hhhhhhhhhhh")
+			@ResponseBody
+			public String hhhhhhhhhhh(String jsonStr){
+			String openid=jsonStr;
+			List<TblEarningsGather> aaa=earningsGatherService.shouyimingxi(openid);
+			return this.toJSONString(aaa);
+			}
 }

@@ -92,5 +92,17 @@ public class UniversitServiceImpl implements UniversitService {
 	public void delUniversitDetails(String ids) {
 		tblUniversityInfoMapper.delUniversitDetails(ids);
 	}
+	//查询大学id
+	@Override
+	public String idUnXinXi(String code) {
+		
+		return tblUniversityInfoMapper.idUnXinXi(code);
+	}
+//	查询附近的大学现在是写死的支取三条
+	@Override
+	public List<TblUniversityInfo> fuJinuniversityDetails() {
+		
+		return tblUniversityInfoMapper.fuJinuniversityDetails();
+	}
 
 }

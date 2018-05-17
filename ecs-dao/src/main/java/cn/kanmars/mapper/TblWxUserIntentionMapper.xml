@@ -14,6 +14,68 @@
   <sql id="Base_Column_List" >
     id, openid, nickname, user_cell, university_id, university_name, creation_time, follow_record
   </sql>
+  <!--判断当前用户存不存在  -->
+  <select id="panDuanwxUserIntention" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from tbl_wx_user_intention
+  	where openid=#{openid} limit 1
+  </select>
+  <insert id="insetwxUserIntention" parameterType="java.util.HashMap">
+   insert into tbl_wx_user_intention
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="userCell != null" >
+        user_cell,
+      </if>
+      <if test="universityId != null" >
+        university_id,
+      </if>
+      <if test="universityName != null" >
+        university_name,
+      </if>
+      <if test="creationTime != null" >
+        creation_time,
+      </if>
+      <if test="followRecord != null" >
+        follow_record,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userCell != null" >
+        #{userCell,jdbcType=VARCHAR},
+      </if>
+      <if test="universityId != null" >
+        #{universityId,jdbcType=VARCHAR},
+      </if>
+      <if test="universityName != null" >
+        #{universityName,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="followRecord != null" >
+        #{followRecord,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
   <select id="queryWxUserIntention" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

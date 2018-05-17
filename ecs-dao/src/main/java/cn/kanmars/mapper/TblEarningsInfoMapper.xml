@@ -34,6 +34,12 @@
     <sql id="Base_Column_List">
         id,openid,wx_user_name,maniche_id,unversity_name,unversity_id,maniche_name,price,coffee_number,tolal_money,earing_month,earning_start_time,is_eaning_status,earning_send_time,create_time,create_user,update_time,update_user
     </sql>
+    <!-- shouyimingxi sum(price),-->
+    <select id="shouyimingxi" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select unversity_id,unversity_name,pay_time,create_time 
+  from tbl_machine_gather_info 
+  where openid=#{openid} group by unversity_id,unversity_name,pay_time,create_time
+    </select>
     <sql id="Base_Column_Listaa">
     unversity_name,maniche_name,price,earing_month,openid
     </sql>

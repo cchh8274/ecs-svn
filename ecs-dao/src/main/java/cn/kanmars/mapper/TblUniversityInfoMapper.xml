@@ -49,6 +49,16 @@
     <sql id="Base_Column_Lister">
         univer_name,area_name,area_id,code,sy_me,zme,myyjsr,rzstase,aurlb
     </sql>
+    <!-- 写死的大学学附近的 -->
+    <select id="fuJinuniversityDetails" resultMap="daxue">
+    	select 
+    	code,univer_name
+    	 from tbl_university_info limit 3
+    </select>
+    <!-- 查询大学id -->
+    <select id="idUnXinXi" parameterType="java.lang.String" resultType="java.lang.String">
+    	select id from tbl_university_info where code=#{code}
+    </select>
     	<select id="queryAddUniversita" parameterType="java.lang.String" resultMap="daxue">
     		select 
     		<include refid="Base_Column_Lister"/>
