@@ -55,13 +55,13 @@
 	    columns:[[    
 	         {field:'ck',checkbox:true},  
 	        {field:'id',title:'id',width:100},    
-	        {field:'openid',title:'订单号',width:100},    
-	        {field:'nickname',title:'商品描述',width:100},    	       
-	        {field:'userCell',title:'商品详情',width:100},    	       
-	        {field:'universityId',title:'名额数量',width:100},    	       
-	        {field:'universityName',title:'名额单价',width:100},    	       
-	        {field:'creationTime',title:'总金额',width:100},    	       
-	        {field:'followRecord',title:'用户IP地址',width:100}   	       
+	        {field:'openid',title:'用户id',width:100},    
+	        {field:'nickname',title:'用户名字',width:100},    	       
+	        {field:'userCell',title:'用户手机号码',width:100},    	       
+	        {field:'universityId',title:'大学id',width:100},    	       
+	        {field:'universityName',title:'大学名称',width:100},    	       
+	        {field:'creationTime',title:'创建时间',width:100},    	       
+	        {field:'followRecord',title:'跟进记录',width:100}   	       
 	    ]]    
 	})
   }
