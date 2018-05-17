@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kanmars.dao.TblWxUserIntentionMapper" >
+  <resultMap id="BaseResultMap" type="cn.kanmars.entity.TblWxUserIntention" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="user_cell" property="userCell" jdbcType="VARCHAR" />
+    <result column="university_id" property="universityId" jdbcType="VARCHAR" />
+    <result column="university_name" property="universityName" jdbcType="VARCHAR" />
+    <result column="creation_time" property="creationTime" jdbcType="VARCHAR" />
+    <result column="follow_record" property="followRecord" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, openid, nickname, user_cell, university_id, university_name, creation_time, follow_record
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_wx_user_intention
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_wx_user_intention
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.kanmars.entity.TblWxUserIntention" >
+    insert into tbl_wx_user_intention (id, openid, nickname, 
+      user_cell, university_id, university_name, 
+      creation_time, follow_record)
+    values (#{id,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{userCell,jdbcType=VARCHAR}, #{universityId,jdbcType=VARCHAR}, #{universityName,jdbcType=VARCHAR}, 
+      #{creationTime,jdbcType=VARCHAR}, #{followRecord,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.kanmars.entity.TblWxUserIntention" >
+    insert into tbl_wx_user_intention
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="userCell != null" >
+        user_cell,
+      </if>
+      <if test="universityId != null" >
+        university_id,
+      </if>
+      <if test="universityName != null" >
+        university_name,
+      </if>
+      <if test="creationTime != null" >
+        creation_time,
+      </if>
+      <if test="followRecord != null" >
+        follow_record,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userCell != null" >
+        #{userCell,jdbcType=VARCHAR},
+      </if>
+      <if test="universityId != null" >
+        #{universityId,jdbcType=VARCHAR},
+      </if>
+      <if test="universityName != null" >
+        #{universityName,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="followRecord != null" >
+        #{followRecord,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.kanmars.entity.TblWxUserIntention" >
+    update tbl_wx_user_intention
+    <set >
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userCell != null" >
+        user_cell = #{userCell,jdbcType=VARCHAR},
+      </if>
+      <if test="universityId != null" >
+        university_id = #{universityId,jdbcType=VARCHAR},
+      </if>
+      <if test="universityName != null" >
+        university_name = #{universityName,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        creation_time = #{creationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="followRecord != null" >
+        follow_record = #{followRecord,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.kanmars.entity.TblWxUserIntention" >
+    update tbl_wx_user_intention
+    set openid = #{openid,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      user_cell = #{userCell,jdbcType=VARCHAR},
+      university_id = #{universityId,jdbcType=VARCHAR},
+      university_name = #{universityName,jdbcType=VARCHAR},
+      creation_time = #{creationTime,jdbcType=VARCHAR},
+      follow_record = #{followRecord,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
