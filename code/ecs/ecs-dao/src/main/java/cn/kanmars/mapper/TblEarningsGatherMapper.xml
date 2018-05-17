@@ -19,6 +19,7 @@
     <sql id="Base_Column_List">
         id,ernings_month,unversity_id,number,openid,unversity_name,area_name,area_id,createtime,create_user
     </sql>
+    
     <select id="select" parameterType="cn.kanmars.entity.TblEarningsGather" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

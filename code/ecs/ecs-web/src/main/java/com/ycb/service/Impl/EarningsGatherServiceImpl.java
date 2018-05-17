@@ -49,5 +49,11 @@ public class EarningsGatherServiceImpl implements EarningsGatherService{
 	public void delEarningsGather(String ids) {
 		tblEarningsGatherMapper.delEarningsGather(ids);
 	}
+//	收益明细
+	@Override
+	public List<TblEarningsGather> shouyimingxi(String openid) {
+		
+		return tblEarningsGatherMapper.shouyimingxi(openid);
+	}
 
 }

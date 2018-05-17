@@ -17,5 +17,7 @@ public interface EarningsGatherService {
 	void updEarningsGather(TblEarningsGather teg);
 
 	void delEarningsGather(String ids);
+//	收益明细
+	List<TblEarningsGather> shouyimingxi(String openid);
 
 }
