@@ -27,6 +27,30 @@
 				    </div>
       			</td>
       		</tr>
+      		<tr>
+      			<td>大学等级:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="universityGrade"  style="width:180px">
+      			</td>
+      		</tr>
+      		<tr>
+      			<td>大学人数:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="universityPeople"  style="width:180px">
+      			</td>
+      		</tr>
+      		<tr>
+      			<td>大学投资回报率:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="universityProbability"  style="width:180px">
+      			</td>
+      		</tr>
+      		<tr>
+      			<td>大学优势介绍:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="universityAdvantage"  style="width:180px">
+      			</td>
+      		</tr>
       	</table>
      </form>
 <script>

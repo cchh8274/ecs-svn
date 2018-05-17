@@ -37,6 +37,10 @@
        <result column="university_name" property="universityName"></result>
        <result column="university_id" property="universityId"></result>
        <result column="headimg" property="headimg"></result>
+       <result column="university_grade" property="universityGrade"></result>
+       <result column="university_people" property="universityPeople"></result>
+       <result column="university_probability" property="universityProbability"></result>
+       <result column="university_advantage" property="universityAdvantage"></result>
      </resultMap>
     <sql id="Base_Column_List">
         id,univer_name,area_name,area_id,aurlb,create_time,create_user,up_time,up_user,
@@ -690,7 +694,7 @@
     
     <insert id="insetUniversitDetails"  parameterType="java.util.List">
         insert into tbl_university_details values 
-        (#{id},#{universityName},#{universityId},#{headimg})
+        (#{id},#{universityName},#{universityId},#{headimg},#{universityGrade},#{universityPeople},#{universityProbability},#{universityAdvantage})
     </insert>
       
      <select id="upQueryUniversitDetails" resultMap="detail">
@@ -698,7 +702,7 @@
      </select>
 
    <update id="updUniversitDetails">
-		update tbl_university_details set id = #{id},university_name = #{universityName},university_id = #{universityId},headimg = #{headimg}
+		update tbl_university_details set id = #{id},university_name = #{universityName},university_id = #{universityId},headimg = #{headimg},university_grade = #{universityGrade},university_people = #{universityPeople},university_probability = #{universityProbability},university_advantage = #{universityAdvantage}
 		where id=#{id}
    </update>
 

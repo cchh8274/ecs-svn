@@ -6,9 +6,13 @@
     <result column="university_name" property="universityName" jdbcType="VARCHAR" />
     <result column="university_id" property="universityId" jdbcType="VARCHAR" />
     <result column="headimg" property="headimg" jdbcType="VARCHAR" />
+    <result column="university_grade" property="universityGrade" jdbcType="VARCHAR" />
+    <result column="university_people" property="universityPeople" jdbcType="VARCHAR" />
+    <result column="university_probability" property="universityProbability" jdbcType="VARCHAR" />
+    <result column="university_advantage" property="universityAdvantage" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, university_name, university_id, headimg
+    id, university_name, university_id, headimg,university_grade,university_people,university_probability,university_advantage
   </sql>
   <select id="seleUniversityDetails" parameterType="java.lang.String" resultMap="BaseResultMap">
   	select 
