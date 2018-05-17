@@ -480,5 +480,11 @@ public class LoginController {
    public String page16(){
    return "Serve";
    }
+   
+ //跳转用户意向页面
+   @RequestMapping("page17")
+   public String page17(){
+   return "WxUserIntention";
+   }
 }
 

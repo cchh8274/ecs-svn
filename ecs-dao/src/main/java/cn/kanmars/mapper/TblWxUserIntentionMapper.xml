@@ -14,13 +14,19 @@
   <sql id="Base_Column_List" >
     id, openid, nickname, user_cell, university_id, university_name, creation_time, follow_record
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="queryWxUserIntention" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tbl_wx_user_intention
-    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  
+  <select id="selectWxUserIntention" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_wx_user_intention
+    limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+  </select>
+  <!-- <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from tbl_wx_user_intention
     where id = #{id,jdbcType=VARCHAR}
   </delete>
@@ -124,5 +130,5 @@
       creation_time = #{creationTime,jdbcType=VARCHAR},
       follow_record = #{followRecord,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
-  </update>
+  </update> -->
 </mapper>

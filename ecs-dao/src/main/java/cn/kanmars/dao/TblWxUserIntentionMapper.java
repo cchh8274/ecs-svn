@@ -1,17 +1,13 @@
 package cn.kanmars.dao;
 
+import java.util.List;
+
 import cn.kanmars.entity.TblWxUserIntention;
 
 public interface TblWxUserIntentionMapper {
-    int deleteByPrimaryKey(String id);
 
-    int insert(TblWxUserIntention record);
+	List<TblWxUserIntention> queryWxUserIntention();
 
-    int insertSelective(TblWxUserIntention record);
-
-    TblWxUserIntention selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(TblWxUserIntention record);
-
-    int updateByPrimaryKey(TblWxUserIntention record);
+	List<TblWxUserIntention> selectWxUserIntention(TblWxUserIntention twui);
+    
 }
