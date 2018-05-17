@@ -79,6 +79,10 @@ $(function(){
               {
                   return "<img width='50px' height='50px' src='"+value+"'/>";
               }},
+            {field:'universityGrade',title:'大学等级',width:100},
+            {field:'universityPeople',title:'大学人数',width:100},
+            {field:'universityProbability',title:'大学投资回报率',width:100},
+            {field:'universityAdvantage',title:'大学优势介绍',width:100},
 	        {field : 'pz',title : '操作',formatter:function(value,rows,index){
 	         	  return '<a href="javaScript:updateUD(\''+rows.id+'\')">修改</a>';
 	           }},

@@ -19,41 +19,27 @@ public class TblUniversityDetails implements java.io.Serializable{
 	 */
     private String universityId;
     /**
-	 * 图片
+	 * 大学图片
 	 */
     private String headimg;
+    /**
+   	 * 大学等级（1级）
+   	 */
+    private String universityGrade;
+    /**
+   	 * 大学人数
+   	 */
+    private String universityPeople;
+    /**
+   	 * 大学投资回报率（百分比）
+   	 */
+    private String universityProbability;
+    /**
+   	 * 大学优势介绍
+   	 */
+    private String universityAdvantage;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
-
-    public String getUniversityName() {
-        return universityName;
-    }
-
-    public void setUniversityName(String universityName) {
-        this.universityName = universityName == null ? null : universityName.trim();
-    }
-
-    public String getUniversityId() {
-        return universityId;
-    }
-
-    public void setUniversityId(String universityId) {
-        this.universityId = universityId == null ? null : universityId.trim();
-    }
-
-    public String getHeadimg() {
-        return headimg;
-    }
-
-    public void setHeadimg(String headimg) {
-        this.headimg = headimg == null ? null : headimg.trim();
-    }
+   
     /**
      * 自定义列，分页查询用
      */
@@ -71,28 +57,80 @@ public class TblUniversityDetails implements java.io.Serializable{
     public void setLimitSize(Integer limitSize){
         this.limitSize = limitSize;
     }
-
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getUniversityName() {
+		return universityName;
+	}
+	public void setUniversityName(String universityName) {
+		this.universityName = universityName;
+	}
+	public String getUniversityId() {
+		return universityId;
+	}
+	public void setUniversityId(String universityId) {
+		this.universityId = universityId;
+	}
+	public String getHeadimg() {
+		return headimg;
+	}
+	public void setHeadimg(String headimg) {
+		this.headimg = headimg;
+	}
+	public String getUniversityGrade() {
+		return universityGrade;
+	}
+	public void setUniversityGrade(String universityGrade) {
+		this.universityGrade = universityGrade;
+	}
+	public String getUniversityPeople() {
+		return universityPeople;
+	}
+	public void setUniversityPeople(String universityPeople) {
+		this.universityPeople = universityPeople;
+	}
+	public String getUniversityProbability() {
+		return universityProbability;
+	}
+	public void setUniversityProbability(String universityProbability) {
+		this.universityProbability = universityProbability;
+	}
+	public String getUniversityAdvantage() {
+		return universityAdvantage;
+	}
+	public void setUniversityAdvantage(String universityAdvantage) {
+		this.universityAdvantage = universityAdvantage;
+	}
+	public TblUniversityDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public TblUniversityDetails(String id, String universityName, String universityId, String headimg,
+			String universityGrade, String universityPeople, String universityProbability, String universityAdvantage,
 			Integer limitStart, Integer limitSize) {
 		super();
 		this.id = id;
 		this.universityName = universityName;
 		this.universityId = universityId;
 		this.headimg = headimg;
+		this.universityGrade = universityGrade;
+		this.universityPeople = universityPeople;
+		this.universityProbability = universityProbability;
+		this.universityAdvantage = universityAdvantage;
 		this.limitStart = limitStart;
 		this.limitSize = limitSize;
 	}
-
-	public TblUniversityDetails() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public String toString() {
 		return "TblUniversityDetails [id=" + id + ", universityName=" + universityName + ", universityId="
-				+ universityId + ", headimg=" + headimg + ", limitStart=" + limitStart + ", limitSize=" + limitSize
-				+ "]";
+				+ universityId + ", headimg=" + headimg + ", universityGrade=" + universityGrade + ", universityPeople="
+				+ universityPeople + ", universityProbability=" + universityProbability + ", universityAdvantage="
+				+ universityAdvantage + ", limitStart=" + limitStart + ", limitSize=" + limitSize + "]";
 	}
+
     
 }
