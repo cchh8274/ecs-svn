@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import cn.kanmars.entity.TblLogin;
 import cn.kanmars.entity.TblUniversityDetails;
 import cn.kanmars.entity.TblUniversityInfo;
 /**

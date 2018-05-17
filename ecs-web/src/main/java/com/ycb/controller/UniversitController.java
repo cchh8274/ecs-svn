@@ -95,6 +95,7 @@ public class UniversitController extends BaseController{
 			JSONObject json = JSON.parseObject(jsonStr);
 			String ocad = "0"+ json.getString("areaId");
 			
+			//String ocad = jsonStr;
 			//这个ocad就是数据的area_id字段
 			List<TblUniversityInfo> unv = universitService.queryAddUniversita(ocad);
 			System.out.println(this.toJSONString(unv));
