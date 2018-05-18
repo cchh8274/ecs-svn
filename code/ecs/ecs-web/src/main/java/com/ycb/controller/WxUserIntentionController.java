@@ -38,7 +38,7 @@ public class WxUserIntentionController extends BaseController{
 		String universityName = json.getString("universityName");
 		TblWxUserIntention wui=wxUserIntentionService.panDuanwxUserIntention(openid);
 		if(wui == null){
-			return this.toJSONString("error","不存在");
+			return this.toJSONString("success","不存在");
 		}
 		//如果存在就直接添加
 		HashMap<String,String> map = new HashMap<String,String>();
@@ -55,7 +55,7 @@ public class WxUserIntentionController extends BaseController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.toJSONString("error","添加正确信息");
+		return this.toJSONString("success","添加正确信息");
 	}
 	@RequestMapping(value="queryWxUserIntention")
 	@ResponseBody
@@ -94,6 +94,6 @@ public class WxUserIntentionController extends BaseController{
 			e.printStackTrace();
 		}
 		
-		return this.toJSONString("error","信息错误");
+		return this.toJSONString("success","信息错误");
 	}
 }
