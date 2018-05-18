@@ -39,7 +39,7 @@ public class UniversityDetailsController extends BaseController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.toJSONString("error","出现错误写正确的信息");
+		return this.toJSONString("success","出现错误写正确的信息");
 	}
 	/**
 	 * 查询大学详情表
@@ -55,7 +55,7 @@ public class UniversityDetailsController extends BaseController{
 		   //通过传过来的ocde查询大学的id
 			String un = universitService.idUnXinXi(code);
 			if(un==null){
-				return this.toJSONString("error","code错误");
+				return this.toJSONString("success","code错误");
 			}
 			//根据得到的id去查大学的详情
 			String id = un;
@@ -64,7 +64,7 @@ public class UniversityDetailsController extends BaseController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.toJSONString("error","出现错误写正确的信息");
+		return this.toJSONString("success","出现错误写正确的信息");
 	}
 	
 }
