@@ -554,7 +554,47 @@ public class DateUtils {
            cl.add(Calendar.DATE, -1);    
            return formatter.format(cl.getTime());    
        }    
-           
-     
-	
+       /*
+        * 获取当月第一天
+        */
+     //规定返回日期格式
+       public static String getBeforeDayaavvv(){    
+     		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+     		Calendar calendar=Calendar.getInstance();
+     		Date theDate=calendar.getTime();
+     		GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
+     		gcLast.setTime(theDate);
+     		//设置为第一天
+     		gcLast.set(Calendar.DAY_OF_MONTH, 1);
+     		String day_first=sf.format(gcLast.getTime());
+     		//打印本月第一天
+     	      String day_firsta =	day_first+" 00:00:00";
+     		  return day_firsta;
+     		//获取Calendar
+       }
+       public static String getBeforeDayaa(){    
+     //获取Calendar
+       Calendar calendar=Calendar.getInstance();
+       //设置日期为本月最大日期
+       calendar.set(Calendar.DATE, calendar.getActualMaximum(calendar.DATE));
+       //设置日期格式
+       SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+       String ss=sf.format(calendar.getTime());
+       String ssa = ss+" 23:59:59";
+       return ssa;
+       }
+       /**
+        * 当前时间的前一天
+        * @return
+        */
+       public static String getBeforeDaybb(){    
+       SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");  
+       Date date=new Date();  
+       Calendar calendar = Calendar.getInstance();  
+       calendar.setTime(date);  
+       calendar.add(Calendar.DAY_OF_MONTH, -1);  
+       date = calendar.getTime();  
+       String sdfd =sdf.format(date);
+       return sdfd;
+       }
 }

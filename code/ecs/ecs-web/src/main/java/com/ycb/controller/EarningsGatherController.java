@@ -94,14 +94,5 @@ public class EarningsGatherController extends BaseController{
 					return map;
 				}
 				
-				/**
-				 * 收益明细
-				 */
-			@RequestMapping(value="hhhhhhhhhhh")
-			@ResponseBody
-			public String hhhhhhhhhhh(String jsonStr){
-			String openid=jsonStr;
-			List<TblEarningsGather> aaa=earningsGatherService.shouyimingxi(openid);
-			return this.toJSONString(aaa);
-			}
+			
 }

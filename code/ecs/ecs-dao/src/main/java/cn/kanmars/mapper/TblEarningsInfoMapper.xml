@@ -21,7 +21,6 @@
             <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="update_time" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="update_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-
         </constructor>
     </resultMap>
     <resultMap type="cn.kanmars.entity.TblEarningsInfo" id="mingxi">
@@ -31,15 +30,18 @@
        <result column="earing_month" property="earingMonth"></result>
        <result column="openid" property="openid"></result>
      </resultMap>
+      <resultMap type="cn.kanmars.entity.TblEarningsInfo" id="mixibiao">
+       <result column="id" property="id"></result>
+       <result column="openid" property="openid"></result>
+       <result column="unversity_id" property="unversityId"></result>
+       <result column="sum(price)" property="price"></result>
+       <result column="min(create_time)" property="createTime"></result>
+       <result column="min(unversity_name)" property="unversityName"></result>
+       <result column="min(earning_start_time)" property="earningStartTime"></result>
+     </resultMap>
     <sql id="Base_Column_List">
         id,openid,wx_user_name,maniche_id,unversity_name,unversity_id,maniche_name,price,coffee_number,tolal_money,earing_month,earning_start_time,is_eaning_status,earning_send_time,create_time,create_user,update_time,update_user
     </sql>
-    <!-- shouyimingxi sum(price),-->
-    <select id="shouyimingxi" parameterType="java.lang.String" resultMap="BaseResultMap">
-  select unversity_id,unversity_name,pay_time,create_time 
-  from tbl_machine_gather_info 
-  where openid=#{openid} group by unversity_id,unversity_name,pay_time,create_time
-    </select>
     <sql id="Base_Column_Listaa">
     unversity_name,maniche_name,price,earing_month,openid
     </sql>
@@ -50,6 +52,33 @@
     	 from tbl_earnings_info
     	 where openid = #{openid}
     </select>
+    <!--收益明细shouyimingxi 最总版 -->
+    <select id="shouyimingxi" parameterType="java.lang.String"  resultMap="mixibiao">
+       		  select 
+       		unversity_id,SUM(price),min(create_time),min(earning_start_time),min(unversity_name)
+       		  from tbl_earnings_info where openid=#{openid} group by unversity_id
+    </select>
+    <!-- 月 -->
+     <select id="shouyimingxiyue" parameterType="java.lang.String"  resultMap="mixibiao">
+       		  <![CDATA[
+       		  select 
+       	      	unversity_id,SUM(price),min(create_time),min(earning_start_time)
+       		  from tbl_earnings_info where openid=#{openid}  
+       		  and earning_start_time <#{yuejie} and earning_start_time>#{yuekai}
+       		  group by unversity_id
+       		  ]]>
+    </select>
+    <!-- 日 -->
+    <select id="shouyimingxiyueri" parameterType="java.lang.String"  resultMap="mixibiao">
+       		 <![CDATA[
+       		  select 
+       	      	unversity_id,SUM(price),min(create_time),min(earning_start_time)
+       		  from tbl_earnings_info where openid=#{openid}  
+       		  and earning_start_time <#{rijie} and earning_start_time>#{rikai}
+       		  group by unversity_id
+       		  ]]>
+    </select>
+    
     <select id="select" parameterType="cn.kanmars.entity.TblEarningsInfo" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

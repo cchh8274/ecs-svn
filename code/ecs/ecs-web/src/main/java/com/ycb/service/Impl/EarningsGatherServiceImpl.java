@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ycb.service.EarningsGatherService;
 
@@ -49,11 +51,6 @@ public class EarningsGatherServiceImpl implements EarningsGatherService{
 	public void delEarningsGather(String ids) {
 		tblEarningsGatherMapper.delEarningsGather(ids);
 	}
-//	收益明细
-	@Override
-	public List<TblEarningsGather> shouyimingxi(String openid) {
-		
-		return tblEarningsGatherMapper.shouyimingxi(openid);
-	}
+
 
 }

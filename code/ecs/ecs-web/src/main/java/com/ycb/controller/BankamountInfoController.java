@@ -58,7 +58,7 @@ public class BankamountInfoController extends BaseController {
 		String openid = json.getString("openid");
 		List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
 		if(yhk==null){
-		return this.toJSONString("null","该用户没有银行卡");
+		return this.toJSONString("error","该用户没有银行卡");
 		}
 		return this.toJSONString(yhk);
 	}
@@ -80,7 +80,7 @@ public class BankamountInfoController extends BaseController {
 			if(bmt!=null){
 				return this.toJSONString(bmt);
 			}
-			return this.toJSONString("null","该用户没有银行卡");
+			return this.toJSONString("error","该用户没有银行卡");
 	}
 	/**
 	 * 添加银行卡信息

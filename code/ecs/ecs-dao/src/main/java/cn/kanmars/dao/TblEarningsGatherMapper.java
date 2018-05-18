@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 
@@ -106,7 +108,6 @@ public interface TblEarningsGatherMapper {
 
 	public void delEarningsGather(String ids);
 
-	public List<TblEarningsGather> shouyimingxi(String openid);
-
+	
 }
 

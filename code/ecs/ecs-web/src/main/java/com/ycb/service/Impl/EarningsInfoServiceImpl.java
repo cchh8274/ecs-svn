@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ycb.service.EarningsInfoService;
 
 import cn.kanmars.dao.TblEarningsInfoMapper;
+import cn.kanmars.entity.TblEarningsGather;
 import cn.kanmars.entity.TblEarningsInfo;
 
 @Service
@@ -54,6 +55,22 @@ public class EarningsInfoServiceImpl implements EarningsInfoService{
 	@Override
 	public void updEarningsInfo(TblEarningsInfo tei) {
 		tblEarningsGatherMapper.updEarningsInfo(tei);
+	}
+//	收益明细
+	@Override
+	public List<TblEarningsInfo> shouyimingxi(String openid) {
+		return tblEarningsGatherMapper.shouyimingxi(openid);
+	}
+		//月
+	@Override
+	public List<TblEarningsInfo> shouyimingxiyue(String openid, String yuekai, String yuejie) {
+		
+		return tblEarningsGatherMapper.shouyimingxiyue(openid, yuekai,yuejie);
+	}
+	//日
+	@Override
+	public List<TblEarningsInfo> shouyimingxiyueri(String openid, String rikai, String rijie) {
+		return tblEarningsGatherMapper.shouyimingxiyueri(openid,rikai,rijie);
 	}
 
 }
