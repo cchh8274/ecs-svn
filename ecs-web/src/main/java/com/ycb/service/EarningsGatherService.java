@@ -2,6 +2,9 @@ package com.ycb.service;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import cn.kanmars.entity.TblEarningsGather;
 
 public interface EarningsGatherService {
@@ -17,7 +20,5 @@ public interface EarningsGatherService {
 	void updEarningsGather(TblEarningsGather teg);
 
 	void delEarningsGather(String ids);
-//	收益明细
-	List<TblEarningsGather> shouyimingxi(String openid);
 
 }

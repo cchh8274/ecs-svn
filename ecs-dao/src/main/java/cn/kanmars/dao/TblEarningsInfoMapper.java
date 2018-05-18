@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
 
+import cn.kanmars.entity.TblEarningsGather;
 import cn.kanmars.entity.TblEarningsInfo;
 /**
  * 收益表
@@ -102,6 +103,12 @@ public interface TblEarningsInfoMapper {
 	public void delEarningsInfo(@Param("ids")String ids);
 
 	public List<TblEarningsInfo> detailEdearningsInfo(String openid);
+//	收益明细
+	public List<TblEarningsInfo> shouyimingxi(String openid);
+//月
+	public List<TblEarningsInfo> shouyimingxiyue(@Param("openid") String openid,@Param("yuekai") String yuekai,@Param("yuejie") String yuejie);
+//日
+	public List<TblEarningsInfo> shouyimingxiyueri(@Param("openid") String openid,@Param("rikai") String rikai,@Param("rijie") String rijie);
 
     
 }

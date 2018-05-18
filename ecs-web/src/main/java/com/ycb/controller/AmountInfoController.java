@@ -56,7 +56,7 @@ public class AmountInfoController extends BaseController{
 		
 		TblAmountInfo atf= amountInfoService.seleSumamountInfo(openid);
            if(atf == null){
-			return this.toJSONString("null","没有余额");
+			return this.toJSONString("error","没有余额");
 		 }
 
 		return this.toJSONString(atf);
