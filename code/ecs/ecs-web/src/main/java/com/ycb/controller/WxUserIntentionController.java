@@ -89,7 +89,7 @@ public class WxUserIntentionController extends BaseController{
 			map.put("creationTime",DateUtils.getStringDate());
 			map.put("followRecord", followRecord);
 			wxUserIntentionService.insetwxUserIntention(map);
-			return this.toJSONString("error","执行完毕");
+			return this.toJSONString("success","新增成功");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
