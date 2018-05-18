@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>易创吧</title>
 		
-		<script type="text/javascript" src="./jsjs/Js/jquery-1.7.2.min.js"></script>
+		 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.2.1/jquery-3.2.1.js"></script>
 		<script type="text/javascript" src="./jsjs/Js/js.js"></script>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
