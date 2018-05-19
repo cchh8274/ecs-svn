@@ -39,7 +39,7 @@ public class UniversityDetailsController extends BaseController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.toJSONString("success","出现错误写正确的信息");
+		return this.toJSONString("error","出现错误写正确的信息");
 	}
 	/**
 	 * 查询大学详情表
