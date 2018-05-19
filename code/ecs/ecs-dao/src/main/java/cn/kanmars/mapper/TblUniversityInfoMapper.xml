@@ -12,6 +12,7 @@
             <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="up_time" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="up_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="lawz" javaType="java.lang.String" jdbcType="VARCHAR" />
            
             <arg column="code" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="sy_me" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -21,6 +22,7 @@
         </constructor>
     </resultMap>
       <resultMap type="cn.kanmars.entity.TblUniversityInfo" id="daxue">
+       <result column="id" property="id"></result>
        <result column="univer_name" property="univerName"></result>
        <result column="area_name" property="areaName"></result>
        <result column="area_id" property="areaId"></result>
@@ -30,6 +32,7 @@
        <result column="myyjsr" property="myyjsr"></result>
        <result column="rzstase" property="rzstase"></result>
        <result column="aurlb" property="aurlb"></result>
+       <result column="lawz" property="lawz"></result>
      </resultMap>
      
       <resultMap type="cn.kanmars.entity.TblUniversityDetails" id="detail">
@@ -50,10 +53,12 @@
         univer_name,area_name,area_id,code,sy_me,zme,myyjsr,rzstase,aurlb
     </sql>
     <!-- 写死的大学学附近的 -->
-    <select id="fuJinuniversityDetails" resultMap="daxue">
+    <select id="fuJinuniversityDetails" parameterType="java.lang.String" resultMap="daxue">
     	select 
-    	code,univer_name
-    	 from tbl_university_info limit 3
+    	id,code,univer_name
+    	 from tbl_university_info 
+    	 where lawz=#{lawz}
+    	 
     </select>
     <!-- 查询大学id -->
     <select id="idUnXinXi" parameterType="java.lang.String" resultType="java.lang.String">

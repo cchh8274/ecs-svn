@@ -48,14 +48,15 @@ public class BankamountInfoController extends BaseController {
 	/**
 	 * 返回所有银行卡  提现调用这个接口
 	 */
-	@RequestMapping(value="allBankcard",method=RequestMethod.POST,produces="text/html; charset=UTF-8")
+	@RequestMapping(value="allBankcard",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String allBankcard(String jsonStr){
-		if(StringUtils.isEmpty(jsonStr)){
+		/*if(StringUtils.isEmpty(jsonStr)){
 			return this.toJSONString("error","用户id不能为空");
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
-		String openid = json.getString("openid");
+		String openid = json.getString("openid");*/
+		String openid = jsonStr;
 		List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
 		if(yhk==null){
 		return this.toJSONString("error","该用户没有银行卡");
