@@ -1,4 +1,4 @@
-package com.ycb.controller;
+package com.ycb.base;
 
 import java.io.Serializable;
 
@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * 每次都返回前端JSON字符串
+ * 
  * @author chenghui
  *
  */
