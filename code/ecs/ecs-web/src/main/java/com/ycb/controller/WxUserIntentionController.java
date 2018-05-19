@@ -31,6 +31,7 @@ public class WxUserIntentionController extends BaseController{
 	@RequestMapping(value="panDuanwxUserIntention",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	private String panDuanwxUserIntention(String jsonStr) throws Exception{
+		HashMap<String, String> mp = new HashMap<>();
 		try {
 		//String openid = jsonStr;
 		//根据用户的openid去查询当前用户有没有 
@@ -39,7 +40,8 @@ public class WxUserIntentionController extends BaseController{
 		String universityName = json.getString("universityName");
 		TblWxUserIntention wui=wxUserIntentionService.panDuanwxUserIntention(openid);
 		if(wui == null){
-			return this.toJSONString("error","不存在");
+			mp.put("success", "没有加入过大学");
+			return this.toJSONString(mp);
 		}
 		//如果存在就直接添加
 		HashMap<String,String> map = new HashMap<String,String>();
@@ -52,7 +54,8 @@ public class WxUserIntentionController extends BaseController{
 		map.put("creationTime",DateUtils.getStringDate());
 		map.put("followRecord", wui.getFollowRecord());
 		wxUserIntentionService.insetwxUserIntention(map);
-		return this.toJSONString("success","添加成功");
+		mp.put("success", "添加成功");
+		return this.toJSONString(mp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,6 +77,7 @@ public class WxUserIntentionController extends BaseController{
 	public String addWxUserIntention(String jsonStr){
 		try {
 			HashMap<String, String> map = new HashMap<String,String>();
+			HashMap<String, String> mp = new HashMap<String,String>();
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
 			String nickname = json.getString("nickname");
@@ -90,7 +94,8 @@ public class WxUserIntentionController extends BaseController{
 			map.put("creationTime",DateUtils.getStringDate());
 			map.put("followRecord", followRecord);
 			wxUserIntentionService.insetwxUserIntention(map);
-			return this.toJSONString("success","新增成功");
+			mp.put("success", "新增成功");
+			return this.toJSONString(mp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
