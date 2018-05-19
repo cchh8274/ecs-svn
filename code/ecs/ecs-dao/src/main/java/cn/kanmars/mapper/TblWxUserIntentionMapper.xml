@@ -10,9 +10,10 @@
     <result column="university_name" property="universityName" jdbcType="VARCHAR" />
     <result column="creation_time" property="creationTime" jdbcType="VARCHAR" />
     <result column="follow_record" property="followRecord" jdbcType="VARCHAR" />
+    <result column="audit_status" property="auditStatus" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, openid, nickname, user_cell, university_id, university_name, creation_time, follow_record
+    id, openid, nickname, user_cell, university_id, university_name, creation_time, follow_record, audit_status
   </sql>
   <!--判断当前用户存不存在  -->
   <select id="panDuanwxUserIntention" parameterType="java.lang.String" resultMap="BaseResultMap">

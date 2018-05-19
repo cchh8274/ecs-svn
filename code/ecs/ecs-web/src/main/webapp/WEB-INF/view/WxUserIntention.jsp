@@ -61,7 +61,8 @@
 	        {field:'universityId',title:'大学id',width:100},    	       
 	        {field:'universityName',title:'大学名称',width:100},    	       
 	        {field:'creationTime',title:'创建时间',width:100},    	       
-	        {field:'followRecord',title:'跟进记录',width:100}   	       
+	        {field:'followRecord',title:'跟进记录',width:100},
+	        {field:'auditStatus',title:'审核状态',width:100},
 	    ]]    
 	})
   }
