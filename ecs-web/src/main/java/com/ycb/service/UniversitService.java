@@ -37,6 +37,6 @@ public interface UniversitService {
 	//查询大学的id
 	String idUnXinXi(String code);
 //	查询附近的大学现在是写死的支取三条
-	List<TblUniversityInfo> fuJinuniversityDetails();
+	List<TblUniversityInfo> fuJinuniversityDetails(String lawz);
 
 }
