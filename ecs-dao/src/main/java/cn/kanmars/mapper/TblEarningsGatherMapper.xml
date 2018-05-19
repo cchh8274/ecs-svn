@@ -13,11 +13,14 @@
             <arg column="area_id" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="createtime" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="earning_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="start_earning_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="location_time" javaType="java.lang.String" jdbcType="VARCHAR" />
 
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-        id,ernings_month,unversity_id,number,openid,unversity_name,area_name,area_id,createtime,create_user
+        id,ernings_month,unversity_id,number,openid,unversity_name,area_name,area_id,createtime,create_user,earning_type,start_earning_time,location_time
     </sql>
     
     <select id="select" parameterType="cn.kanmars.entity.TblEarningsGather" resultMap="BaseResultMap">
