@@ -13,11 +13,11 @@
  <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- spring版本�? -->
+		<!-- spring版本�? -->
 		<spring.version>4.2.5.RELEASE</spring.version>
-		<!-- mybatis版本�? -->
+		<!-- mybatis版本�? -->
 		<mybatis.version>3.2.8</mybatis.version>
-		<!-- mysql驱动版本�? -->
+		<!-- mysql驱动版本�? -->
 		<mysql-driver.version>5.1.29</mysql-driver.version>
 		<!-- log4j日志包版本号 -->
 		<slf4j.version>1.7.18</slf4j.version>
@@ -37,7 +37,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
-			<!-- 指定范围，在测试时才会加�? -->
+			<!-- 指定范围，在测试时才会加�? -->
 			<scope>test</scope>
 		</dependency>
 
@@ -101,7 +101,7 @@
 			<version>${mybatis.version}</version>
 		</dependency>
 
-		<!-- 添加mybatis/spring整合包依�? -->
+		<!-- 添加mybatis/spring整合包依�? -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
@@ -128,7 +128,7 @@
 			<version>1.1.41</version>
 		</dependency>
 
-		<!-- 添加日志相关jar�? -->
+		<!-- 添加日志相关jar�? -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -199,7 +199,7 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.10</version>
 		</dependency>
-		<!--字节码编辑工�? -->
+		<!--字节码编辑工�? -->
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
@@ -234,9 +234,7 @@
   <modules>
     <module>ecs-dao</module>
     <module>ecs-web</module>
-    <module>ecs-api</module>
-    <module>ecs-bean</module>
+  	<module>ecs-bean</module>
     <module>ecs-generator</module>
-    <module>ecs-pay</module>
   </modules>
 </project>
