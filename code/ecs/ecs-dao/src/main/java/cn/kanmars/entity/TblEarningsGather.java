@@ -68,180 +68,25 @@ public class TblEarningsGather implements java.io.Serializable{
      * tbl_earnings_gather.create_user
      */
     private String createUser;
-
-
-    public TblEarningsGather(){super();}
-    public TblEarningsGather(String id,String erningsMonth,String unversityId,String number,String openid,String unversityName,String areaName,String areaId,String createtime,String createUser) {
-        this.id = id;
-        this.erningsMonth = erningsMonth;
-        this.unversityId = unversityId;
-        this.number = number;
-        this.openid = openid;
-        this.unversityName = unversityName;
-        this.areaName = areaName;
-        this.areaId = areaId;
-        this.createtime = createtime;
-        this.createUser = createUser;
-    }
+    
     /**
-     * 
-     * tbl_earnings_gather.id
+     * 收益类型（010月份收益；020总收益）
+     * tbl_earnings_gather.earning_type
      */
-    public String getId(){
-        return id;
-    }
-
+    private String earningType;
+    
     /**
-     * 
-     * tbl_earnings_gather.id
+     * 开始收益日期
+     * tbl_earnings_gather.start_earning_time
      */
-    public void setId(String id){
-        this.id=id;
-    }
-
+    private String startEarningTime;
+    
     /**
-     * 收益月份
-     * tbl_earnings_gather.ernings_month
+     * 投放日期
+     * tbl_earnings_gather.location_time
      */
-    public String getErningsMonth(){
-        return erningsMonth;
-    }
+    private String locationTime;
 
-    /**
-     * 收益月份
-     * tbl_earnings_gather.ernings_month
-     */
-    public void setErningsMonth(String erningsMonth){
-        this.erningsMonth=erningsMonth;
-    }
-
-    /**
-     * 收益大学
-     * tbl_earnings_gather.unversity_id
-     */
-    public String getUnversityId(){
-        return unversityId;
-    }
-
-    /**
-     * 收益大学
-     * tbl_earnings_gather.unversity_id
-     */
-    public void setUnversityId(String unversityId){
-        this.unversityId=unversityId;
-    }
-
-    /**
-     * 购买份数总额
-     * tbl_earnings_gather.number
-     */
-    public String getNumber(){
-        return number;
-    }
-
-    /**
-     * 购买份数总额
-     * tbl_earnings_gather.number
-     */
-    public void setNumber(String number){
-        this.number=number;
-    }
-
-    /**
-     * openid
-     * tbl_earnings_gather.openid
-     */
-    public String getOpenid(){
-        return openid;
-    }
-
-    /**
-     * openid
-     * tbl_earnings_gather.openid
-     */
-    public void setOpenid(String openid){
-        this.openid=openid;
-    }
-
-    /**
-     * 大学名称
-     * tbl_earnings_gather.unversity_name
-     */
-    public String getUnversityName(){
-        return unversityName;
-    }
-
-    /**
-     * 大学名称
-     * tbl_earnings_gather.unversity_name
-     */
-    public void setUnversityName(String unversityName){
-        this.unversityName=unversityName;
-    }
-
-    /**
-     * 区域名称
-     * tbl_earnings_gather.area_name
-     */
-    public String getAreaName(){
-        return areaName;
-    }
-
-    /**
-     * 区域名称
-     * tbl_earnings_gather.area_name
-     */
-    public void setAreaName(String areaName){
-        this.areaName=areaName;
-    }
-
-    /**
-     * 收益区域
-     * tbl_earnings_gather.area_id
-     */
-    public String getAreaId(){
-        return areaId;
-    }
-
-    /**
-     * 收益区域
-     * tbl_earnings_gather.area_id
-     */
-    public void setAreaId(String areaId){
-        this.areaId=areaId;
-    }
-
-    /**
-     * 创建时间
-     * tbl_earnings_gather.createtime
-     */
-    public String getCreatetime(){
-        return createtime;
-    }
-
-    /**
-     * 创建时间
-     * tbl_earnings_gather.createtime
-     */
-    public void setCreatetime(String createtime){
-        this.createtime=createtime;
-    }
-
-    /**
-     * 创建人
-     * tbl_earnings_gather.create_user
-     */
-    public String getCreateUser(){
-        return createUser;
-    }
-
-    /**
-     * 创建人
-     * tbl_earnings_gather.create_user
-     */
-    public void setCreateUser(String createUser){
-        this.createUser=createUser;
-    }
 
     /**
      * 自定义列，分页查询用
@@ -260,5 +105,117 @@ public class TblEarningsGather implements java.io.Serializable{
     public void setLimitSize(Integer limitSize){
         this.limitSize = limitSize;
     }
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getErningsMonth() {
+		return erningsMonth;
+	}
+	public void setErningsMonth(String erningsMonth) {
+		this.erningsMonth = erningsMonth;
+	}
+	public String getUnversityId() {
+		return unversityId;
+	}
+	public void setUnversityId(String unversityId) {
+		this.unversityId = unversityId;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	public String getOpenid() {
+		return openid;
+	}
+	public void setOpenid(String openid) {
+		this.openid = openid;
+	}
+	public String getUnversityName() {
+		return unversityName;
+	}
+	public void setUnversityName(String unversityName) {
+		this.unversityName = unversityName;
+	}
+	public String getAreaName() {
+		return areaName;
+	}
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
+	}
+	public String getAreaId() {
+		return areaId;
+	}
+	public void setAreaId(String areaId) {
+		this.areaId = areaId;
+	}
+	public String getCreatetime() {
+		return createtime;
+	}
+	public void setCreatetime(String createtime) {
+		this.createtime = createtime;
+	}
+	public String getCreateUser() {
+		return createUser;
+	}
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
+	}
+	public String getEarningType() {
+		return earningType;
+	}
+	public void setEarningType(String earningType) {
+		this.earningType = earningType;
+	}
+	public String getStartEarningTime() {
+		return startEarningTime;
+	}
+	public void setStartEarningTime(String startEarningTime) {
+		this.startEarningTime = startEarningTime;
+	}
+	public String getLocationTime() {
+		return locationTime;
+	}
+	public void setLocationTime(String locationTime) {
+		this.locationTime = locationTime;
+	}
+	public TblEarningsGather() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public TblEarningsGather(String id, String erningsMonth, String unversityId, String number, String openid,
+			String unversityName, String areaName, String areaId, String createtime, String createUser,
+			String earningType, String startEarningTime, String locationTime, Integer limitStart, Integer limitSize) {
+		super();
+		this.id = id;
+		this.erningsMonth = erningsMonth;
+		this.unversityId = unversityId;
+		this.number = number;
+		this.openid = openid;
+		this.unversityName = unversityName;
+		this.areaName = areaName;
+		this.areaId = areaId;
+		this.createtime = createtime;
+		this.createUser = createUser;
+		this.earningType = earningType;
+		this.startEarningTime = startEarningTime;
+		this.locationTime = locationTime;
+		this.limitStart = limitStart;
+		this.limitSize = limitSize;
+	}
+	@Override
+	public String toString() {
+		return "TblEarningsGather [id=" + id + ", erningsMonth=" + erningsMonth + ", unversityId=" + unversityId
+				+ ", number=" + number + ", openid=" + openid + ", unversityName=" + unversityName + ", areaName="
+				+ areaName + ", areaId=" + areaId + ", createtime=" + createtime + ", createUser=" + createUser
+				+ ", earningType=" + earningType + ", startEarningTime=" + startEarningTime + ", locationTime="
+				+ locationTime + ", limitStart=" + limitStart + ", limitSize=" + limitSize + "]";
+	}
+    
+    
 }
 
