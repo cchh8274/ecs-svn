@@ -1,6 +1,7 @@
 package com.ycb.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -99,7 +100,6 @@ public class EarningsInfoController extends BaseController{
 			}
 			return map;
 		}
-	
 		/**
 		 * 收益明细
 		 */
@@ -110,7 +110,8 @@ public class EarningsInfoController extends BaseController{
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
 	//String openid=jsonStr;
-	List<TblEarningsInfo>  zong=earningsInfoService.shouyimingxi(openid);
+	List<TblEarningsInfo>  zong = new ArrayList<TblEarningsInfo>();
+	zong=earningsInfoService.shouyimingxi(openid);
 	String yuekai = DateUtils.getBeforeDayaavvv();
 	String yuejie = DateUtils.getBeforeDayaa();
 	List<TblEarningsInfo>  yue=earningsInfoService.shouyimingxiyue(openid,yuekai,yuejie);
@@ -119,13 +120,16 @@ public class EarningsInfoController extends BaseController{
 	List<TblEarningsInfo>  ri=earningsInfoService.shouyimingxiyueri(openid,rikai,rijie);
 	for (int i = 0; i < zong.size(); i++) {
 		for (int j = 0; j < yue.size(); j++) {
-			for (int j2 = 0; j2 < ri.size(); j2++) {
-				if(zong.get(i).getUnversityId().equals(yue.get(j).getUnversityId())){
-					zong.get(i).setYueshouyi(yue.get(j).getPrice());
-				}
-				if(zong.get(i).getUnversityId().equals(ri.get(j2).getUnversityId())){
-					zong.get(i).setRishouyi(ri.get(j2).getPrice());
-				}
+			if(zong.get(i).getUnversityId().equals(yue.get(j).getUnversityId())){
+				zong.get(i).setYueshouyi(yue.get(j).getPrice());
+		
+			}
+		}
+	}
+	for (int i = 0; i < zong.size(); i++) {
+		for (int j2 = 0; j2 < ri.size(); j2++) {
+			if(zong.get(i).getUnversityId().equals(ri.get(j2).getUnversityId())){
+				zong.get(i).setRishouyi(ri.get(j2).getPrice());
 			}
 		}
 	}
