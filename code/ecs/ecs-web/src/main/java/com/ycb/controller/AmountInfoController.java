@@ -17,7 +17,6 @@ import com.ycb.service.AmountInfoService;
 
 import cn.kanmars.entity.IDGeneratorTools;
 import cn.kanmars.entity.TblAmountInfo;
-import cn.kanmars.entity.TblEarningsInfo;
 
 /**
  * 赵浩
