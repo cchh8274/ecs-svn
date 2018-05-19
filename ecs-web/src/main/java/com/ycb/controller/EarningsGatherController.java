@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ycb.base.BaseController;
 import com.ycb.service.EarningsGatherService;
 
 import cn.kanmars.entity.TblEarningsGather;

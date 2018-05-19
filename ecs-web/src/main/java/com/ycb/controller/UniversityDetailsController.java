@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.ycb.base.BaseController;
 import com.ycb.service.UniversitService;
 import com.ycb.service.UniversityDetailsService;
 
