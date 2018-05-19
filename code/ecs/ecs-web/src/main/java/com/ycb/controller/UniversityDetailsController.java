@@ -39,7 +39,7 @@ public class UniversityDetailsController extends BaseController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.toJSONString("error","出现错误写正确的信息");
+		return this.toJSONString("success","出现错误写正确的信息");
 	}
 	/**
 	 * 查询大学详情表
@@ -53,6 +53,17 @@ public class UniversityDetailsController extends BaseController{
 		String id = un;
 		List<TblUniversityDetails> und = universityDetailsService.seleUniversityDetails(id);
 		return this.toJSONString(und);*/
+		/*try {
+			JSONObject json = JSON.parseObject(jsonStr);
+			String xiabiao = json.getString("xiabiao");
+			UniversitController dx = new UniversitController();
+			List<TblUniversityInfo> unv = universitService.fuJinuniversityDetails();
+			for (int i = 0; i < unv.size(); i++) {
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
 		try {
 		JSONObject json = JSON.parseObject(jsonStr);
 		String code = json.getString("code");
