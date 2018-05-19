@@ -1,3 +1,4 @@
+
 package com.ycb.controller;
 
 import java.text.SimpleDateFormat;
@@ -24,8 +25,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.service.UniversitService;
 import com.ycb.service.UniversityDetailsService;
-import com.ycb.utils.ConstantsBean;
-import com.ycb.utils.FileUtil;
+import com.ycb.util.ConstantsBean;
+import com.ycb.util.FileUtil;
 
 import cn.kanmars.entity.TblLogin;
 import cn.kanmars.entity.TblUniversityDetails;
@@ -196,37 +197,37 @@ public class UniversitController extends BaseController{
 		/**
 		 * 查询附近的大学现在是写死的支取三条
 		 */
-		@RequestMapping(value="fuJinuniversityDetails",produces="text/html; charset=UTF-8")
-		@ResponseBody
-		public String fuJinuniversityDetails(String jsonStr){
-			try {
-				JSONObject json = JSON.parseObject(jsonStr);
-				String lawz = json.getString("lawz");
-				//String lawz = jsonStr;
-				List<TblUniversityInfo> unv = universitService.fuJinuniversityDetails(lawz);
-				List<TblUniversityDetails> und = new ArrayList<TblUniversityDetails>();
-				for (int i = 0; i < unv.size(); i++) {
-					String id =  unv.get(i).getId();
-					List<TblUniversityDetails>	 dag = universityDetailsService.seleUniversityDetails(id);			
-					und.addAll(dag);
-				}
-				for (int i = 0; i < unv.size(); i++) {
-					for (int j = 0; j < und.size(); j++) {
-						if(unv.get(i).getId().equals(und.get(j).getUniversityId())){
-							unv.get(i).setHeadimg(und.get(j).getHeadimg());
-							unv.get(i).setUniversityGrade(und.get(j).getUniversityGrade());
-							unv.get(i).setUniversityPeople(und.get(j).getUniversityPeople());
-							unv.get(i).setUniversityProbability(und.get(j).getUniversityProbability());
-							unv.get(i).setUniversityAdvantage(und.get(j).getUniversityAdvantage());			
-					 }
-					}
-				}
-				return this.toJSONString(unv);
-			} catch (Exception e) {
-			e.printStackTrace();
-			}
-			
-			return this.toJSONString("error","错误信息");
-		}
+//		@RequestMapping(value="fuJinuniversityDetails",produces="text/html; charset=UTF-8")
+//		@ResponseBody
+//		public String fuJinuniversityDetails(String jsonStr){
+//			try {
+//				JSONObject json = JSON.parseObject(jsonStr);
+//				String lawz = json.getString("lawz");
+//				//String lawz = jsonStr;
+//				List<TblUniversityInfo> unv = universitService.fuJinuniversityDetails(lawz);
+//				List<TblUniversityDetails> und = new ArrayList<TblUniversityDetails>();
+//				for (int i = 0; i < unv.size(); i++) {
+//					String id =  unv.get(i).getId();
+//					List<TblUniversityDetails>	 dag = universityDetailsService.seleUniversityDetails(id);			
+//					und.addAll(dag);
+//				}
+//				for (int i = 0; i < unv.size(); i++) {
+//					for (int j = 0; j < und.size(); j++) {
+//						if(unv.get(i).getId().equals(und.get(j).getUniversityId())){
+//							unv.get(i).setHeadimg(und.get(j).getHeadimg());
+//							unv.get(i).setUniversityGrade(und.get(j).getUniversityGrade());
+//							unv.get(i).setUniversityPeople(und.get(j).getUniversityPeople());
+//							unv.get(i).setUniversityProbability(und.get(j).getUniversityProbability());
+//							unv.get(i).setUniversityAdvantage(und.get(j).getUniversityAdvantage());			
+//					 }
+//					}
+//				}
+//				return this.toJSONString(unv);
+//			} catch (Exception e) {
+//			e.printStackTrace();
+//			}
+//			
+//			return this.toJSONString("error","错误信息");
+//		}
 
 }
