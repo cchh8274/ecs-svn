@@ -1,6 +1,7 @@
 package com.ycb.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.GET;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.service.UniversitService;
+import com.ycb.service.UniversityDetailsService;
 import com.ycb.utils.ConstantsBean;
 import com.ycb.utils.FileUtil;
 
@@ -39,6 +42,8 @@ import cn.kanmars.entity.TblUniversityInfo;
 public class UniversitController extends BaseController{
 	@Autowired
 	private UniversitService universitService;
+	@Autowired
+	private UniversityDetailsService universityDetailsService;
 	@RequestMapping("queryUniversit")
     @ResponseBody
     public Map<String,Object> queryUniversit(Integer page,Integer rows){
@@ -195,6 +200,22 @@ public class UniversitController extends BaseController{
 		@ResponseBody
 		public String fuJinuniversityDetails(){
 			List<TblUniversityInfo> unv = universitService.fuJinuniversityDetails();
+			List<TblUniversityDetails> und = new ArrayList<TblUniversityDetails>();
+			for (int i = 0; i < unv.size(); i++) {
+				String id =  unv.get(i).getId();
+				List<TblUniversityDetails>	 dag = universityDetailsService.seleUniversityDetails(id);			
+				und.addAll(dag);
+			}
+			for (int i = 0; i < unv.size(); i++) {
+				for (int j = 0; j < und.size(); j++) {
+					if(unv.get(i).getId().equals(und.get(j).getUniversityId())){
+						unv.get(i).setHeadimg(und.get(j).getHeadimg());
+						unv.get(i).setUniversityGrade(und.get(j).getUniversityGrade());
+						unv.get(i).setUniversityPeople(und.get(j).getUniversityPeople());
+						unv.get(i).setUniversityProbability(und.get(j).getUniversityProbability());
+						unv.get(i).setUniversityAdvantage(und.get(j).getUniversityAdvantage());					}
+				}
+			}
 			return this.toJSONString(unv);
 		}
 
