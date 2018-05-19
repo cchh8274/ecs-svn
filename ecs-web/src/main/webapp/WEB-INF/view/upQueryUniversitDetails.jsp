@@ -18,12 +18,12 @@
       		<tr>
       			<td>大学图片:</td>
       			<td>
-      				<input id="imgs" type="hidden" >
-				    <div id="img"></div>
-				    <div id="uploader-demo">
+      				<input id="imgs1" type="hidden" >
+				    <div id="img1"></div>
+				    <div id="uploader-demo1">
 				        <!--用来存放item-->
-				        <div id="fileList" class="uploader-list"></div>
-				        <div id="filePicker">选择图片</div>
+				        <div id="fileList1" class="uploader-list"></div>
+				        <div id="filePicker1">选择图片</div>
 				    </div>
       			</td>
       		</tr>
@@ -54,10 +54,12 @@
       	</table>
      </form>
 <script>
+
+	//图片回显
    $(function(){
    if($("#UniversityDetails").datagrid('getSelected')!=null){
        var tr=$("#UniversityDetails").datagrid('getSelected');
-       $("#img").html("<img  height='50' width='50' src='"+tr.headimg+"' />");
+       $("#img1").html("<img  height='50' width='50' src='"+tr.headimg+"' />");
            }
        });
    
@@ -75,7 +77,7 @@
 
        // 选择文件的按钮。可选。
        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-       pick: '#filePicker',
+       pick: '#filePicker1',
 
        // 只允许选择图片文件。
        accept: {
@@ -97,7 +99,7 @@
 
 
        // $list为容器jQuery实例
-       $("#fileList").append( $li );
+       $("#fileList1").append( $li );
 
 
 
@@ -134,7 +136,7 @@
        var imgurl = response._raw; //上传图片的路径
        //alert(imgurl);
        var str = '<input type="text" name="headimg" value="'+imgurl+'">';
-       $("#img").html(str);
+       $("#img1").html(str);
        $( '#'+file.id ).addClass('upload-state-done');
    });
 
