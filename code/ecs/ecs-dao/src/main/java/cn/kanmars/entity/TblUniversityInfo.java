@@ -63,62 +63,25 @@ public class TblUniversityInfo implements java.io.Serializable{
     private String zme;
     private String myyjsr;
     private String rzstase;
-    /**
-     * 详细表字段
-     * @return
-     */
-    /**
-     * 大学id
-     */
-    private String universityId;
-    /**
-     * 图片
-     */
-    private String headimg;
-    /**
-     * 等级
-     */
-    private String universityGrade;
-    /**
-     * 人数
-     */
-    private String universityPeople;
-    /**
-     * 汇报率
-     */
-    private String universityProbability;
-    /**
-     * 介绍
-     */
-    private String universityAdvantage;
-    /**
-     * 位置
-     * @return
-     */
-   private String lawz;
+    private String lawz;
+    private String unrmd;
+
+
+
+
 	
 
-   
-
-@Override
+   @Override
 	public String toString() {
 		return "TblUniversityInfo [id=" + id + ", univerName=" + univerName + ", areaName=" + areaName + ", areaId="
 				+ areaId + ", createTime=" + createTime + ", createUser=" + createUser + ", upTime=" + upTime
 				+ ", aurlb=" + aurlb + ", upUser=" + upUser + ", code=" + code + ", sy_me=" + sy_me + ", zme=" + zme
-				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + ", universityId=" + universityId + ", headimg="
-				+ headimg + ", universityGrade=" + universityGrade + ", universityPeople=" + universityPeople
-				+ ", universityProbability=" + universityProbability + ", universityAdvantage=" + universityAdvantage
-				+ ", lawz=" + lawz + ", limitStart=" + limitStart + ", limitSize=" + limitSize + "]";
-	}
-public TblUniversityInfo() {
-		super();
-		// TODO Auto-generated constructor stub
+				+ ", myyjsr=" + myyjsr + ", rzstase=" + rzstase + ", lawz=" + lawz + ", unrmd=" + unrmd
+				+ ", limitStart=" + limitStart + ", limitSize=" + limitSize + "]";
 	}
 public TblUniversityInfo(String id, String univerName, String areaName, String areaId, String createTime,
 			String createUser, String upTime, String aurlb, String upUser, String code, String sy_me, String zme,
-			String myyjsr, String rzstase, String universityId, String headimg, String universityGrade,
-			String universityPeople, String universityProbability, String universityAdvantage, String lawz,
-			Integer limitStart, Integer limitSize) {
+			String myyjsr, String rzstase, String lawz, String unrmd, Integer limitStart, Integer limitSize) {
 		super();
 		this.id = id;
 		this.univerName = univerName;
@@ -134,15 +97,14 @@ public TblUniversityInfo(String id, String univerName, String areaName, String a
 		this.zme = zme;
 		this.myyjsr = myyjsr;
 		this.rzstase = rzstase;
-		this.universityId = universityId;
-		this.headimg = headimg;
-		this.universityGrade = universityGrade;
-		this.universityPeople = universityPeople;
-		this.universityProbability = universityProbability;
-		this.universityAdvantage = universityAdvantage;
 		this.lawz = lawz;
+		this.unrmd = unrmd;
 		this.limitStart = limitStart;
 		this.limitSize = limitSize;
+	}
+public TblUniversityInfo() {
+		super();
+		
 	}
 public String getId() {
 		return id;
@@ -228,47 +190,17 @@ public String getId() {
 	public void setRzstase(String rzstase) {
 		this.rzstase = rzstase;
 	}
-	public String getUniversityId() {
-		return universityId;
-	}
-	public void setUniversityId(String universityId) {
-		this.universityId = universityId;
-	}
-	public String getHeadimg() {
-		return headimg;
-	}
-	public void setHeadimg(String headimg) {
-		this.headimg = headimg;
-	}
-	public String getUniversityGrade() {
-		return universityGrade;
-	}
-	public void setUniversityGrade(String universityGrade) {
-		this.universityGrade = universityGrade;
-	}
-	public String getUniversityPeople() {
-		return universityPeople;
-	}
-	public void setUniversityPeople(String universityPeople) {
-		this.universityPeople = universityPeople;
-	}
-	public String getUniversityProbability() {
-		return universityProbability;
-	}
-	public void setUniversityProbability(String universityProbability) {
-		this.universityProbability = universityProbability;
-	}
-	public String getUniversityAdvantage() {
-		return universityAdvantage;
-	}
-	public void setUniversityAdvantage(String universityAdvantage) {
-		this.universityAdvantage = universityAdvantage;
-	}
-	public String getlawz() {
+	public String getLawz() {
 		return lawz;
 	}
-	public void setlawz(String lawz) {
+	public void setLawz(String lawz) {
 		this.lawz = lawz;
+	}
+	public String getUnrmd() {
+		return unrmd;
+	}
+	public void setUnrmd(String unrmd) {
+		this.unrmd = unrmd;
 	}
 private Integer limitStart;
    public Integer getLimitStart(){
