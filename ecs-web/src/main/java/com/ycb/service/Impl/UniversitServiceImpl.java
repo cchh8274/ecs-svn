@@ -100,9 +100,9 @@ public class UniversitServiceImpl implements UniversitService {
 	}
 //	查询附近的大学现在是写死的支取三条
 	@Override
-	public List<TblUniversityInfo> fuJinuniversityDetails() {
+	public List<TblUniversityInfo> fuJinuniversityDetails(String lawz) {
 		
-		return tblUniversityInfoMapper.fuJinuniversityDetails();
+		return tblUniversityInfoMapper.fuJinuniversityDetails(lawz);
 	}
 
 }

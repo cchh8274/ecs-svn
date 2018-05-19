@@ -120,7 +120,7 @@ public interface TblUniversityInfoMapper {
 
 	public String idUnXinXi(String code);
 //	查询附近的大学现在是写死的支取三条
-	public List<TblUniversityInfo> fuJinuniversityDetails();
+	public List<TblUniversityInfo> fuJinuniversityDetails(String lawz);
     
 }
 
