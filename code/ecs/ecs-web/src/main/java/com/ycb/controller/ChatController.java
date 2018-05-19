@@ -15,6 +15,7 @@ import cn.kanmars.entity.TblMessageInfo;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.ycb.base.BaseController;
 import com.ycb.service.ChatService;
 
 /*

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.ycb.base.BaseController;
 import com.ycb.service.ProvinceService;
 
 import cn.kanmars.entity.TblAreaInfo;
