@@ -104,7 +104,7 @@ public class EarningsInfoController extends BaseController{
 		/**
 		 * 收益明细
 		 */
-	@RequestMapping(value="shouyimingxi",produces="text/html; charset=UTF-8")
+	/*@RequestMapping(value="shouyimingxi",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String shouyimingxi(String jsonStr){
 		try {
@@ -139,5 +139,5 @@ public class EarningsInfoController extends BaseController{
 		e.printStackTrace();
 	}
 	return this.toJSONString("error","错误");
-	}
+	}*/
 }

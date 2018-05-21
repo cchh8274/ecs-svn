@@ -50,6 +50,18 @@
       				<input class="easyui-textbox" type="text" name="createUser" value="${tuif.createUser}" style="width:180px"> 
       			</td>
       		</tr>
+      		<tr>
+      			<td>位置:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="lawz" value="${tuif.lawz}" style="width:180px"> 
+      			</td>
+      		</tr>
+      		<tr>
+      			<td>推荐:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="unrmd" value="${tuif.unrmd}" style="width:180px"> 
+      			</td>
+      		</tr>
       		<%-- <tr>
       			<td>修改时间:</td>
       			<td>

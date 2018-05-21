@@ -47,36 +47,9 @@ public class UniversityDetailsController extends BaseController{
 	 */
 	@RequestMapping(value="seleXQUniversityDetails",produces="text/html; charset=UTF-8")
 	@ResponseBody
-	public String seleXQUniversityDetails(String jsonStr){
-		
-	   /* String code = jsonStr;
-		String un = universitService.idUnXinXi(code);
-		String id = un;
-		List<TblUniversityDetails> und = universityDetailsService.seleUniversityDetails(id);
-		return this.toJSONString(und);*/
-		/*try {
-			JSONObject json = JSON.parseObject(jsonStr);
-			String xiabiao = json.getString("xiabiao");
-			UniversitController dx = new UniversitController();
-			List<TblUniversityInfo> unv = universitService.fuJinuniversityDetails();
-			for (int i = 0; i < unv.size(); i++) {
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
+	public String seleXQUniversityDetails(){
 		try {
-		JSONObject json = JSON.parseObject(jsonStr);
-		String code = json.getString("code");
-			//String code = jsonStr;
-		   //通过传过来的ocde查询大学的id
-			String un = universitService.idUnXinXi(code);
-			if(un==null){
-				return this.toJSONString("error","code错误");
-			}
-			//根据得到的id去查大学的详情
-			String id = un;
-			List<TblUniversityDetails> und = universityDetailsService.seleUniversityDetails(id);
+			List<TblUniversityDetails> und = universityDetailsService.seleUniversityDetailsaaa();
 			return this.toJSONString(und);
 		} catch (Exception e) {
 			e.printStackTrace();
