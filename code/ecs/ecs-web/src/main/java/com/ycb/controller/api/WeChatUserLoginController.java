@@ -38,9 +38,14 @@ public class WeChatUserLoginController extends BaseController{
 	 */
 	@RequestMapping("/login")
 	@ResponseBody
-	public String wxUserLogin(String code) {
+	public String wxUserLogin(String jsonStr) {
 		logger.info("WeChatUserLoginController.wxUserLogin --微信用户授权成功 ,code为" + code);
 		try {
+			if(StringUtils.isEmpty(jsonStr)){
+			return this.toJSONString("error","不能为空");
+			}
+			JSONObject json = JSON.parseObject(jsonStr);
+			String code = json.getString("code");
 			if(StringUtils.isEmpty(code)){
 				return this.toErroJSONString("code为空!");
 			}
