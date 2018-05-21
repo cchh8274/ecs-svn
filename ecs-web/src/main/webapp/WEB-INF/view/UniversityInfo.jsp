@@ -59,24 +59,25 @@
 	    columns:[[    
 	         {field:'ck',checkbox:true},  
 	        {field:'id',title:'id',width:100},    
-	        {field:'univerName',title:'大学名称',width:100},    
+	        {field:'univerName',title:'大学名称',width:100},
+	        {field:'aurlb',title:'前台字段',width:100},
 	        {field:'areaName',title:'区域名称',width:100},    
 	        {field:'areaId',title:'区域ID',width:100},    
-	        {field:'location',title:'点的位置',width:100},    
 	        {field:'createTime',title:'创建时间',width:100},    
 	        {field:'createUser',title:'创建人',width:100},    
 	        {field:'upTime',title:'修改时间',width:100},    
 	        {field:'upUser',title:'修改人',width:100},
-	        /* {field:'headimg',title:'img',width:100,align:'center',formatter:function(value,row,index)
-                {
-                    return "<img width='50px' height='50px' src='"+value+"'/>";
-                }}, */
+	        {field:'code',title:'大学编码',width:100},
+	        {field:'sy_me',title:'剩余名额',width:100},
+	        {field:'zme',title:'总名额',width:100},
+	        {field:'myyjsr',title:'每月跃进收入',width:100},
+	        {field:'rzstase',title:'入住状态',width:100},
+	        {field:'lawz',title:'位置',width:100},
+	        {field:'unrmd',title:'推荐',width:100},
 	        {field : 'pz',title : '操作',formatter:function(value,rows,index){
 	         	  return '<a href="javaScript:aupdateUniversityInfo(\''+rows.id+'\')">修改</a>'+
 	         	 		 '<a href="javaScript:details(\''+rows.id+'\')">    详情</a>';
 	           }},
-	       
-	        
 	    ]]    
 	})
   }

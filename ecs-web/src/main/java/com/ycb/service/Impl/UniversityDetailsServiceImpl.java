@@ -20,4 +20,8 @@ public class UniversityDetailsServiceImpl implements  UniversityDetailsService{
 	public List<TblUniversityDetails> seleUniversityDetails(String id) {
 		return tblUniversityDetailsMapper.seleUniversityDetails(id);
 	}
+	@Override
+	public List<TblUniversityDetails> seleUniversityDetailsaaa() {
+		return tblUniversityDetailsMapper.seleUniversityDetailsaaa();
+	}
 }

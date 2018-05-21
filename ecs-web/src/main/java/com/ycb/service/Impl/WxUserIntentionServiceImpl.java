@@ -18,7 +18,7 @@ public class WxUserIntentionServiceImpl implements WxUserIntentionService {
 	private TblWxUserIntentionMapper tblWxUserIntentionMapper;
 	//根据用户的openid去查询当前用户有没有 
 	@Override
-	public TblWxUserIntention panDuanwxUserIntention(String openid) {
+	public String panDuanwxUserIntention(String openid) {
 		
 		return tblWxUserIntentionMapper.panDuanwxUserIntention(openid);
 	}
@@ -40,5 +40,9 @@ public class WxUserIntentionServiceImpl implements WxUserIntentionService {
 		  twui.setLimitSize(rows);
 		  twui.setLimitStart(page);
 	      return tblWxUserIntentionMapper.selectWxUserIntention(twui);
+	}
+	@Override
+	public TblWxUserIntention panDuanjiawxUserIntention(String universityId, String openid) {
+		return tblWxUserIntentionMapper.panDuanjiawxUserIntention(universityId,openid);
 	}
 }

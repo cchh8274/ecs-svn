@@ -39,8 +39,14 @@ public class TblUniversityDetails implements java.io.Serializable{
    	 */
     private String universityAdvantage;
 
-   
-    /**
+    private String universityStatus;
+    public String getUniversityStatus() {
+		return universityStatus;
+	}
+	public void setUniversityStatus(String universityStatus) {
+		this.universityStatus = universityStatus;
+	}
+	/**
      * 自定义列，分页查询用
      */
     private Integer limitStart;
@@ -111,7 +117,7 @@ public class TblUniversityDetails implements java.io.Serializable{
 	}
 	public TblUniversityDetails(String id, String universityName, String universityId, String headimg,
 			String universityGrade, String universityPeople, String universityProbability, String universityAdvantage,
-			Integer limitStart, Integer limitSize) {
+			String universityStatus,Integer limitStart, Integer limitSize) {
 		super();
 		this.id = id;
 		this.universityName = universityName;
@@ -121,6 +127,7 @@ public class TblUniversityDetails implements java.io.Serializable{
 		this.universityPeople = universityPeople;
 		this.universityProbability = universityProbability;
 		this.universityAdvantage = universityAdvantage;
+		this.universityStatus = universityStatus;
 		this.limitStart = limitStart;
 		this.limitSize = limitSize;
 	}

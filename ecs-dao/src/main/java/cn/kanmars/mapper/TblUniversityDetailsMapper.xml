@@ -10,15 +10,22 @@
     <result column="university_people" property="universityPeople" jdbcType="VARCHAR" />
     <result column="university_probability" property="universityProbability" jdbcType="VARCHAR" />
     <result column="university_advantage" property="universityAdvantage" jdbcType="VARCHAR" />
+  	<result column="university_status" property="universityStatus" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, university_name, university_id, headimg,university_grade,university_people,university_probability,university_advantage
+    id, university_name, university_id, headimg,university_grade,university_people,university_probability,university_advantage,university_status
   </sql>
   <select id="seleUniversityDetails" parameterType="java.lang.String" resultMap="BaseResultMap">
   	select 
   	<include refid="Base_Column_List"/>
   	 from tbl_university_details
   	 where university_id = #{id}
+  </select>
+   <!--   查大学详情表所有 -->
+  <select id="seleUniversityDetailsaaa"  resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List"/>
+  	 from tbl_university_details where university_status = '010'
   </select>
   <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 

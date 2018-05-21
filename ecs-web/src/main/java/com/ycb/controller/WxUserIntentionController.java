@@ -3,6 +3,7 @@ package com.ycb.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,39 +28,39 @@ public class WxUserIntentionController extends BaseController{
 	private WxUserIntentionService wxUserIntentionService;	
 	/*
 	 * 判断当前用户存在不存在
+	 * 是否存在
+	 * 是否购买当前大学
 	 */
 	@RequestMapping(value="panDuanwxUserIntention",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	private String panDuanwxUserIntention(String jsonStr) throws Exception{
-		HashMap<String, String> mp = new HashMap<>();
-		try {
-		//String openid = jsonStr;
-		//根据用户的openid去查询当前用户有没有 
-		JSONObject json = JSON.parseObject(jsonStr);
-		String openid = json.getString("openid");
-		String universityName = json.getString("universityName");
-		TblWxUserIntention wui=wxUserIntentionService.panDuanwxUserIntention(openid);
-		if(wui == null){
-			mp.put("success", "没有加入过大学");
+			HashMap<String,String> mp = new HashMap<String,String>();
+			//根据用户的openid去查询当前用户有没有 
+			JSONObject json = JSON.parseObject(jsonStr);
+			String openid = json.getString("openid");
+			String universityId = json.getString("universityId");
+			TblWxUserIntention tblWxUserIntention=wxUserIntentionService.panDuanjiawxUserIntention(universityId,openid);
+			if(tblWxUserIntention !=null){
+				mp.put("flag","exist");
+				mp.put("message","您已经加入过该大学！");
+				return this.toJSONString(mp);
+			}
+			String  userCell=wxUserIntentionService.panDuanwxUserIntention(openid);
+			if(StringUtils.isNotEmpty(userCell) ){
+				mp.put("flag","noexist");
+				mp.put("message","加入成功！");
+				HashMap<String, String> map = new HashMap<String,String>();
+				map.put("id", IDGeneratorTools.createId());
+				map.put("openid", openid);
+				map.put("universityId",universityId);
+				map.put("creationTime",DateUtils.getStringDate());
+				map.put("userCell",userCell);
+				wxUserIntentionService.insetwxUserIntention(map);
+				return this.toJSONString(mp);
+			}
+			mp.put("flag","no");
+			mp.put("message","第一次咨询");
 			return this.toJSONString(mp);
-		}
-		//如果存在就直接添加
-		HashMap<String,String> map = new HashMap<String,String>();
-		map.put("id", IDGeneratorTools.createId());
-		map.put("openid", wui.getOpenid());
-		map.put("nickname", wui.getNickname());
-		map.put("userCell",wui.getUserCell() );
-		map.put("universityId",wui.getUniversityId());
-		map.put("universityName",universityName);
-		map.put("creationTime",DateUtils.getStringDate());
-		map.put("followRecord", wui.getFollowRecord());
-		wxUserIntentionService.insetwxUserIntention(map);
-		mp.put("success", "添加成功");
-		return this.toJSONString(mp);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return this.toJSONString("error","添加正确信息");
 	}
 	@RequestMapping(value="queryWxUserIntention")
 	@ResponseBody
@@ -75,31 +76,27 @@ public class WxUserIntentionController extends BaseController{
 	@RequestMapping(value="addWxUserIntention",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String addWxUserIntention(String jsonStr){
+		HashMap<String, String> map = new HashMap<String,String>();
 		try {
-			HashMap<String, String> map = new HashMap<String,String>();
 			HashMap<String, String> mp = new HashMap<String,String>();
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
-			String nickname = json.getString("nickname");
-			String userCell = json.getString("userCell");
 			String universityId = json.getString("universityId");
-			String universityName = json.getString("universityName");
-			String followRecord = json.getString("followRecord");
+			String userCell = json.getString("userCell");
 			map.put("id", IDGeneratorTools.createId());
 			map.put("openid", openid);
-			map.put("nickname", nickname);
-			map.put("userCell",userCell );
 			map.put("universityId",universityId);
-			map.put("universityName",universityName);
+			map.put("userCell",userCell);
 			map.put("creationTime",DateUtils.getStringDate());
-			map.put("followRecord", followRecord);
 			wxUserIntentionService.insetwxUserIntention(map);
-			mp.put("success", "新增成功");
-			return this.toJSONString(mp);
+			map.clear();
+			map.put("message","咨询成功");
+			return this.toJSONString(map);
 		} catch (Exception e) {
 			e.printStackTrace();
+			map.clear();
+			map.put("message","系统异常!");
+			return this.toJSONString(map);
 		}
-		
-		return this.toJSONString("error","信息错误");
 	}
 }

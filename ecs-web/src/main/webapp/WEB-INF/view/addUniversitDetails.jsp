@@ -54,6 +54,8 @@
       	</table>
      </form>
 <script>
+
+	//图片回显
    $(function(){
    if($("#UniversityDetails").datagrid('getSelected')!=null){
        var tr=$("#UniversityDetails").datagrid('getSelected');

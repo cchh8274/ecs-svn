@@ -16,11 +16,18 @@
     id, openid, nickname, user_cell, university_id, university_name, creation_time, follow_record, audit_status
   </sql>
   <!--判断当前用户存不存在  -->
-  <select id="panDuanwxUserIntention" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="panDuanwxUserIntention" parameterType="java.lang.String" resultType="java.lang.String">
+  	select
+ 	user_cell 
+  	from tbl_wx_user_intention
+  	where openid=#{openid}  GROUP BY user_cell
+  </select>
+  <!--判断当前加入过不能重复加入  -->
+  <select id="panDuanjiawxUserIntention" resultMap="BaseResultMap">
   	select
   	<include refid="Base_Column_List"/>
-  	from tbl_wx_user_intention
-  	where openid=#{openid} limit 1
+  	from tbl_wx_user_intention 
+  	where openid=#{openid} and university_id=#{universityId}
   </select>
   <insert id="insetwxUserIntention" parameterType="java.util.HashMap">
    insert into tbl_wx_user_intention
