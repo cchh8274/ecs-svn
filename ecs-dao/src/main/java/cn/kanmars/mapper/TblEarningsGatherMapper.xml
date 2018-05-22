@@ -21,7 +21,7 @@
     </sql>
      <select id="shouyimingxiyue" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List"/>
+   *
        from tbl_earnings_gather
        where unversity_id = #{unversityId} 
        and ernings_month =#{stringAllDate}
@@ -30,7 +30,7 @@
     
     <select id="shouyimingxizong" parameterType="java.lang.String" resultMap="BaseResultMap">
       select 
-    <include refid="Base_Column_List"/>
+  			 *
        from tbl_earnings_gather
         where unversity_id = #{unversityId} 
          and earning_type = '020' 
