@@ -60,7 +60,7 @@ public class DateUtils {
      * @return返回字符串格式 yyyyMMddHHmmss 
      */  
     public static String getStringAllDate() {  
-     SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmssSSS");  
+     SimpleDateFormat formatter = new SimpleDateFormat("MM");  
      String dateString = formatter.format(new Date());  
      return dateString;  
     }  
@@ -597,4 +597,7 @@ public class DateUtils {
        String sdfd =sdf.format(date);
        return sdfd;
        }
+       public static void main(String[] args) {
+	
+	}
 }
