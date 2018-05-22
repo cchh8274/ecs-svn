@@ -46,6 +46,24 @@
       				<input class="easyui-textbox" type="text" name="areaId"  style="width:180px"> 
       			</td>
       		</tr>
+      		<tr>
+      			<td>收益类型:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="earningType"  style="width:180px"> 
+      			</td>
+      		</tr>
+      		<tr>
+      			<td>开始收益日期:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="createUser"  style="width:180px"> 
+      			</td>
+      		</tr>
+      		<tr>
+      			<td>投放日期:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="locationTime"  style="width:180px"> 
+      			</td>
+      		</tr>
       	</table>
      </form>
    
