@@ -15,6 +15,7 @@ import java.util.HashMap;
 
 import cn.kanmars.entity.CfProfit;
 import cn.kanmars.entity.TblEarningsGather;
+import cn.kanmars.entity.TblEarningsInfo;
 /**
  * 收益汇总表
  * tbl_earnings_gather
@@ -107,6 +108,10 @@ public interface TblEarningsGatherMapper {
 	public void updEarningsGather(TblEarningsGather teg);
 
 	public void delEarningsGather(String ids);
+
+	public TblEarningsGather shouyimingxiyue(@Param("unversityId") String unversityId,@Param("stringAllDate") String stringAllDate);
+
+	public TblEarningsGather shouyimingxizong(String unversityId);
 
 	
 }

@@ -34,6 +34,7 @@ public class EarningsGatherController extends BaseController{
 
 	@Autowired
 	private EarningsGatherService earningsGatherService;
+	
 	/*
 	 *收益汇总表查询
 	 */

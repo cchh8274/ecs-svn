@@ -282,6 +282,5 @@ public class TblEarningsInfo implements java.io.Serializable{
 				+ ", createUser=" + createUser + ", updateTime=" + updateTime + ", updateUser=" + updateUser
 				+ ", limitStart=" + limitStart + ", limitSize=" + limitSize + "]";
 	}
-    
-    
+	
 }
