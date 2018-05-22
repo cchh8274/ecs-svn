@@ -21,15 +21,13 @@ public class UniversityDetailsController extends BaseController{
 	//大学详情表
 	@Autowired
 	private UniversityDetailsService universityDetailsService;
-	//大学表
-	@Autowired
-	private UniversitService universitService;
+	
 	/**
 	 * 查询大学详细信息
 	 * @param jsonStr
 	 * @return
 	 */
-	@RequestMapping(value="seleUniversityDetails",produces="text/html; charset=UTF-8")
+	/*@RequestMapping(value="seleUniversityDetails",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String seleUniversityDetails(String jsonStr){
 		try {
@@ -41,7 +39,7 @@ public class UniversityDetailsController extends BaseController{
 			e.printStackTrace();
 		}
 		return this.toJSONString("success","出现错误写正确的信息");
-	}
+	}*/
 	/**
 	 * 查询大学详情表
 	 */

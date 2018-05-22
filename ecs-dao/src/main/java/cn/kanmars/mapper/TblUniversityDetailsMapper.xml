@@ -15,12 +15,12 @@
   <sql id="Base_Column_List" >
     id, university_name, university_id, headimg,university_grade,university_people,university_probability,university_advantage,university_status
   </sql>
-  <select id="seleUniversityDetails" parameterType="java.lang.String" resultMap="BaseResultMap">
+   <select id="seleUniversityDetails" parameterType="java.lang.String" resultMap="BaseResultMap">
   	select 
   	<include refid="Base_Column_List"/>
   	 from tbl_university_details
   	 where university_id = #{id}
-  </select>
+  </select> 
    <!--   查大学详情表所有 -->
   <select id="seleUniversityDetailsaaa"  resultMap="BaseResultMap">
   	select 
