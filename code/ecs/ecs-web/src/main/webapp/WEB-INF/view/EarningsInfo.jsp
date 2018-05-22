@@ -77,6 +77,7 @@
 	        {field:'createTime',title:'创建时间',width:100},    	       
 	        {field:'createUser',title:'创建人',width:100},    	       
 	        {field:'updateTime',title:'修改时间',width:100},
+	        {field:'updateUser',title:'修改人',width:100},
 	        {field:'s',title:'操作 ',width:'100',align: 'center',halign:'center',formatter:function(value,row,index){
 	        	return "<input type='button'  value='修改' onclick='updateEI(\""+row.id+"\")'>";
 	        }}

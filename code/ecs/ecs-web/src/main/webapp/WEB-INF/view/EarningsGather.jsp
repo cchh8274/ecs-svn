@@ -70,6 +70,9 @@
 	        {field:'areaId',title:'收益区域',width:100},    	       
 	        {field:'createtime',title:'创建时间',width:100},    	       
 	        {field:'createUser',title:' 创建人',width:100},
+	        {field:'earningType',title:' 收益类型',width:100},
+	        {field:'createUser',title:' 开始收益日期',width:100},
+	        {field:'locationTime',title:' 投放日期',width:100},
 	        {field:'s',title:'操作 ',width:'100',align: 'center',halign:'center',formatter:function(value,row,index){
 	        	return "<input type='button'  value='修改' onclick='updateEG(\""+row.id+"\")'>";
 	        }}
