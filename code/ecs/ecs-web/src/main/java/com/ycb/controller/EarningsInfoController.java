@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ycb.base.BaseController;
+import com.ycb.service.AmountInfoService;
 import com.ycb.service.EarningsGatherService;
 import com.ycb.service.EarningsInfoService;
 import com.ycb.util.DateUtils;
 
+import cn.kanmars.entity.TblAmountInfo;
 import cn.kanmars.entity.TblEarningsGather;
 import cn.kanmars.entity.TblEarningsInfo;
 import cn.kanmars.entity.TblLogin;
@@ -37,6 +39,9 @@ public class EarningsInfoController extends BaseController{
 	private EarningsInfoService earningsInfoService;
 	@Autowired
 	private EarningsGatherService earningsGatherService;
+	@Autowired
+	private AmountInfoService amountInfoService;
+	
 	/*
 	 *收益表查询
 	 */
@@ -132,6 +137,10 @@ public class EarningsInfoController extends BaseController{
 			hp.put("zongshouyi", zong.getNumber());//总收益
 		list.add(hp);
 	}
+	HashMap<String, String> hmp = new HashMap<String, String>();
+	TblAmountInfo atf= amountInfoService.seleSumamountInfo(openid);
+	hmp.put("ketixian", atf.getAccountMoney());
+	list.add(hmp);
 	return this.toJSONString(list);
 	} catch (Exception e) {
 		e.printStackTrace();
