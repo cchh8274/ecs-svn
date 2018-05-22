@@ -127,11 +127,10 @@ public class EarningsInfoController extends BaseController{
 			String openid = jsonStr;
 			TblMachineGatherInfo kfj =machineGatherInfoService.selemachineGatherInfKFJ(openid);
 			if(kfj==null){
-				HashMap<String, String> hmap = new HashMap<String, String>();
-				hmap.put("success", "当前没有咖啡机");
-				return this.toJSONString(hmap);
+				HashMap<String, String> mmp = new HashMap<String, String>();
+				mmp.put("success", "当前没有咖啡机");
+				return this.toJSONString(mmp);
 			}
-			
 	 String rikai = DateUtils.getBeforeDaybb(); 
      String rijie = DateUtils.getBeforeDaybb();
 	List<TblEarningsInfo>  ri=earningsInfoService.shouyimingxiyueri(openid,rikai,rijie);
