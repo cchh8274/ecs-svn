@@ -122,9 +122,9 @@ public class EarningsInfoController extends BaseController{
 	@ResponseBody
 	public String shouyimingxi(String jsonStr){
 		try {
-			JSONObject json = JSON.parseObject(jsonStr);
-			String openid = json.getString("openid");
-			//String openid = jsonStr;
+			//JSONObject json = JSON.parseObject(jsonStr);
+			//String openid = json.getString("openid");
+			String openid = jsonStr;
 			TblMachineGatherInfo kfj =machineGatherInfoService.selemachineGatherInfKFJ(openid);
 			if(kfj==null){
 				HashMap<String, String> hmap = new HashMap<String, String>();
@@ -132,8 +132,8 @@ public class EarningsInfoController extends BaseController{
 				return this.toJSONString(hmap);
 			}
 			
-	 String rikai = DateUtils.getBeforeDaybb()+" 00:00:00"; 
-     String rijie = DateUtils.getBeforeDaybb()+" 23:59:59";
+	 String rikai = DateUtils.getBeforeDaybb(); 
+     String rijie = DateUtils.getBeforeDaybb();
 	List<TblEarningsInfo>  ri=earningsInfoService.shouyimingxiyueri(openid,rikai,rijie);
 	List<Map<String,String>> list = new  ArrayList<Map<String,String>>();
 	for (TblEarningsInfo tblEarningsInfo : ri) {
