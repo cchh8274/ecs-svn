@@ -59,4 +59,10 @@ public class BankamountInfoServiceImpl implements BankamountInfoService{
 	public TblBankamountInfo dangeBankamountInfohui(String openid) {
 		return tblBankamountInfoMapper.dangeBankamountInfohui(openid);
 	}
+
+	@Override
+	public TblBankamountInfo panduPwd(String openid) {
+		
+		return tblBankamountInfoMapper.panduPwd(openid);
+	}
 }

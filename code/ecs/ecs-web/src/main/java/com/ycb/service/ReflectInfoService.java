@@ -10,4 +10,6 @@ public interface ReflectInfoService {
 
 	List<TblReflectInfo> selectpage(Integer page, Integer rows, TblReflectInfo tblReflectInfo);
 
+	List<TblReflectInfo> seleBringOutTheDetails(String openid);
+
 }
