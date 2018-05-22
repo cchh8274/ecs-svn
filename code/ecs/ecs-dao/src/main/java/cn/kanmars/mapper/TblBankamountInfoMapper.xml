@@ -2,22 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.kanmars.dao.TblBankamountInfoMapper">
     <resultMap id="BaseResultMap" type="cn.kanmars.entity.TblBankamountInfo">
-        <constructor>
-            <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="user_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="idcard" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="wx_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="bank_amount_no" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="bank_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="bank_adress" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="update_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="update_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-	
-        </constructor>
+        <result column="id" property="id"></result>
+        <result column="user_name" property="userName"></result>
+        <result column="idcard" property="idcard"></result>
+        <result column="phone" property="phone"></result>
+        <result column="wx_name" property="wxName"></result>
+        <result column="openid" property="openid"></result>
+        <result column="bank_amount_no" property="bankAmountNo"></result>
+        <result column="bank_name" property="bankName"></result>
+        <result column="bank_adress" property="bankAdress"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="create_user" property="createUser"></result>
+        <result column="update_time" property="updateTime"></result>
+        <result column="update_user" property="updateUser"></result>
+        <result column="forward_pwd" property="forwardPwd"></result>
     </resultMap >
     <resultMap  id="yhk" type="cn.kanmars.entity.TblBankamountInfo">
        <result property="bankAmountNo" column="bank_amount_no" javaType="string" jdbcType="VARCHAR"/>  
@@ -28,7 +26,7 @@
        <result property="updateUser" column="update_user" javaType="string" jdbcType="VARCHAR"/>  
     </resultMap>
     <sql id="Base_Column_List">
-        id,user_name,idcard,phone,wx_name,openid,bank_amount_no,bank_name,bank_adress,create_time,create_user,update_time,update_user
+        id,user_name,idcard,phone,wx_name,openid,bank_amount_no,bank_name,bank_adress,create_time,create_user,update_time,update_user,forward_pwd
     </sql>
     <sql id="Base_Column_Listaa">
      bank_amount_no,bank_name,user_name,openid,update_user
