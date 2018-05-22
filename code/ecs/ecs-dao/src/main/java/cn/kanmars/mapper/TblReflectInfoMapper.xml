@@ -2,25 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.kanmars.dao.TblReflectInfoMapper">
     <resultMap id="BaseResultMap" type="cn.kanmars.entity.TblReflectInfo">
-        <constructor>
-            <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="trans_no" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="wx_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="reflect_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="bank_card" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="bank_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="reflect_money" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="is_account" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="is_freeze" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="account_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-
-        </constructor>
+            <result column="id" property="id"></result>
+            <result column="trans_no" property="transNo"></result>
+            <result column="openid" property="openid"></result>
+            <result column="wx_user" property="wxUser"></result>
+            <result column="reflect_user" property="reflectUser"></result>
+            <result column="bank_card" property="bankCard"></result>
+            <result column="bank_name" property="bankName"></result>
+            <result column="reflect_money" property="reflectMoney"></result>
+            <result column="is_account" property="isAccount"></result>
+            <result column="is_freeze" property="isFreeze"></result>
+            <result column="account_time" property="accountTime"></result>
+            <result column="create_time" property="createTime"></result>
+            <result column="create_user" property="createUser"></result>
+            <result column="univer_name" property="univerName"></result>
+            <result column="univer_id" property="univerId"></result>
+            <result column="col1" property="col1"></result>
+            <result column="col2" property="col2"></result>
     </resultMap>
     <sql id="Base_Column_List">
-        id,trans_no,openid,wx_user,reflect_user,bank_card,bank_name,reflect_money,is_account,is_freeze,account_time,create_time,create_user
+        id,trans_no,openid,wx_user,reflect_user,bank_card,bank_name,reflect_money,is_account,is_freeze,account_time,create_time,create_user,univer_name,univer_id,col1,col2
     </sql>
     <select id="select" parameterType="cn.kanmars.entity.TblReflectInfo" resultMap="BaseResultMap">
         select
