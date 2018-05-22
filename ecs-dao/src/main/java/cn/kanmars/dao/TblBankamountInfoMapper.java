@@ -105,6 +105,8 @@ public interface TblBankamountInfoMapper {
 	//回显银行卡
 	public TblBankamountInfo dangeBankamountInfohui(String openid);
 
+	public TblBankamountInfo panduPwd(String openid);
+
 	
 
 }

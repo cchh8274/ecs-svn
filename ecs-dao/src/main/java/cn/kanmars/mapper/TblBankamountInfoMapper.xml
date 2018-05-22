@@ -31,6 +31,13 @@
     <sql id="Base_Column_Listaa">
      bank_amount_no,bank_name,user_name,openid,update_user
     </sql>
+    <!-- 判断有没有密码 -->
+    <select id="panduPwd" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select
+    	<include refid="Base_Column_List"/>
+    	from tbl_bankamount_info 
+        where openid=#{openid}   limit 1
+    </select>
     <!-- 回显银行卡 -->
     <select id="dangeBankamountInfohui" parameterType="java.lang.String" resultMap="yhk">
     	select  

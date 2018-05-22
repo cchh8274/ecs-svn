@@ -31,4 +31,10 @@ public class ReflectInfoServiceImpl implements ReflectInfoService{
 		tri.setLimitStart(page);
 	    return tblReflectInfoMapper.selectpage(tri);
 	}
+
+	@Override
+	public List<TblReflectInfo> seleBringOutTheDetails(String openid) {
+		
+		return tblReflectInfoMapper.seleBringOutTheDetails(openid);
+	}
 }

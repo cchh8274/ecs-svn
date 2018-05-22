@@ -144,4 +144,26 @@ public class BankamountInfoController extends BaseController {
         }
 		return this.toJSONString("error","最少传一个参数");
 	}
+	/*
+	 * 查看有无密码
+	 */
+	@RequestMapping(value="panduPwd",produces="text/html; charset=UTF-8")
+	@ResponseBody
+	public String panduPwd(String jsonStr) throws Exception{
+		HashMap<String, String> hmap = new HashMap<String, String>();
+		try {
+			JSONObject json = JSON.parseObject(jsonStr);
+			String openid = json.getString("openid");
+			TblBankamountInfo bmi= bankamountInfoService.panduPwd(openid);
+			if(bmi.getForwardPwd() ==null){
+				hmap.put("success", "该用户没有密码");
+				this.toJSONString(hmap);
+			}
+			hmap.put("success", "已经有密码请输入密码");
+			this.toJSONString(hmap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return this.toJSONString("error","最少传一个参数");
+	}
 }

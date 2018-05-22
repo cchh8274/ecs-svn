@@ -20,5 +20,7 @@ public interface BankamountInfoService {
 	TblBankamountInfo dangeBankamountInfo(String bankAmountNo);
 	//回显银行卡
 	TblBankamountInfo dangeBankamountInfohui(String openid);
+	
+	TblBankamountInfo panduPwd(String openid);
 
 }

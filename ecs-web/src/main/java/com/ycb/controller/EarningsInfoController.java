@@ -156,6 +156,7 @@ public class EarningsInfoController extends BaseController{
 	hmp.put("totalCash", atf);//提现总额
 	hmp.put("detailed", list);//明细
 	return this.toJSONString(hmp);
+
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
