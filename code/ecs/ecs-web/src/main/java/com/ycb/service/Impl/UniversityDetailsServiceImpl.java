@@ -17,7 +17,7 @@ public class UniversityDetailsServiceImpl implements  UniversityDetailsService{
 	private TblUniversityDetailsMapper tblUniversityDetailsMapper;
 //	查询大学详细信息
 	@Override
-	public List<TblUniversityDetails> seleUniversityDetails(String id) {
+	public TblUniversityDetails seleUniversityDetails(String id) {
 		return tblUniversityDetailsMapper.seleUniversityDetails(id);
 	}
 	@Override

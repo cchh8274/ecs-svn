@@ -6,8 +6,9 @@ import cn.kanmars.entity.TblUniversityDetails;
 
 public interface UniversityDetailsService {
 //	查询大学详细信息
-	List<TblUniversityDetails> seleUniversityDetails(String id);
+	TblUniversityDetails seleUniversityDetails(String id);
 
 	List<TblUniversityDetails> seleUniversityDetailsaaa();
+
 
 }
