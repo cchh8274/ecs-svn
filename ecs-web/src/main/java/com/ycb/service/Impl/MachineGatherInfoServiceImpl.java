@@ -53,4 +53,10 @@ public class MachineGatherInfoServiceImpl implements MachineGatherInfoService {
 		tblMachineGatherInfoMapper.delMachineGatherInfo(ids);
 	}
 
+	@Override
+	public TblMachineGatherInfo selemachineGatherInfKFJ(String openid) {
+		
+		return tblMachineGatherInfoMapper.selemachineGatherInfKFJ(openid);
+	}
+
 }

@@ -22,12 +22,14 @@ import com.ycb.base.BaseController;
 import com.ycb.service.AmountInfoService;
 import com.ycb.service.EarningsGatherService;
 import com.ycb.service.EarningsInfoService;
+import com.ycb.service.MachineGatherInfoService;
 import com.ycb.util.DateUtils;
 
 import cn.kanmars.entity.TblAmountInfo;
 import cn.kanmars.entity.TblEarningsGather;
 import cn.kanmars.entity.TblEarningsInfo;
 import cn.kanmars.entity.TblLogin;
+import cn.kanmars.entity.TblMachineGatherInfo;
 /**
  * 赵浩
  * 收益表
@@ -41,9 +43,12 @@ public class EarningsInfoController extends BaseController{
 	private EarningsInfoService earningsInfoService;
 	@Autowired
 	private EarningsGatherService earningsGatherService;
+	//总收益
 	@Autowired
 	private AmountInfoService amountInfoService;
-	
+	//我的咖啡机
+	@Autowired
+	private MachineGatherInfoService machineGatherInfoService;
 	/*
 	 *收益表查询
 	 */
@@ -120,6 +125,13 @@ public class EarningsInfoController extends BaseController{
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
 			//String openid = jsonStr;
+			TblMachineGatherInfo kfj =machineGatherInfoService.selemachineGatherInfKFJ(openid);
+			if(kfj==null){
+				HashMap<String, String> hmap = new HashMap<String, String>();
+				hmap.put("success", "当前没有咖啡机");
+				return this.toJSONString(hmap);
+			}
+			
 	 String rikai = DateUtils.getBeforeDaybb()+" 00:00:00"; 
      String rijie = DateUtils.getBeforeDaybb()+" 23:59:59";
 	List<TblEarningsInfo>  ri=earningsInfoService.shouyimingxiyueri(openid,rikai,rijie);
