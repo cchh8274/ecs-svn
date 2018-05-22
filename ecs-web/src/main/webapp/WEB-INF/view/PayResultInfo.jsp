@@ -81,9 +81,7 @@
 	        {field:'outTradeNo',title:'商户订单号',width:100},  
 	        {field:'timeEnd',title:'支付完成时间',width:100},   
 	        {field:'createTime',title:'创建时间',width:100},   
-	        {field:'createUser',title:'创建人',width:100}   
-	     
-	       
+	        {field:'createUser',title:'创建人',width:100}
 	    ]]    
 	})
   }

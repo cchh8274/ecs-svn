@@ -66,8 +66,11 @@
 	        {field:'isFreeze',title:'是否冻结',width:100}, 
 	        {field:'accountTime',title:'到账时间',width:100},   
 	        {field:'createTime',title:'创建时间',width:100},   
-	        {field:'createUser',title:'创建人',width:100},   
-	        
+	        {field:'createUser',title:'创建人',width:100},
+	        {field:'univerName',title:'大学名称',width:100},
+	        {field:'univerId',title:'大学id',width:100},
+	        {field:'col1',title:'预留字段1',width:100},
+	        {field:'col2',title:'预留字段2',width:100}
 	    ]]    
 	})
   }
