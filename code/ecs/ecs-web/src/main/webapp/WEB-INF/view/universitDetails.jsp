@@ -68,6 +68,7 @@ $(function(){
             {field:'universityPeople',title:'大学人数',width:100},
             {field:'universityProbability',title:'大学投资回报率',width:100},
             {field:'universityAdvantage',title:'大学优势介绍',width:100},
+            {field:'universityStatus',title:'010-推荐/020-普通',width:100},
 	        {field : 'pz',title : '操作',formatter:function(value,rows,index){
 	         	  return '<a href="javaScript:updateUD(\''+rows.id+'\')">修改</a>';
 	           }},
@@ -79,7 +80,6 @@ $(function(){
 	
 function add(){	
 	var id = $("#aaa").val();
-	alert(id);
 	$('#addUD').dialog({    
 	    title: '新增',    
 	    width: 600,    
@@ -115,6 +115,7 @@ function add(){
 }
 
 function updateUD(id){
+	var id2 = $("#aaa").val();
 	$('#updUD').dialog({    
 	    title: '修改',    
 	    width: 600,    
@@ -127,7 +128,7 @@ function updateUD(id){
 			handler:function(){
 				
 				$('#UDUpdateForm').form('submit',{
-					url:"<%=request.getContextPath()%>/Universit/updUniversitDetails.do",
+					url:"<%=request.getContextPath()%>/Universit/updUniversitDetails.do?idd="+id2,
 					onSubmit: function(){    
 				    	return $('#UDUpdateForm').form('validate');
 				    },

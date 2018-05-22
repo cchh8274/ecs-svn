@@ -51,6 +51,12 @@
       				<input class="easyui-textbox" type="text" name="universityAdvantage"  style="width:180px">
       			</td>
       		</tr>
+      		<tr>
+      			<td>010-推荐/020-普通:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="universityStatus"  style="width:180px">
+      			</td>
+      		</tr>
       	</table>
      </form>
 <script>
