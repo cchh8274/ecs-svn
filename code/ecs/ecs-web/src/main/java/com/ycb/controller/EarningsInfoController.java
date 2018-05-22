@@ -122,9 +122,9 @@ public class EarningsInfoController extends BaseController{
 	@ResponseBody
 	public String shouyimingxi(String jsonStr){
 		try {
-			//JSONObject json = JSON.parseObject(jsonStr);
-			//String openid = json.getString("openid");
-			String openid = jsonStr;
+			JSONObject json = JSON.parseObject(jsonStr);
+			String openid = json.getString("openid");
+			//String openid = jsonStr;
 			TblMachineGatherInfo kfj =machineGatherInfoService.selemachineGatherInfKFJ(openid);
 			if(kfj==null){
 				HashMap<String, String> mmp = new HashMap<String, String>();
