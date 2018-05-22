@@ -68,13 +68,13 @@
     </select>
     <!-- 日 -->
     <select id="shouyimingxiyueri" parameterType="java.lang.String"  resultMap="mixibiao">
-       		 <![CDATA[
+       		
        		  select 
        	      	unversity_id,SUM(price),min(create_time),min(earning_start_time)
        		  from tbl_earnings_info where openid=#{openid}  
-       		  and earning_start_time <#{rijie} and earning_start_time>#{rikai}
+       		  and earning_start_time =#{rijie} 
        		  group by unversity_id
-       		  ]]>
+       		 
     </select>
     
     <select id="select" parameterType="cn.kanmars.entity.TblEarningsInfo" resultMap="BaseResultMap">
