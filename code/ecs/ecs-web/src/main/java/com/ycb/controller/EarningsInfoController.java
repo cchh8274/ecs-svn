@@ -122,9 +122,9 @@ public class EarningsInfoController extends BaseController{
 	@ResponseBody
 	public String shouyimingxi(String jsonStr){
 		try {
-			JSONObject json = JSON.parseObject(jsonStr);
-			String openid = json.getString("openid");
-			//String openid = jsonStr;
+			//JSONObject json = JSON.parseObject(jsonStr);
+			//String openid = json.getString("openid");
+			String openid = jsonStr;
 			TblMachineGatherInfo kfj =machineGatherInfoService.selemachineGatherInfKFJ(openid);
 			if(kfj==null){
 				HashMap<String, String> hmap = new HashMap<String, String>();
@@ -138,24 +138,24 @@ public class EarningsInfoController extends BaseController{
 	List<Map<String,String>> list = new  ArrayList<Map<String,String>>();
 	for (TblEarningsInfo tblEarningsInfo : ri) {
 		HashMap<String, String> hp = new HashMap<String, String>();
-		hp.put("rishouyi", tblEarningsInfo.getPrice());
+		hp.put("dayProfit", tblEarningsInfo.getPrice());//日收益
 		String unversityId = tblEarningsInfo.getUnversityId();//明天用
 		TblEarningsGather yue=earningsGatherService.shouyimingxiyue(unversityId,DateUtils.getStringAllDate());
 		TblEarningsGather  zong=earningsGatherService.shouyimingxizong(unversityId);
 			hp.put("unversityName", zong.getUnversityName());
 			hp.put("unversityId", zong.getUnversityId());
 			hp.put("openid", zong.getOpenid());
-		    hp.put("shouyiTime", yue.getStartEarningTime());//收益时间
-			hp.put("yueshouyi", yue.getNumber());//月收益
-			hp.put("changjianTime", zong.getCreatetime());//创建时间
-			hp.put("zongshouyi", zong.getNumber());//总收益
+		    hp.put("profitTime", yue.getStartEarningTime());//收益时间
+			hp.put("monthProfit", yue.getNumber());//月收益
+			hp.put("establishTime", zong.getCreatetime());//创建时间
+			hp.put("totalProfit", zong.getNumber());//总收益
 		list.add(hp);
 	}
-	HashMap<String, String> hmp = new HashMap<String, String>();
+	HashMap<String, Object> hmp = new HashMap<String, Object>();
 	TblAmountInfo atf= amountInfoService.seleSumamountInfo(openid);
-	hmp.put("ketixian", atf.getAccountMoney());
-	list.add(hmp);
-	return this.toJSONString(list);
+	hmp.put("totalCash", atf);//提现总额
+	hmp.put("detailed", list);//明细
+	return this.toJSONString(hmp);
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
