@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
@@ -33,13 +34,15 @@ public class WeChatUserLoginController extends BaseController{
 	 * 获取用户的openID
 	 * 由于公众号是静默授权，因此通过前端获取到的微信的code 同一个接口即可以获取token信息， 也可以获取用户的openid
 	 * 不需要在往下请求用户的信息
-	 * 不涉及到用户表的操作
+	 * 不涉及到用户表的操作 
+	 * jsonStr={'code':}
 	 * @return
 	 */
-	@RequestMapping("/login")
+	@RequestMapping(value="/login",produces="text/html; charset=UTF-8",method=RequestMethod.POST)
 	@ResponseBody
 	public String wxUserLogin(String jsonStr) {
-		logger.info("WeChatUserLoginController.wxUserLogin --微信用户授权成功 ,code为" + code);
+		System.out.println("WeChatUserLoginController.wxUserLogin --微信用户授权开始 ");
+		logger.info("WeChatUserLoginController.wxUserLogin --微信用户授权成功 ,code为" + jsonStr);
 		try {
 			if(StringUtils.isEmpty(jsonStr)){
 			return this.toJSONString("error","不能为空");
