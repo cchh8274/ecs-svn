@@ -23,9 +23,17 @@
     <sql id="Base_Column_List">
         id,trans_no,openid,wx_user,reflect_user,bank_card,bank_name,reflect_money,is_account,is_freeze,account_time,create_time,create_user,univer_name,univer_id,col1,col2
     </sql>
+    <!-- 收益明细 -->
+    <select id="seleBringOutTheDetails" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select
+		<include refid="Base_Column_List"/>
+        from tbl_reflect_info
+        where openid =#{openid}
+       
+    </select>
     <select id="select" parameterType="cn.kanmars.entity.TblReflectInfo" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List" />
+    <include refid="Base_Column_List" />
         from tbl_reflect_info
         where 1=1
         <if test="id != null and id != '' ">
