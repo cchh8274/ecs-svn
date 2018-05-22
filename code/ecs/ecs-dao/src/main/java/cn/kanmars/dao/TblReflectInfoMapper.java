@@ -90,6 +90,8 @@ public interface TblReflectInfoMapper {
      */
     public int editInfo(HashMap paramMap);
 
+	public List<TblReflectInfo> seleBringOutTheDetails(String openid);
+
     
 }
 
