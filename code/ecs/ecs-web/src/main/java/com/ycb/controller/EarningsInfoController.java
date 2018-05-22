@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.base.BaseController;
+import com.ycb.service.EarningsGatherService;
 import com.ycb.service.EarningsInfoService;
 import com.ycb.util.DateUtils;
 
+import cn.kanmars.entity.TblEarningsGather;
 import cn.kanmars.entity.TblEarningsInfo;
 import cn.kanmars.entity.TblLogin;
 /**
@@ -35,6 +37,8 @@ public class EarningsInfoController extends BaseController{
 
 	@Autowired
 	private EarningsInfoService earningsInfoService;
+	@Autowired
+	private EarningsGatherService earningsGatherService;
 	/*
 	 *收益表查询
 	 */
@@ -104,40 +108,37 @@ public class EarningsInfoController extends BaseController{
 		/**
 		 * 收益明细
 		 */
-	/*@RequestMapping(value="shouyimingxi",produces="text/html; charset=UTF-8")
+     @RequestMapping(value="shouyimingxi",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String shouyimingxi(String jsonStr){
 		try {
-			JSONObject json = JSON.parseObject(jsonStr);
-			String openid = json.getString("openid");
-	//String openid=jsonStr;
-	List<TblEarningsInfo>  zong = new ArrayList<TblEarningsInfo>();
-	zong=earningsInfoService.shouyimingxi(openid);
-	String yuekai = DateUtils.getBeforeDayaavvv();
-	String yuejie = DateUtils.getBeforeDayaa();
-	List<TblEarningsInfo>  yue=earningsInfoService.shouyimingxiyue(openid,yuekai,yuejie);
+			/*JSONObject json = JSON.parseObject(jsonStr);
+			String openid = json.getString("openid");*/
+			String openid = jsonStr;
 	 String rikai = DateUtils.getBeforeDaybb()+" 00:00:00"; 
      String rijie = DateUtils.getBeforeDaybb()+" 23:59:59";
 	List<TblEarningsInfo>  ri=earningsInfoService.shouyimingxiyueri(openid,rikai,rijie);
-	for (int i = 0; i < zong.size(); i++) {
-		for (int j = 0; j < yue.size(); j++) {
-			if(zong.get(i).getUnversityId().equals(yue.get(j).getUnversityId())){
-				zong.get(i).setYueshouyi(yue.get(j).getPrice());
-		
-			}
-		}
+	List<Map<String,String>> list = new  ArrayList<Map<String,String>>();
+	for (TblEarningsInfo tblEarningsInfo : ri) {
+		HashMap<String, String> hp = new HashMap<String, String>();
+		hp.put("rishouyi", tblEarningsInfo.getPrice());
+		String unversityId = tblEarningsInfo.getUnversityId();//明天用
+		TblEarningsGather yue=earningsGatherService.shouyimingxiyue(unversityId,DateUtils.getStringAllDate());
+		TblEarningsGather  zong=earningsGatherService.shouyimingxizong(unversityId);
+			hp.put("unversityName", zong.getUnversityName());
+			hp.put("unversityId", zong.getUnversityId());
+			hp.put("openid", zong.getOpenid());
+		    hp.put("shouyiTime", yue.getStartEarningTime());//收益时间
+			hp.put("yueshouyi", yue.getNumber());//月收益
+			hp.put("changjianTime", zong.getCreatetime());//创建时间
+			hp.put("zongshouyi", zong.getNumber());//总收益
+		list.add(hp);
 	}
-	for (int i = 0; i < zong.size(); i++) {
-		for (int j2 = 0; j2 < ri.size(); j2++) {
-			if(zong.get(i).getUnversityId().equals(ri.get(j2).getUnversityId())){
-				zong.get(i).setRishouyi(ri.get(j2).getPrice());
-			}
-		}
-	}
-	return this.toJSONString(zong);
+	return this.toJSONString(list);
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
 	return this.toJSONString("error","错误");
-	}*/
+	}
+
 }

@@ -2,26 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.kanmars.dao.TblEarningsGatherMapper">
     <resultMap id="BaseResultMap" type="cn.kanmars.entity.TblEarningsGather">
-        <constructor>
-            <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="ernings_month" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="unversity_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="number" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="unversity_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="area_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="area_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="createtime" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="earning_type" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="start_earning_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="location_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-
-        </constructor>
+            <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="ernings_month" property="erningsMonth" jdbcType="VARCHAR" />
+    <result column="unversity_id" property="unversityId" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="unversity_name" property="unversityName" jdbcType="VARCHAR" />
+    <result column="area_name" property="areaName" jdbcType="VARCHAR" />
+    <result column="area_id" property="areaId" jdbcType="VARCHAR" />
+    <result column="earning_type" property="earningType" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="start_earning_time" property="startEarningTime" jdbcType="VARCHAR" />
+    <result column="location_time" property="locationTime" jdbcType="VARCHAR" />
     </resultMap>
     <sql id="Base_Column_List">
         id,ernings_month,unversity_id,number,openid,unversity_name,area_name,area_id,createtime,create_user,earning_type,start_earning_time,location_time
     </sql>
+     <select id="shouyimingxiyue" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"/>
+       from tbl_earnings_gather
+       where unversity_id = #{unversityId} 
+       and ernings_month =#{stringAllDate}
+       and earning_type = '010'
+    </select>
+    
+    <select id="shouyimingxizong" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select 
+    <include refid="Base_Column_List"/>
+       from tbl_earnings_gather
+        where unversity_id = #{unversityId} 
+         and earning_type = '020' 
+    </select> 
     
     <select id="select" parameterType="cn.kanmars.entity.TblEarningsGather" resultMap="BaseResultMap">
         select

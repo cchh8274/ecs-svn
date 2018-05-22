@@ -11,6 +11,7 @@ import com.ycb.service.EarningsGatherService;
 
 import cn.kanmars.dao.TblEarningsGatherMapper;
 import cn.kanmars.entity.TblEarningsGather;
+import cn.kanmars.entity.TblEarningsInfo;
 
 @Service
 public class EarningsGatherServiceImpl implements EarningsGatherService{
@@ -50,6 +51,17 @@ public class EarningsGatherServiceImpl implements EarningsGatherService{
 	@Override
 	public void delEarningsGather(String ids) {
 		tblEarningsGatherMapper.delEarningsGather(ids);
+	}
+
+	@Override
+	public TblEarningsGather shouyimingxiyue(String unversityId, String stringAllDate) {
+		
+		return tblEarningsGatherMapper.shouyimingxiyue(unversityId,stringAllDate);
+	}
+
+	@Override
+	public TblEarningsGather shouyimingxizong(String unversityId) {
+		return tblEarningsGatherMapper.shouyimingxizong(unversityId);
 	}
 
 
