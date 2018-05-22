@@ -2,26 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.kanmars.dao.TblEarningsInfoMapper">
     <resultMap id="BaseResultMap" type="cn.kanmars.entity.TblEarningsInfo">
-        <constructor>
-            <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="wx_user_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="maniche_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="unversity_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="unversity_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="maniche_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="price" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="coffee_number" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="tolal_money" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="earing_month" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="earning_start_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="is_eaning_status" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="earning_send_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="update_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="update_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </constructor>
+            <result column="id" property="id"></result>
+            <result column="openid" property="openid"></result>
+            <result column="wx_user_name" property="wxUserName"></result>
+            <result column="maniche_id" property="manicheId"></result>
+            <result column="unversity_name" property="unversityName"></result>
+            <result column="unversity_id" property="unversityId"></result>
+            <result column="maniche_name" property="manicheName"></result>
+            <result column="price" property="price"></result>
+            <result column="coffee_number" property="coffeeNumber"></result>
+            <result column="tolal_money" property="tolalMoney"></result>
+            <result column="earing_month" property="earingMonth"></result>
+            <result column="earning_start_time" property="earningStartTime"></result>
+            <result column="is_eaning_status" property="isEaningStatus"></result>
+            <result column="earning_send_time" property="earningSendTime"></result>
+            <result column="create_time" property="createTime"></result>
+            <result column="create_user" property="createUser"></result>
+            <result column="update_time" property="updateTime"></result>
+            <result column="update_user" property="updateUser"></result>
     </resultMap>
     <resultMap type="cn.kanmars.entity.TblEarningsInfo" id="mingxi">
        <result column="unversity_name" property="unversityName"></result>
