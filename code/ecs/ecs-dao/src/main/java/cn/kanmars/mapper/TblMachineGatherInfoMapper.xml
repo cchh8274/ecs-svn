@@ -23,6 +23,13 @@
     <sql id="Base_Column_List">
         id,openid,wx_user_name,area_id,are_id,unversity_name,unversity_id,price,number,pay_time,create_time,create_user,update_time,update_user
     </sql>
+    <!--判断有没有咖啡机  -->
+    <select id="selemachineGatherInfKFJ" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from   tbl_machine_gather_info
+    where openid = #{openid} limit 1
+    </select>
     <!--zjj 分页查询  -->
     	<select id="queryMachineGatherInfo" resultMap="BaseResultMap">
     		select 

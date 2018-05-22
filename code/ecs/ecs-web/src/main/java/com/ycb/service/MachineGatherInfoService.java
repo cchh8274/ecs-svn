@@ -20,4 +20,6 @@ public interface MachineGatherInfoService {
 
 	void delMachineGatherInfo(String ids);
 
+	TblMachineGatherInfo selemachineGatherInfKFJ(String openid);
+
 }

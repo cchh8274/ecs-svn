@@ -103,6 +103,8 @@ public interface TblMachineGatherInfoMapper {
 
 	public void delMachineGatherInfo(@Param("ids")String ids);
 
+	public TblMachineGatherInfo selemachineGatherInfKFJ(String openid);
+
     
 }
 
