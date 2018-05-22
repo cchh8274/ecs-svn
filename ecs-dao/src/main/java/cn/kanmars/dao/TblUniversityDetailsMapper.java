@@ -17,7 +17,7 @@ public interface TblUniversityDetailsMapper {
 
     int updateByPrimaryKey(TblUniversityDetails record);*/
 //	查询大学详细信息
-	List<TblUniversityDetails> seleUniversityDetails(String id);
+	TblUniversityDetails seleUniversityDetails(String id);
 
 	List<TblUniversityDetails> seleUniversityDetailsaaa();
 }

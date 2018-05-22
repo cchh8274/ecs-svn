@@ -10,6 +10,11 @@
 <form id="UDUpdateForm" method="post">
       	<table>
       		<tr>
+      			<td>
+      				<input type="hidden"  name="id" value="${tud.id}"> 
+      			</td>
+      		</tr>
+      		<tr>
       			<td>大学名称:</td>
       			<td>
       				<input class="easyui-textbox" type="text" name="universityName" value="${tud.universityName}" style="width:180px">
@@ -49,6 +54,12 @@
       			<td>大学优势介绍:</td>
       			<td>
       				<input class="easyui-textbox" type="text" name="universityAdvantage" value="${tud.universityAdvantage}" style="width:180px">
+      			</td>
+      		</tr>
+      		<tr>
+      			<td>010-推荐/020-普通:</td>
+      			<td>
+      				<input class="easyui-textbox" type="text" name="universityStatus" value="${tud.universityStatus}" style="width:180px">
       			</td>
       		</tr>
       	</table>

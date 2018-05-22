@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.kanmars.dao.TblUniversityInfoMapper">
-    <resultMap id="BaseResultMap" type="cn.kanmars.entity.TblUniversityInfo">
-        <constructor>
-            <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="univer_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="area_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="area_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="aurlb" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="up_time" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="up_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="code" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="sy_me" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="zme" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="myyjsr" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="rzstase" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="lawz" javaType="java.lang.String" jdbcType="VARCHAR" />
-            
-        </constructor>
+    <resultMap type="cn.kanmars.entity.TblUniversityInfo" id="BaseResultMap">
+        <result column="id" property="id"></result>
+        <result column="univer_name" property="univerName"></result>
+        <result column="area_name" property="areaName"></result>
+        <result column="area_id" property="areaId"></result>
+        <result column="aurlb" property="aurlb"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="create_user" property="createUser"></result>
+        <result column="up_time" property="upTime"></result>
+        <result column="up_user" property="upUser"></result>
+        <result column="code" property="code"></result>
+        <result column="sy_me" property="sy_me"></result>
+        <result column="zme" property="zme"></result>
+        <result column="myyjsr" property="myyjsr"></result>
+        <result column="rzstase" property="rzstase"></result>
+        <result column="lawz" property="lawz"></result>
+        <result column="unrmd" property="unrmd"></result>
     </resultMap>
-      <resultMap type="cn.kanmars.entity.TblUniversityInfo" id="daxue">
+    
+    <resultMap type="cn.kanmars.entity.TblUniversityInfo" id="daxue">
        <result column="id" property="id"></result>
        <result column="univer_name" property="univerName"></result>
        <result column="area_name" property="areaName"></result>
@@ -33,7 +32,8 @@
        <result column="rzstase" property="rzstase"></result>
        <result column="aurlb" property="aurlb"></result>
        <result column="lawz" property="lawz"></result>
-     </resultMap>
+       <result column="unrmd" property="unrmd"></result>
+    </resultMap>
      
       <resultMap type="cn.kanmars.entity.TblUniversityDetails" id="detail">
        <result column="id" property="id"></result>
@@ -44,13 +44,14 @@
        <result column="university_people" property="universityPeople"></result>
        <result column="university_probability" property="universityProbability"></result>
        <result column="university_advantage" property="universityAdvantage"></result>
+       <result column="university_status" property="universityStatus"></result>
      </resultMap>
     <sql id="Base_Column_List">
         id,univer_name,area_name,area_id,aurlb,create_time,create_user,up_time,up_user,
-        code,sy_me,zme,myyjsr,rzstase,lawz
+        code,sy_me,zme,myyjsr,rzstase,lawz,unrmd
     </sql>
     <sql id="Base_Column_Lister">
-        univer_name,area_name,area_id,code,sy_me,zme,myyjsr,rzstase,aurlb,lawz
+        univer_name,area_name,area_id,code,sy_me,zme,myyjsr,rzstase,aurlb,lawz,unrmd
     </sql>
     <!-- 写死的大学学附近的 -->
     <select id="fuJinuniversityDetails" parameterType="java.lang.String" resultMap="daxue">
@@ -73,7 +74,7 @@
     <!--zjj  -->
     <select id="queryTiaoSu"  resultMap="BaseResultMap">
      SELECT
-           *
+           <include refid="Base_Column_List" />
         from tbl_university_info
     </select>
     <!-- zjj 分页查询 -->
@@ -709,7 +710,7 @@
     
     <insert id="insetUniversitDetails"  parameterType="java.util.List">
         insert into tbl_university_details values 
-        (#{id},#{universityName},#{universityId},#{headimg},#{universityGrade},#{universityPeople},#{universityProbability},#{universityAdvantage})
+        (#{id},#{universityName},#{universityId},#{headimg},#{universityGrade},#{universityPeople},#{universityProbability},#{universityAdvantage},#{universityStatus})
     </insert>
       
      <select id="upQueryUniversitDetails" resultMap="detail">
@@ -717,7 +718,7 @@
      </select>
 
    <update id="updUniversitDetails">
-		update tbl_university_details set id = #{id},university_name = #{universityName},university_id = #{universityId},headimg = #{headimg},university_grade = #{universityGrade},university_people = #{universityPeople},university_probability = #{universityProbability},university_advantage = #{universityAdvantage}
+		update tbl_university_details set id = #{id},university_name = #{universityName},university_id = #{universityId},headimg = #{headimg},university_grade = #{universityGrade},university_people = #{universityPeople},university_probability = #{universityProbability},university_advantage = #{universityAdvantage},university_status = #{universityStatus}
 		where id=#{id}
    </update>
 
