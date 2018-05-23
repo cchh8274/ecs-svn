@@ -51,7 +51,7 @@ public class DateUtils {
      * @return返回字符串格式 yyyy-MM-dd HH:mm:ss 
      */  
     public static String getStringDate() {  
-     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");  
      String dateString = formatter.format(new Date());  
      return dateString;  
     }  

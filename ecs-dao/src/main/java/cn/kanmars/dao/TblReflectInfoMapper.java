@@ -92,6 +92,8 @@ public interface TblReflectInfoMapper {
 
 	public List<TblReflectInfo> seleBringOutTheDetails(String openid);
 
+	public void addBankamountInfo(TblReflectInfo rf);
+
     
 }
 

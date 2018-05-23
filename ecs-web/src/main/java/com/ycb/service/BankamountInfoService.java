@@ -28,5 +28,7 @@ public interface BankamountInfoService {
 	void updateUserToPwd(String forwardPwd, String id);
 //	判断用户是否已经添加过该银行的银行卡
 	TblBankamountInfo judgeBankamountInfo(String openid, String bankName);
+//判断密码是不是正确
+	TblBankamountInfo putforwardJudgePwd(String openid, String bankAmountNo);
 
 }
