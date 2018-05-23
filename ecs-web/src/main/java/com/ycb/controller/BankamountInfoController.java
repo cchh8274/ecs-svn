@@ -94,33 +94,7 @@ public class BankamountInfoController extends BaseController {
 			}
 			return this.toJSONString("error","该用户没有银行卡");
 	}
-	/**
-	 * 判断用户是否已经添加过该银行的银行卡
-	 */
-	/*@RequestMapping(value="judgeBankamountInfo",produces="text/html; charset=UTF-8")
-	@ResponseBody
-	public String judgeBankamountInfo(String jsonStr) throws Exception{
-		HashMap<String, String> hmp = new HashMap<String, String>();
-		try {
-			JSONObject json = JSON.parseObject(jsonStr);
-			String openid = json.getString("openid");
-			String bankName = json.getString("bankName");
-			
-			//String openid = jsonStr;
-			//String bankName = "中信银行储蓄卡";
-			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
-		if(bkif==null){
-			hmp.put("success", "该银行卡没有添加过可以添加");
-			return this.toJSONString(hmp);
-		}
-		hmp.put("success", "该银行卡已经添加过不能添加");
-		return this.toJSONString(hmp);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return this.toErroJSONString("参数错误");
-	}*/
-   	 	//判断数据不为空
+
 	/**
 	 * 添加银行卡信息
 	 */
