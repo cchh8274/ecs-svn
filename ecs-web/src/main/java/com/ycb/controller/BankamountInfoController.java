@@ -96,7 +96,8 @@ public class BankamountInfoController extends BaseController {
 			if(bmt!=null){
 				return this.toJSONString(bmt);
 			}
-			return this.toJSONString("error","该用户没有银行卡");
+			hmp.put("success", "该用户没有银行卡");
+			return this.toJSONString(hmp);
 	}
 	/**
 	 * 判断用户是否已经添加过该银行的银行卡
@@ -151,7 +152,8 @@ public class BankamountInfoController extends BaseController {
 			 // 根据银行卡号查询该银行卡是不是已经添加
 			String zh = bankamountInfoService.seleBankamountInfo(bankAmountNo);
 			if(zh !=null){
-				return "该银行卡绑定";
+				hmp.put("success", "该银行卡绑定");
+				return toJSONString(hmp);
 			}
 			SimpleDateFormat formata = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			HashMap<String, String> hmap = new HashMap<String,String>();
@@ -179,7 +181,8 @@ public class BankamountInfoController extends BaseController {
 				return this.toJSONString("error","没有登录请登录");
 			}*/
 			//List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);*/		
-		return "成功";
+			hmp.put("success", "添加成功");
+			return this.toJSONString(hmp);
 	}
 	/*
 	 * 体现更换银行卡
@@ -197,7 +200,7 @@ public class BankamountInfoController extends BaseController {
         	 TblBankamountInfo bmt = bankamountInfoService.dangeBankamountInfo(bankAmountNo);
         	 return this.toJSONString(bmt);
         }
-		return this.toJSONString("error","最少传一个参数");
+ 		return this.toErroJSONString("最少传一个参数");
 	}
 	/*
 	 * 查看有无密码
@@ -219,7 +222,7 @@ public class BankamountInfoController extends BaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.toJSONString("error","最少传一个参数");
+		return this.toErroJSONString("最少传一个参数");
 	}
 	/**
 	 * 添加密码
