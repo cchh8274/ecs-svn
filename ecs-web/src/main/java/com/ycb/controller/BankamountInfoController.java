@@ -141,7 +141,8 @@ public class BankamountInfoController extends BaseController {
 				return this.toJSONString("error","没有登录请登录");
 			}*/
 			//List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);*/		
-		return "成功";
+			hmp.put("success", "成功");
+			return this.toJSONString(hmp);
 	}
 	/*
 	 * 体现更换银行卡
