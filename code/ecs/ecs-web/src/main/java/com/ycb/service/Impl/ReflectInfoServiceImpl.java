@@ -37,4 +37,10 @@ public class ReflectInfoServiceImpl implements ReflectInfoService{
 		
 		return tblReflectInfoMapper.seleBringOutTheDetails(openid);
 	}
+	//添加提现记录
+	@Override
+	public void addBankamountInfo(TblReflectInfo rf) {
+		
+		tblReflectInfoMapper.addBankamountInfo(rf);
+	}
 }
