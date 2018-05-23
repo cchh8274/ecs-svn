@@ -16,6 +16,7 @@
         <result column="update_time" property="updateTime"></result>
         <result column="update_user" property="updateUser"></result>
         <result column="forward_pwd" property="forwardPwd"></result>
+        <result column="cart_img" property="cartImg"></result>
     </resultMap >
     <resultMap  id="yhk" type="cn.kanmars.entity.TblBankamountInfo">
        <result property="bankAmountNo" column="bank_amount_no" javaType="string" jdbcType="VARCHAR"/>  
@@ -26,7 +27,7 @@
        <result property="updateUser" column="update_user" javaType="string" jdbcType="VARCHAR"/>  
     </resultMap>
     <sql id="Base_Column_List">
-        id,user_name,idcard,phone,wx_name,openid,bank_amount_no,bank_name,bank_adress,create_time,create_user,update_time,update_user,forward_pwd
+        id,user_name,idcard,phone,wx_name,openid,bank_amount_no,bank_name,bank_adress,create_time,create_user,update_time,update_user,forward_pwd,cart_img
     </sql>
     <sql id="Base_Column_Listaa">
      bank_amount_no,bank_name,user_name,openid,update_user
@@ -121,6 +122,9 @@
             <if test="updateUser != null ">
                 update_user,
             </if>
+            <if test="cartImg != null ">
+                cart_img,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null ">
@@ -161,6 +165,9 @@
             </if>
             <if test="updateUser != null ">
                 #{updateUser,jdbcType=VARCHAR},
+            </if>
+             <if test="cartImg != null ">
+              #{cartImg,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>

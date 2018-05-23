@@ -92,6 +92,12 @@ public class TblBankamountInfo implements java.io.Serializable{
      * tbl_bankamount_info.forward_pwd
      */
     private String forwardPwd;
+    
+    /**
+     * 银行卡图片
+     * tbl_bankamount_info.cart_img
+     */
+    private String cartImg;
 
     /**
      * 自定义列，分页查询用
@@ -194,13 +200,20 @@ public class TblBankamountInfo implements java.io.Serializable{
 	public void setForwardPwd(String forwardPwd) {
 		this.forwardPwd = forwardPwd;
 	}
+	public String getCartImg() {
+		return cartImg;
+	}
+	public void setCartImg(String cartImg) {
+		this.cartImg = cartImg;
+	}
 	public TblBankamountInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public TblBankamountInfo(String id, String userName, String idcard, String phone, String wxName, String openid,
 			String bankAmountNo, String bankName, String bankAdress, String createTime, String createUser,
-			String updateTime, String updateUser, String forwardPwd, Integer limitStart, Integer limitSize) {
+			String updateTime, String updateUser, String forwardPwd, String cartImg, Integer limitStart,
+			Integer limitSize) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -216,6 +229,7 @@ public class TblBankamountInfo implements java.io.Serializable{
 		this.updateTime = updateTime;
 		this.updateUser = updateUser;
 		this.forwardPwd = forwardPwd;
+		this.cartImg = cartImg;
 		this.limitStart = limitStart;
 		this.limitSize = limitSize;
 	}
@@ -225,7 +239,7 @@ public class TblBankamountInfo implements java.io.Serializable{
 				+ ", wxName=" + wxName + ", openid=" + openid + ", bankAmountNo=" + bankAmountNo + ", bankName="
 				+ bankName + ", bankAdress=" + bankAdress + ", createTime=" + createTime + ", createUser=" + createUser
 				+ ", updateTime=" + updateTime + ", updateUser=" + updateUser + ", forwardPwd=" + forwardPwd
-				+ ", limitStart=" + limitStart + ", limitSize=" + limitSize + "]";
+				+ ", cartImg=" + cartImg + ", limitStart=" + limitStart + ", limitSize=" + limitSize + "]";
 	}
 	
 }

@@ -26,7 +26,7 @@
     <!-- 收益明细 -->
     <select id="seleBringOutTheDetails" parameterType="java.lang.String" resultMap="BaseResultMap">
     	select
-		<include refid="Base_Column_List"/>
+		univer_name,univer_id,reflect_money,col1
         from tbl_reflect_info
         where openid =#{openid}
        

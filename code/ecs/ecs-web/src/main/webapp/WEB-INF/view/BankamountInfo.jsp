@@ -66,7 +66,8 @@
 	        {field:'createTime',title:'创建时间',width:100}, 
 	        {field:'createUser',title:'创建人',width:100},   
 	        {field:'updateTime',title:' 修改时间',width:100},   
-	        {field:'updateUser',title:' 修改人',width:100},   
+	        {field:'updateUser',title:' 修改人',width:100},
+	        {field:'cartImg',title:' 银行卡图片',width:100},
 	    ]]    
 	})
   }
