@@ -111,7 +111,7 @@ public class BankamountInfoController extends BaseController {
 			String idcard = json.getString("card");//用户身份证
 			String phone = json.getString("phone");//手机号
 			String bankAmountNo = json.getString("bankno");//银行账户号
-			String bankName = json.getString("chose");//银行账户
+			String bankName = json.getString("bankname");//银行账户
 			String openid = json.getString("openid");
 			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
 			if(bkif!=null){
