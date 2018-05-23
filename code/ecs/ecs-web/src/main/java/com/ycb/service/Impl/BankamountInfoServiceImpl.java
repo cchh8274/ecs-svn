@@ -83,4 +83,10 @@ public class BankamountInfoServiceImpl implements BankamountInfoService{
 		
 		return tblBankamountInfoMapper.judgeBankamountInfo(openid,bankName);
 	}
+
+	@Override
+	public TblBankamountInfo putforwardJudgePwd(String openid, String bankAmountNo) {
+		
+		return tblBankamountInfoMapper.putforwardJudgePwd(openid,bankAmountNo);
+	}
 }

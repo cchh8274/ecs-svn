@@ -23,7 +23,18 @@
     <sql id="Base_Column_List">
         id,trans_no,openid,wx_user,reflect_user,bank_card,bank_name,reflect_money,is_account,is_freeze,account_time,create_time,create_user,univer_name,univer_id,col1,col2
     </sql>
-    <!-- 收益明细 -->
+    <!-- 添加体系那记录  addBankamountInfo-->
+     <insert id="addBankamountInfo" parameterType="cn.kanmars.entity.TblReflectInfo" >
+     insert into tbl_reflect_info (
+     id, trans_no, openid, 
+     bank_card, bank_name, reflect_money,
+      is_freeze,col1)
+      values (#{id,jdbcType=VARCHAR}, #{transNo,jdbcType=VARCHAR},  
+      #{openid,jdbcType=VARCHAR},  #{bankCard,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{reflectMoney,jdbcType=VARCHAR},
+      #{isFreeze,jdbcType=VARCHAR}, #{col1,jdbcType=VARCHAR})
+  </insert>
+    <!-- 提现明细 -->
     <select id="seleBringOutTheDetails" parameterType="java.lang.String" resultMap="BaseResultMap">
     	select
 		univer_name,univer_id,reflect_money,col1

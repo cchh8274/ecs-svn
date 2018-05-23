@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.datetime.joda.MillisecondInstantPrinter;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +20,13 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.base.BaseController;
 import com.ycb.service.BankamountInfoService;
+import com.ycb.service.ReflectInfoService;
+import com.ycb.util.DateUtils;
 import com.ycb.util.MD5Encryption;
 
 import cn.kanmars.entity.IDGeneratorTools;
 import cn.kanmars.entity.TblBankamountInfo;
-import cn.kanmars.entity.TblLogin;
+import cn.kanmars.entity.TblReflectInfo;
 
 /**
  * 赵浩
@@ -38,6 +39,9 @@ public class BankamountInfoController extends BaseController {
 
 	@Autowired
 	private BankamountInfoService bankamountInfoService;
+	//提现记录
+	@Autowired
+	private ReflectInfoService reflectInfoService;
 	/*
 	 *银行账户表
 	 */
@@ -94,7 +98,33 @@ public class BankamountInfoController extends BaseController {
 			}
 			return this.toJSONString("error","该用户没有银行卡");
 	}
-
+	/**
+	 * 判断用户是否已经添加过该银行的银行卡
+	 */
+	/*@RequestMapping(value="judgeBankamountInfo",produces="text/html; charset=UTF-8")
+	@ResponseBody
+	public String judgeBankamountInfo(String jsonStr) throws Exception{
+		HashMap<String, String> hmp = new HashMap<String, String>();
+		try {
+			//JSONObject json = JSON.parseObject(jsonStr);
+//			String openid = json.getString("openid");
+//			String bankName = json.getString("bankName");
+			
+			String openid = jsonStr;
+			String bankName = "中信银行储蓄卡";
+			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
+		if(bkif==null){
+			hmp.put("success", "该银行卡没有添加过可以添加");
+			return this.toJSONString(hmp);
+		}
+		hmp.put("success", "该银行卡已经添加过不能添加");
+		return this.toJSONString(hmp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return this.toErroJSONString("参数错误");
+	}*/
+   	 	//判断数据不为空
 	/**
 	 * 添加银行卡信息
 	 */
@@ -111,7 +141,7 @@ public class BankamountInfoController extends BaseController {
 			String idcard = json.getString("card");//用户身份证
 			String phone = json.getString("phone");//手机号
 			String bankAmountNo = json.getString("bankno");//银行账户号
-			String bankName = json.getString("bankname");//银行账户
+			String bankName = json.getString("chose");//银行账户
 			String openid = json.getString("openid");
 			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
 			if(bkif!=null){
@@ -119,10 +149,10 @@ public class BankamountInfoController extends BaseController {
 				return this.toJSONString(hmp);
 			}
 			 // 根据银行卡号查询该银行卡是不是已经添加
-			/*String zh = bankamountInfoService.seleBankamountInfo(bankAmountNo);
+			String zh = bankamountInfoService.seleBankamountInfo(bankAmountNo);
 			if(zh !=null){
 				return "该银行卡绑定";
-			}*/
+			}
 			SimpleDateFormat formata = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			HashMap<String, String> hmap = new HashMap<String,String>();
 			hmap.put("id", IDGeneratorTools.createId());
@@ -132,6 +162,14 @@ public class BankamountInfoController extends BaseController {
 			hmap.put("bankAmountNo", bankAmountNo);
 			hmap.put("bankName", bankName);
 			hmap.put("openid", openid);
+			if("中国招商银行储蓄卡".equals(bankName)){
+		     hmap.put("cartImg", "static/img/bank4.png");
+			}else if("中国工商银行储蓄卡".equals(bankName)){
+		     hmap.put("cartImg", "static/img/bank1.png");
+			}else if("中国建设银行储蓄卡".equals(bankName)){
+			hmap.put("cartImg", "static/img/bank2.png");
+			}
+			hmap.put("cartImg", "static/img/bank3.png");
 			String createTime = formata.format(new Date()).toString();
 			hmap.put("createTime", createTime);
 			bankamountInfoService.addBankamountInfo(hmap);   
@@ -141,8 +179,7 @@ public class BankamountInfoController extends BaseController {
 				return this.toJSONString("error","没有登录请登录");
 			}*/
 			//List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);*/		
-			hmp.put("success", "成功");
-			return this.toJSONString(hmp);
+		return "成功";
 	}
 	/*
 	 * 体现更换银行卡
@@ -175,14 +212,14 @@ public class BankamountInfoController extends BaseController {
 			TblBankamountInfo bmi= bankamountInfoService.panduPwd(openid);
 			if(bmi.getForwardPwd() ==null){
 				hmap.put("success", "该用户没有密码");
-				return this.toJSONString(hmap);
+				this.toJSONString(hmap);
 			}
 			hmap.put("success", "已经有密码请输入密码");
-			return this.toJSONString(hmap);
+			this.toJSONString(hmap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.toErroJSONString("最少传一个参数");
+		return this.toJSONString("error","最少传一个参数");
 	}
 	/**
 	 * 添加密码
@@ -195,18 +232,18 @@ public class BankamountInfoController extends BaseController {
 	public String addToPwd(String jsonStr) throws Exception{
 		HashMap<String, String> hmap = new HashMap<String, String>();
 		try {
-			//String openid = jsonStr;
-			//String forwardPwda = jsonStr;
-		     JSONObject json = JSON.parseObject(jsonStr);
-			String openid = json.getString("openid");
+			String openid = jsonStr;
+			String forwardPwda = "12346";
+//		     JSONObject json = JSON.parseObject(jsonStr);
+//			String openid = json.getString("openid");
 			List<TblBankamountInfo> bki = bankamountInfoService.seleUserPwd(openid);
-			String forwardPwda = json.getString("forwardPwd");
+		//	String forwardPwda = json.getString("forwardPwd");
 			for (TblBankamountInfo tblBankamountInfo : bki) {
 				String id = tblBankamountInfo.getId();
 				String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
 				bankamountInfoService.updateUserToPwd(forwardPwd,id);
 			}
-			hmap.put("success","添加密码成功");
+			hmap.put("seccess","添加密码成功");
 			return	this.toJSONString(hmap);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -223,9 +260,46 @@ public class BankamountInfoController extends BaseController {
 	@RequestMapping(value="putforwardJudgePwd",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String putforwardJudgePwd(String jsonStr) throws Exception{
-		
+		try {
+			/*String transNo = jsonStr;
+			String bankAmountNo = "6214830187854905";
+			String forwardPwda = "12346";
+			String bankName = jsonStr;
+			String reflectMoney =jsonStr;
+			String openid = jsonStr;*/
+
+			JSONObject json = JSON.parseObject(jsonStr);
+			String transNo = json.getString("transNo");//流水号
+			String openid = json.getString("openid");//openid
+			String bankAmountNo = json.getString("bankAmountNo");//卡号
+			String forwardPwda = json.getString("forwardPwd");//密码
+			String bankName = json.getString("bankName");//那所银行
+			String reflectMoney = json.getString("reflectMoney");//提现金额
+			//String isFreeze = json.getString("isFreeze");//是否冻结
+			String col1 = json.getString("col1");//提现时间
+			String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
+			TblBankamountInfo bkif = bankamountInfoService.putforwardJudgePwd(openid,bankAmountNo);
+			if(forwardPwd.equals(bkif.getForwardPwd())){
+				TblReflectInfo rf = new  TblReflectInfo();
+				rf.setId(IDGeneratorTools.createId());
+				rf.setTransNo(IDGeneratorTools.createId());
+				rf.setOpenid(openid);
+				rf.setBankCard(bankAmountNo);
+				rf.setBankName(bankName);
+				rf.setReflectMoney(reflectMoney);
+				rf.setIsFreeze("1");
+				rf.setCol1(DateUtils.getStringDate());
+				//添加提现记录
+				reflectInfoService.addBankamountInfo(rf);
+			}else{
+				return this.toErroJSONString("密码错误");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return this.toErroJSONString("请输入正确的信息");
 	}
 	
 	
 }
+
