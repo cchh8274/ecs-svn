@@ -102,12 +102,12 @@ public class BankamountInfoController extends BaseController {
 	public String judgeBankamountInfo(String jsonStr) throws Exception{
 		HashMap<String, String> hmp = new HashMap<String, String>();
 		try {
-			//JSONObject json = JSON.parseObject(jsonStr);
-//			String openid = json.getString("openid");
-//			String bankName = json.getString("bankName");
+			JSONObject json = JSON.parseObject(jsonStr);
+			String openid = json.getString("openid");
+			String bankName = json.getString("bankName");
 			
-			String openid = jsonStr;
-			String bankName = "中信银行储蓄卡";
+			//String openid = jsonStr;
+			//String bankName = "中信银行储蓄卡";
 			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
 		if(bkif==null){
 			hmp.put("success", "该银行卡没有添加过可以添加");
@@ -145,10 +145,10 @@ public class BankamountInfoController extends BaseController {
 				return this.toJSONString(hmp);
 			}
 			 // 根据银行卡号查询该银行卡是不是已经添加
-			String zh = bankamountInfoService.seleBankamountInfo(bankAmountNo);
+			/*String zh = bankamountInfoService.seleBankamountInfo(bankAmountNo);
 			if(zh !=null){
 				return "该银行卡绑定";
-			}
+			}*/
 			SimpleDateFormat formata = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			HashMap<String, String> hmap = new HashMap<String,String>();
 			hmap.put("id", IDGeneratorTools.createId());
