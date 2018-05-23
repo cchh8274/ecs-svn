@@ -5,9 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -99,33 +97,7 @@ public class BankamountInfoController extends BaseController {
 			hmp.put("success", "该用户没有银行卡");
 			return this.toJSONString(hmp);
 	}
-	/**
-	 * 判断用户是否已经添加过该银行的银行卡
-	 */
-	/*@RequestMapping(value="judgeBankamountInfo",produces="text/html; charset=UTF-8")
-	@ResponseBody
-	public String judgeBankamountInfo(String jsonStr) throws Exception{
-		HashMap<String, String> hmp = new HashMap<String, String>();
-		try {
-			//JSONObject json = JSON.parseObject(jsonStr);
-//			String openid = json.getString("openid");
-//			String bankName = json.getString("bankName");
-			
-			String openid = jsonStr;
-			String bankName = "中信银行储蓄卡";
-			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
-		if(bkif==null){
-			hmp.put("success", "该银行卡没有添加过可以添加");
-			return this.toJSONString(hmp);
-		}
-		hmp.put("success", "该银行卡已经添加过不能添加");
-		return this.toJSONString(hmp);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return this.toErroJSONString("参数错误");
-	}*/
-   	 	//判断数据不为空
+	
 	/**
 	 * 添加银行卡信息
 	 */
@@ -175,12 +147,6 @@ public class BankamountInfoController extends BaseController {
 			String createTime = formata.format(new Date()).toString();
 			hmap.put("createTime", createTime);
 			bankamountInfoService.addBankamountInfo(hmap);   
-			// 测试没有登录用的时候放开回去session
-	      /* TblLogin log = (TblLogin) request.getSession().getAttribute("user");
-			if(log == null){
-				return this.toJSONString("error","没有登录请登录");
-			}*/
-			//List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);*/		
 			hmp.put("success", "添加成功");
 			return this.toJSONString(hmp);
 	}
@@ -272,14 +238,11 @@ public class BankamountInfoController extends BaseController {
 			String openid = jsonStr;*/
 
 			JSONObject json = JSON.parseObject(jsonStr);
-			String transNo = json.getString("transNo");//流水号
 			String openid = json.getString("openid");//openid
 			String bankAmountNo = json.getString("bankAmountNo");//卡号
 			String forwardPwda = json.getString("forwardPwd");//密码
 			String bankName = json.getString("bankName");//那所银行
 			String reflectMoney = json.getString("reflectMoney");//提现金额
-			//String isFreeze = json.getString("isFreeze");//是否冻结
-			String col1 = json.getString("col1");//提现时间
 			String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
 			TblBankamountInfo bkif = bankamountInfoService.putforwardJudgePwd(openid,bankAmountNo);
 			if(forwardPwd.equals(bkif.getForwardPwd())){
