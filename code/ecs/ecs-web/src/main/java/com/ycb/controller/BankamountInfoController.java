@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.joda.MillisecondInstantPrinter;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.base.BaseController;
 import com.ycb.service.BankamountInfoService;
+import com.ycb.util.MD5Encryption;
 
 import cn.kanmars.entity.IDGeneratorTools;
 import cn.kanmars.entity.TblBankamountInfo;
@@ -71,13 +73,19 @@ public class BankamountInfoController extends BaseController {
 	@RequestMapping(value="huixianBankamountInfo",produces="text/html; charset=UTF-8")
     @ResponseBody
     public String huixianBankamountInfo(String jsonStr) throws Exception{
-		
+		HashMap<String, String> hmp = new HashMap<String, String>();
    	 	//判断数据不为空
 		if(StringUtils.isEmpty(jsonStr)){
-			return this.toJSONString("error","数据不能为空");
+			return this.toErroJSONString("数据不能为空");
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");//银行账户
+		   //判断改用有几张银行卡
+		   List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
+		   	if(yhk.size()>=4){
+		   		hmp.put("success", "您已经有4张银行卡");
+		   		return this.toJSONString(hmp);
+		   	}
 			//回显银行卡			
 			TblBankamountInfo bmt = bankamountInfoService.dangeBankamountInfohui(openid);
 			if(bmt!=null){
@@ -85,6 +93,33 @@ public class BankamountInfoController extends BaseController {
 			}
 			return this.toJSONString("error","该用户没有银行卡");
 	}
+	/**
+	 * 判断用户是否已经添加过该银行的银行卡
+	 */
+	@RequestMapping(value="judgeBankamountInfo",produces="text/html; charset=UTF-8")
+	@ResponseBody
+	public String judgeBankamountInfo(String jsonStr) throws Exception{
+		HashMap<String, String> hmp = new HashMap<String, String>();
+		try {
+			//JSONObject json = JSON.parseObject(jsonStr);
+//			String openid = json.getString("openid");
+//			String bankName = json.getString("bankName");
+			
+			String openid = jsonStr;
+			String bankName = "中信银行储蓄卡";
+			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
+		if(bkif==null){
+			hmp.put("success", "该银行卡没有添加过可以添加");
+			return this.toJSONString(hmp);
+		}
+		hmp.put("success", "该银行卡已经添加过不能添加");
+		return this.toJSONString(hmp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return this.toErroJSONString("参数错误");
+	}
+   	 	//判断数据不为空
 	/**
 	 * 添加银行卡信息
 	 */
@@ -95,7 +130,7 @@ public class BankamountInfoController extends BaseController {
 		if(StringUtils.isEmpty(jsonStr)){
 			return this.toJSONString("error","数据不能为空");
 		}
-		     JSONObject json = JSON.parseObject(jsonStr);
+		    JSONObject json = JSON.parseObject(jsonStr);
 			String userName = json.getString("name");//用户名称
 			String idcard = json.getString("card");//用户身份证
 			String phone = json.getString("phone");//手机号
@@ -167,4 +202,35 @@ public class BankamountInfoController extends BaseController {
 		}
 		return this.toJSONString("error","最少传一个参数");
 	}
+	/**
+	 * 添加密码
+	 * @param jsonStr
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="addToPwd",produces="text/html; charset=UTF-8")
+	@ResponseBody
+	public String addToPwd(String jsonStr) throws Exception{
+		HashMap<String, String> hmap = new HashMap<String, String>();
+		try {
+			//String openid = jsonStr;
+			//String forwardPwda = jsonStr;
+		     JSONObject json = JSON.parseObject(jsonStr);
+			String openid = json.getString("openid");
+			List<TblBankamountInfo> bki = bankamountInfoService.seleUserPwd(openid);
+			String forwardPwda = json.getString("forwardPwd");
+			for (TblBankamountInfo tblBankamountInfo : bki) {
+				String id = tblBankamountInfo.getId();
+				String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
+				bankamountInfoService.updateUserToPwd(forwardPwd,id);
+			}
+			hmap.put("seccess","添加密码成功");
+			return	this.toJSONString(hmap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return this.toErroJSONString("最少传一个参数");
+	}
+	
+	
 }

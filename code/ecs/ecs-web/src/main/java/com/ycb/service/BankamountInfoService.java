@@ -23,4 +23,10 @@ public interface BankamountInfoService {
 	
 	TblBankamountInfo panduPwd(String openid);
 
+	List<TblBankamountInfo> seleUserPwd(String openid);
+
+	void updateUserToPwd(String forwardPwd, String id);
+//	判断用户是否已经添加过该银行的银行卡
+	TblBankamountInfo judgeBankamountInfo(String openid, String bankName);
+
 }

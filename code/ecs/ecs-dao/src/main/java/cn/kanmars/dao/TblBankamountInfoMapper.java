@@ -107,6 +107,12 @@ public interface TblBankamountInfoMapper {
 
 	public TblBankamountInfo panduPwd(String openid);
 
+	public List<TblBankamountInfo> seleUserPwd(String openid);
+
+	public void updateUserToPwd(@Param("forwardPwd") String forwardPwd,@Param("id") String id);
+//	判断用户是否已经添加过该银行的银行卡
+	public TblBankamountInfo judgeBankamountInfo(@Param("openid") String openid,@Param("bankName") String bankName);
+
 	
 
 }
