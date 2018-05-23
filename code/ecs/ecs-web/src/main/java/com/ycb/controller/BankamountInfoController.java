@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,18 +50,18 @@ public class BankamountInfoController extends BaseController {
 	/**
 	 * 返回所有银行卡  提现调用这个接口
 	 */
-	@RequestMapping(value="allBankcard",produces="text/html; charset=UTF-8")
+	@RequestMapping(value="allBankcard",produces="text/html; charset=UTF-8",method=RequestMethod.POST)
 	@ResponseBody
 	public String allBankcard(String jsonStr){
 		if(StringUtils.isEmpty(jsonStr)){
-			return this.toJSONString("error","用户id不能为空");
+			return this.toErroJSONString("用户id不能为空");
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 		String openid = json.getString("openid");
 		//String openid = jsonStr;
 		List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
-		if(yhk==null){
-		return this.toJSONString("error","该用户没有银行卡");
+		if(CollectionUtils.isEmpty(yhk)){
+			return this.toErroJSONString("该用户没有银行卡");
 		}
 		return this.toJSONString(yhk);
 	}
