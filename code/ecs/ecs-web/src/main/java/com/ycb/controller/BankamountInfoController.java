@@ -97,7 +97,7 @@ public class BankamountInfoController extends BaseController {
 	/**
 	 * 判断用户是否已经添加过该银行的银行卡
 	 */
-	@RequestMapping(value="judgeBankamountInfo",produces="text/html; charset=UTF-8")
+	/*@RequestMapping(value="judgeBankamountInfo",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String judgeBankamountInfo(String jsonStr) throws Exception{
 		HashMap<String, String> hmp = new HashMap<String, String>();
@@ -119,7 +119,7 @@ public class BankamountInfoController extends BaseController {
 			e.printStackTrace();
 		}
 		return this.toErroJSONString("参数错误");
-	}
+	}*/
    	 	//判断数据不为空
 	/**
 	 * 添加银行卡信息
@@ -127,7 +127,8 @@ public class BankamountInfoController extends BaseController {
 	@RequestMapping(value="addBankamountInfo",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String addBankamountInfo(String jsonStr,HttpServletRequest request) throws Exception{
-   	 	//判断数据不为空
+		HashMap<String, String> hmp = new HashMap<String, String>();
+		//判断数据不为空
 		if(StringUtils.isEmpty(jsonStr)){
 			return this.toJSONString("error","数据不能为空");
 		}
@@ -138,6 +139,11 @@ public class BankamountInfoController extends BaseController {
 			String bankAmountNo = json.getString("bankno");//银行账户号
 			String bankName = json.getString("chose");//银行账户
 			String openid = json.getString("openid");
+			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
+			if(bkif!=null){
+				hmp.put("success", "该银行卡已经添加过不能添加");
+				return this.toJSONString(hmp);
+			}
 			 // 根据银行卡号查询该银行卡是不是已经添加
 			String zh = bankamountInfoService.seleBankamountInfo(bankAmountNo);
 			if(zh !=null){
@@ -231,6 +237,19 @@ public class BankamountInfoController extends BaseController {
 			e.printStackTrace();
 		}
 		return this.toErroJSONString("最少传一个参数");
+	}
+	/**
+	 * 体现判断密码正确错误
+	 * 微信用户id
+	 * 银行卡id或者卡号
+	 * 密码
+	 */
+
+	@RequestMapping(value="putforwardJudgePwd",produces="text/html; charset=UTF-8")
+	@ResponseBody
+	public String putforwardJudgePwd(String jsonStr) throws Exception{
+		
+		return this.toErroJSONString("请输入正确的信息");
 	}
 	
 	
