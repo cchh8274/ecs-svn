@@ -80,6 +80,7 @@ public class BankamountInfoController extends BaseController {
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");//银行账户
+		//String openid = jsonStr;
 		   //判断改用有几张银行卡
 		   List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
 		   	if(yhk.size()>=4){
