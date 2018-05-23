@@ -65,4 +65,22 @@ public class BankamountInfoServiceImpl implements BankamountInfoService{
 		
 		return tblBankamountInfoMapper.panduPwd(openid);
 	}
+
+	@Override
+	public List<TblBankamountInfo> seleUserPwd(String openid) {
+		
+		return tblBankamountInfoMapper.seleUserPwd(openid);
+	}
+
+	@Override
+	public void updateUserToPwd(String forwardPwd, String id) {
+		
+		tblBankamountInfoMapper.updateUserToPwd(forwardPwd,id);
+	}
+//	判断用户是否已经添加过该银行的银行卡
+	@Override
+	public TblBankamountInfo judgeBankamountInfo(String openid, String bankName) {
+		
+		return tblBankamountInfoMapper.judgeBankamountInfo(openid,bankName);
+	}
 }

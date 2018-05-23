@@ -31,6 +31,25 @@
     <sql id="Base_Column_Listaa">
      bank_amount_no,bank_name,user_name,openid,update_user
     </sql>
+      <!-- 判断用户是否已经添加过该银行的银行卡  -->
+    <select id="judgeBankamountInfo" resultMap="BaseResultMap">
+    	select 
+    	<include refid="Base_Column_List"/>
+    	from tbl_bankamount_info 
+    	 where openid=#{openid} 
+    	and bank_name = #{bankName}
+    </select>
+    <select id="seleUserPwd" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select
+    	id
+    	from tbl_bankamount_info  where openid=#{openid}
+    </select>
+    
+    <update id="updateUserToPwd">
+    	 update tbl_bankamount_info set forward_pwd = #{forwardPwd}
+    	 where id = #{id}
+    </update>
+    
     <!-- 判断有没有密码 -->
     <select id="panduPwd" parameterType="java.lang.String" resultMap="BaseResultMap">
     	select
@@ -55,7 +74,7 @@
     <!--添加 查询当前有没有银行卡 -->
     <select id="seleBankamountInfo" parameterType="java.lang.String" resultType="java.lang.String">
     	select
-      bank_amount_no
+         bank_amount_no
         from tbl_bankamount_info
         where bank_amount_no=#{bankAmountNo} 
     </select>
