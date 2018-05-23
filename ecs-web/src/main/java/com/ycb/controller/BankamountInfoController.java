@@ -135,7 +135,7 @@ public class BankamountInfoController extends BaseController {
 		HashMap<String, String> hmp = new HashMap<String, String>();
 		//判断数据不为空
 		if(StringUtils.isEmpty(jsonStr)){
-			return this.toJSONString("error","数据不能为空");
+			return this.toErroJSONString("数据不能为空");
 		}
 		    JSONObject json = JSON.parseObject(jsonStr);
 			String userName = json.getString("name");//用户名称
