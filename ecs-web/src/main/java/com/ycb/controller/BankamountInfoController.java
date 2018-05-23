@@ -232,12 +232,12 @@ public class BankamountInfoController extends BaseController {
 	public String addToPwd(String jsonStr) throws Exception{
 		HashMap<String, String> hmap = new HashMap<String, String>();
 		try {
-			String openid = jsonStr;
-			String forwardPwda = "12346";
-//		     JSONObject json = JSON.parseObject(jsonStr);
-//			String openid = json.getString("openid");
+				//String openid = jsonStr;
+			   //String forwardPwda = "12346";
+		     JSONObject json = JSON.parseObject(jsonStr);
+			String openid = json.getString("openid");
 			List<TblBankamountInfo> bki = bankamountInfoService.seleUserPwd(openid);
-		//	String forwardPwda = json.getString("forwardPwd");
+	      	String forwardPwda = json.getString("forwardPwd");
 			for (TblBankamountInfo tblBankamountInfo : bki) {
 				String id = tblBankamountInfo.getId();
 				String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
