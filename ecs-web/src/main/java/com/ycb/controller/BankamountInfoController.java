@@ -175,14 +175,14 @@ public class BankamountInfoController extends BaseController {
 			TblBankamountInfo bmi= bankamountInfoService.panduPwd(openid);
 			if(bmi.getForwardPwd() ==null){
 				hmap.put("success", "该用户没有密码");
-				this.toJSONString(hmap);
+				return this.toJSONString(hmap);
 			}
 			hmap.put("success", "已经有密码请输入密码");
-			this.toJSONString(hmap);
+			return this.toJSONString(hmap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.toJSONString("error","最少传一个参数");
+		return this.toErroJSONString("最少传一个参数");
 	}
 	/**
 	 * 添加密码
@@ -206,7 +206,7 @@ public class BankamountInfoController extends BaseController {
 				String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
 				bankamountInfoService.updateUserToPwd(forwardPwd,id);
 			}
-			hmap.put("seccess","添加密码成功");
+			hmap.put("success","添加密码成功");
 			return	this.toJSONString(hmap);
 		} catch (Exception e) {
 			e.printStackTrace();
