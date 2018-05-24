@@ -24,6 +24,11 @@
     <sql id="Base_Column_List">
         id,user_name,openid,account_money,is_start,account_id,account_time,create_time,create_user,is_freeze
     </sql>
+    <update id="pudateTotalAmount" parameterType="java.lang.String">
+    	  update tbl_amount_info set 
+    	  account_money=#{rfmy}
+    	  where openid = #{openid}
+    </update>
     <!-- 新增数据 -->
   <insert id="insetAmountInfo" parameterType="cn.kanmars.entity.TblAmountInfo" >
         insert into tbl_amount_info

@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ycb.base.BaseController;
+import com.ycb.service.AmountInfoService;
 import com.ycb.service.BankamountInfoService;
 import com.ycb.service.ReflectInfoService;
 import com.ycb.util.DateUtils;
 import com.ycb.util.MD5Encryption;
 
 import cn.kanmars.entity.IDGeneratorTools;
+import cn.kanmars.entity.TblAmountInfo;
 import cn.kanmars.entity.TblBankamountInfo;
 import cn.kanmars.entity.TblReflectInfo;
 
@@ -40,6 +42,9 @@ public class BankamountInfoController extends BaseController {
 	//提现记录
 	@Autowired
 	private ReflectInfoService reflectInfoService;
+	//用户账户
+	@Autowired
+	private AmountInfoService amountInfoService;
 	/*
 	 *银行账户表
 	 */
@@ -263,6 +268,11 @@ public class BankamountInfoController extends BaseController {
 				rf.setCol1(DateUtils.getStringDate());
 				//添加提现记录
 				reflectInfoService.addBankamountInfo(rf);
+				TblAmountInfo atf= amountInfoService.seleSumamountInfo(openid);
+				Integer totalAmount=Integer.valueOf(atf.getAccountMoney());	
+				Integer putForward=Integer.valueOf(reflectMoney);	
+				 Integer rfmy = totalAmount - putForward;
+				amountInfoService.pudateTotalAmount(rfmy.toString(),openid);
 			}else{
 				return this.toErroJSONString("密码错误");
 			}
@@ -271,6 +281,7 @@ public class BankamountInfoController extends BaseController {
 		}
 		return this.toErroJSONString("请输入正确的信息");
 	}
+	
 	
 	
 }
