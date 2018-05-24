@@ -31,27 +31,33 @@ public class AmountInfoServiceImpl implements AmountInfoService{
 		tai.setLimitStart(page);
 	    return tblAmountInfoMapper.selectpage(tai);
 	}
-//	ÎÒµÄÇ®°üÕ¹Ê¾×Ü½ğ¶î
+//	ï¿½Òµï¿½Ç®ï¿½ï¿½Õ¹Ê¾ï¿½Ü½ï¿½ï¿½
 	@Override
 	public TblAmountInfo seleSumamountInfo(String openid) {
 		
 		return tblAmountInfoMapper.seleSumamountInfo(openid);
 	}
-	//¸ù¾İid²éÑ¯ĞŞ¸ÄµÄÖµ
+	//ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½Ş¸Äµï¿½Öµ
 	@Override
 	public TblAmountInfo updateAmountInfo(String id) {
 		return tblAmountInfoMapper.updateAmountInfo(id);
 	}
-//	 ĞÂÔö·½·¨
+//	 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void addAmountInfo(TblAmountInfo taf) {
 		
 		tblAmountInfoMapper.addAmountInfo(taf);
 	}
-//	ĞÂÔöÊı¾İ
+//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void insetAmountInfo(TblAmountInfo taf) {
 		tblAmountInfoMapper.insetAmountInfo(taf);
+		
+	}
+//	æç°ä¿®æ”¹æ€»é‡‘é¢
+	@Override
+	public void pudateTotalAmount(String rfmy,String openid) {
+		tblAmountInfoMapper.pudateTotalAmount(rfmy,openid);
 		
 	}
 	

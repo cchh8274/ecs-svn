@@ -9,13 +9,15 @@ public interface AmountInfoService {
 	List<TblAmountInfo> selectList(TblAmountInfo tblAmountInfo);
 
 	List<TblAmountInfo> selectpage(Integer page, Integer rows, TblAmountInfo tblAmountInfo);
-//	ÎÒµÄÇ®°üÕ¹Ê¾×Ü½ğ¶î
+//	ï¿½Òµï¿½Ç®ï¿½ï¿½Õ¹Ê¾ï¿½Ü½ï¿½ï¿½
 	TblAmountInfo seleSumamountInfo(String openid);
-	//¸ù¾İid²éÑ¯ĞŞ¸ÄµÄÖµ
+	//ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½Ş¸Äµï¿½Öµ
 	TblAmountInfo updateAmountInfo(String id);
-//	 ĞÂÔö·½·¨
+//	 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void addAmountInfo(TblAmountInfo taf);
-//	ĞÂÔöÊı¾İ
+//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void insetAmountInfo(TblAmountInfo taf);
+//	æç°ä¿®æ”¹æ€»é‡‘é¢
+	void pudateTotalAmount(String rfmy,String openid);
 
 }

@@ -6,6 +6,9 @@ package cn.kanmars.dao;
 
 import java.util.List;
 import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
 import java.util.HashMap;
 
 import cn.kanmars.entity.TblAmountInfo;
@@ -97,6 +100,8 @@ public interface TblAmountInfoMapper {
 	public void addAmountInfo(TblAmountInfo taf);
 //	新增数据
 	public void insetAmountInfo(TblAmountInfo taf);
+//	提现修改总金额
+	public void pudateTotalAmount(@Param("rfmy") String rfmy,@Param("openid") String openid);
 
     
 }
