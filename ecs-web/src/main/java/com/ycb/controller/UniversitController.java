@@ -97,10 +97,10 @@ public class UniversitController extends BaseController{
 		@ResponseBody
 		public String queryAddUniversita(String jsonStr) throws Exception{
 					if(StringUtils.isEmpty(jsonStr)){
-					return this.toJSONString("error","参数为空");
+					return this.toErroJSONString("参数为空");
 			}
 			JSONObject json = JSON.parseObject(jsonStr);
-			String ocad = "0"+ json.getString("areaId");
+			String ocad =  json.getString("areaId");
 			
 			//String ocad = jsonStr;
 			//这个ocad就是数据的area_id字段
@@ -113,7 +113,7 @@ public class UniversitController extends BaseController{
 		@ResponseBody
 		public String daXuXinXiXangQing(String jsonStr) throws Exception{
 			if(StringUtils.isEmpty(jsonStr)){
-				return this.toJSONString("error","参数为空");
+				return this.toErroJSONString("参数为空");
 			}
 			JSONObject json = JSON.parseObject(jsonStr);
 			String code = json.getString("code");//大学信息的code唯一的不能为空
