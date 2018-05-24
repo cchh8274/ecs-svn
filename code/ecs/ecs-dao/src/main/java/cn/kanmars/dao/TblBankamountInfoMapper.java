@@ -113,7 +113,7 @@ public interface TblBankamountInfoMapper {
 //	判断用户是否已经添加过该银行的银行卡
 	public TblBankamountInfo judgeBankamountInfo(@Param("openid") String openid,@Param("bankName") String bankName);
 
-	public TblBankamountInfo putforwardJudgePwd(@Param("openid") String openid,@Param("bankAmountNo") String bankAmountNo);
+	public TblBankamountInfo putforwardJudgePwd(@Param("openid") String openid,@Param("bankName") String bankName);
 
 	
 
