@@ -3,6 +3,8 @@ package com.model;
 public class GenertorModel {
 	
 	private String  target;
+	private ConfigModel model;
+	
 
 	public String getTarget() {
 		return target;
@@ -12,8 +14,16 @@ public class GenertorModel {
 		this.target = target;
 	}
 	
+	public ConfigModel getModel() {
+		return model;
+	}
+
+	public void setModel(ConfigModel model) {
+		this.model = model;
+	}
+
 	public  String  getProjectTarger(){
-		String   project_url="/src/main/java";
+		String   project_url="";
 		
 		return target+project_url;
 	}
