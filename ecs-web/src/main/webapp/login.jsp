@@ -115,7 +115,7 @@
 		<%-- function ModifyThePWD(){
 			location.href ="<%=request.getContextPath()%>/login/ModifythePWD.do";   
 		 	   
-			    } --%>
+			    } --%>z
 	</script>
 
 </html>
