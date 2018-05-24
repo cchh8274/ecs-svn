@@ -109,13 +109,19 @@ public class BankamountInfoController extends BaseController {
 		if(StringUtils.isEmpty(jsonStr)){
 			return this.toErroJSONString("数据不能为空");
 		}
-		    JSONObject json = JSON.parseObject(jsonStr);
+		String userName = jsonStr;
+		String idcard = jsonStr;
+		String phone = jsonStr;
+		String bankAmountNo = jsonStr;
+		String bankName = "中信银行储蓄卡";
+		String openid =jsonStr;
+		   /* JSONObject json = JSON.parseObject(jsonStr);
 			String userName = json.getString("name");//用户名称
 			String idcard = json.getString("card");//用户身份证
 			String phone = json.getString("phone");//手机号
 			String bankAmountNo = json.getString("bankno");//银行账户号
 			String bankName = json.getString("bankname");//银行账户
-			String openid = json.getString("openid");
+			String openid = json.getString("openid");*/
 			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
 			if(bkif!=null){
 				hmp.put("success", "该银行卡已经添加过不能添加");
