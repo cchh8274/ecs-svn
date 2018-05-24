@@ -5,12 +5,7 @@ import java.security.GeneralSecurityException;
 import org.mybatis.generator.config.CommentGeneratorConfiguration;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.Context;
-import org.mybatis.generator.config.JDBCConnectionConfiguration;
-import org.mybatis.generator.config.JavaClientGeneratorConfiguration;
-import org.mybatis.generator.config.JavaModelGeneratorConfiguration;
 import org.mybatis.generator.config.JavaTypeResolverConfiguration;
-import org.mybatis.generator.config.PluginConfiguration;
-import org.mybatis.generator.config.SqlMapGeneratorConfiguration;
 import org.mybatis.generator.config.TableConfiguration;
 
 import com.exception.GenertorException;
@@ -30,7 +25,9 @@ public class GenertorFactory {
 	public static Configuration  createConfiguration(GenertorModel model,String tableName,String dominName) throws GenertorException, GeneralSecurityException{
 		Configuration config = new Configuration();
 		//加载驱动
-		config.addClasspathEntry(FilePathUtils.getPath()+GenConstants.DRIVER_JAR_PATH);
+		String url=FilePathUtils.getPath()+GenConstants.DRIVER_JAR_PATH;
+		System.out.println("获取jar 的路径为:"+url);
+		config.addClasspathEntry(url);
 		//加载配置文件
 		config.addContext(getConfiguration(model,tableName,dominName));
 		return config;
@@ -47,6 +44,7 @@ public class GenertorFactory {
 		DrivarConfig.initJDBCdrivars(context, null);
 		initJavaType(context);
 		model=initModel(model);
+		System.out.println("初始的配置信息为:"+model.toString());
 		GenertorFileConfig.initGenetotFile(context, model.getModel(), model.getTarget());
 		CommentGeneratorConfiguration  commentGeneratorConfiguration=new CommentGeneratorConfiguration();
 		commentGeneratorConfiguration.addProperty("suppressDate", "true");
