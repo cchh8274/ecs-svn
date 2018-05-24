@@ -259,29 +259,29 @@ public class BankamountInfoController extends BaseController {
 			String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
 			TblBankamountInfo bkif = bankamountInfoService.putforwardJudgePwd(openid,bankName);
 			if(bankAmountNo.substring(bankAmountNo.length()-4).equals(bkif.getBankAmountNo().substring(bkif.getBankAmountNo().length()-4))){
-			if(forwardPwd.equals(bkif.getForwardPwd())){
-				TblReflectInfo rf = new  TblReflectInfo();
-				rf.setId(IDGeneratorTools.createId());
-				rf.setTransNo(IDGeneratorTools.createId());
-				rf.setOpenid(openid);
-				rf.setBankCard(bkif.getBankAmountNo());
-				rf.setBankName(bankName);
-				rf.setReflectMoney(reflectMoney);
-				rf.setIsFreeze("1");
-				rf.setCol1(DateUtils.getStringDate());
-				//添加提现记录
-				reflectInfoService.addBankamountInfo(rf);
-				//修改提现后的总金额
-				TblAmountInfo atf= amountInfoService.seleSumamountInfo(openid);
-				Integer totalAmount=Integer.valueOf(atf.getAccountMoney());	
-				Integer putForward=Integer.valueOf(reflectMoney);	
-				 Integer rfmy = totalAmount - putForward;
-				amountInfoService.pudateTotalAmount(rfmy.toString(),openid);
-				hmap.put("success", "提现成功");
-				return this.toJSONString(hmap);
-			}else{
-				return this.toErroJSONString("密码错误");
-			}
+				if(forwardPwd.equals(bkif.getForwardPwd())){
+					TblReflectInfo rf = new  TblReflectInfo();
+					rf.setId(IDGeneratorTools.createId());
+					rf.setTransNo(IDGeneratorTools.createId());
+					rf.setOpenid(openid);
+					rf.setBankCard(bkif.getBankAmountNo());
+					rf.setBankName(bankName);
+					rf.setReflectMoney(reflectMoney);
+					rf.setIsFreeze("1");
+					rf.setCol1(DateUtils.getStringDate());
+					//添加提现记录
+					reflectInfoService.addBankamountInfo(rf);
+					//修改提现后的总金额
+					TblAmountInfo atf= amountInfoService.seleSumamountInfo(openid);
+					Integer totalAmount=Integer.valueOf(atf.getAccountMoney());	
+					Integer putForward=Integer.valueOf(reflectMoney);	
+					Integer rfmy = totalAmount - putForward;
+					amountInfoService.pudateTotalAmount(rfmy.toString(),openid);
+					hmap.put("success", "提现成功");
+					return this.toJSONString(hmap);
+				}else{
+					return this.toErroJSONString("密码错误");
+				}
 			}
 			return this.toErroJSONString("卡号不正确");
 		} catch (Exception e) {
