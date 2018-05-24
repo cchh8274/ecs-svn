@@ -62,7 +62,7 @@ public class BankamountInfoController extends BaseController {
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 		String openid = json.getString("openid");
-		//String openid = jsonStr;
+//		String openid = jsonStr;
 		List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
 		if(CollectionUtils.isEmpty(yhk)){
 			return this.toErroJSONString("该用户没有银行卡");
@@ -109,19 +109,19 @@ public class BankamountInfoController extends BaseController {
 		if(StringUtils.isEmpty(jsonStr)){
 			return this.toErroJSONString("数据不能为空");
 		}
-		String userName = jsonStr;
-		String idcard = jsonStr;
-		String phone = jsonStr;
-		String bankAmountNo = jsonStr;
-		String bankName = "中信银行储蓄卡";
-		String openid =jsonStr;
-		   /* JSONObject json = JSON.parseObject(jsonStr);
+//		String userName = jsonStr;
+//		String idcard = jsonStr;
+//		String phone = jsonStr;
+//		String bankAmountNo = jsonStr;
+//		String bankName = "中信银行储蓄卡";
+//		String openid =jsonStr;
+		   JSONObject json = JSON.parseObject(jsonStr);
 			String userName = json.getString("name");//用户名称
 			String idcard = json.getString("card");//用户身份证
 			String phone = json.getString("phone");//手机号
 			String bankAmountNo = json.getString("bankno");//银行账户号
 			String bankName = json.getString("bankname");//银行账户
-			String openid = json.getString("openid");*/
+			String openid = json.getString("openid");
 			TblBankamountInfo bkif = bankamountInfoService.judgeBankamountInfo(openid,bankName);
 			if(bkif!=null){
 				hmp.put("success", "该银行卡已经添加过不能添加");
@@ -187,10 +187,10 @@ public class BankamountInfoController extends BaseController {
 			TblBankamountInfo bmi= bankamountInfoService.panduPwd(openid);
 			if(bmi.getForwardPwd() ==null){
 				hmap.put("success", "该用户没有密码");
-				this.toJSONString(hmap);
+				return this.toJSONString(hmap);
 			}
 			hmap.put("success", "已经有密码请输入密码");
-			this.toJSONString(hmap);
+			return this.toJSONString(hmap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -218,7 +218,7 @@ public class BankamountInfoController extends BaseController {
 				String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
 				bankamountInfoService.updateUserToPwd(forwardPwd,id);
 			}
-			hmap.put("seccess","添加密码成功");
+			hmap.put("success","添加密码成功");
 			return	this.toJSONString(hmap);
 		} catch (Exception e) {
 			e.printStackTrace();
