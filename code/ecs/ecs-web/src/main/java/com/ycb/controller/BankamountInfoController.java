@@ -189,8 +189,9 @@ public class BankamountInfoController extends BaseController {
 		try {
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
+//			String openid = jsonStr;
 			TblBankamountInfo bmi= bankamountInfoService.panduPwd(openid);
-			if(bmi.getForwardPwd() ==null){
+			if(bmi.getForwardPwd() ==null || bmi.getForwardPwd().equals("") || bmi.getForwardPwd().length()<=0){
 				hmap.put("success", "该用户没有密码");
 				return this.toJSONString(hmap);
 			}
@@ -240,6 +241,7 @@ public class BankamountInfoController extends BaseController {
 	@RequestMapping(value="putforwardJudgePwd",produces="text/html; charset=UTF-8")
 	@ResponseBody
 	public String putforwardJudgePwd(String jsonStr) throws Exception{
+		HashMap<String, String> hmap = new HashMap<String, String>();
 		try {
 			/*String transNo = jsonStr;
 			String bankAmountNo = "6214830187854905";
@@ -261,18 +263,21 @@ public class BankamountInfoController extends BaseController {
 				rf.setId(IDGeneratorTools.createId());
 				rf.setTransNo(IDGeneratorTools.createId());
 				rf.setOpenid(openid);
-				rf.setBankCard(bankAmountNo);
+				rf.setBankCard(bkif.getBankAmountNo());
 				rf.setBankName(bankName);
 				rf.setReflectMoney(reflectMoney);
 				rf.setIsFreeze("1");
 				rf.setCol1(DateUtils.getStringDate());
 				//添加提现记录
 				reflectInfoService.addBankamountInfo(rf);
+				//修改提现后的总金额
 				TblAmountInfo atf= amountInfoService.seleSumamountInfo(openid);
 				Integer totalAmount=Integer.valueOf(atf.getAccountMoney());	
 				Integer putForward=Integer.valueOf(reflectMoney);	
 				 Integer rfmy = totalAmount - putForward;
 				amountInfoService.pudateTotalAmount(rfmy.toString(),openid);
+				hmap.put("success", "提现成功");
+				return this.toJSONString(hmap);
 			}else{
 				return this.toErroJSONString("密码错误");
 			}
@@ -281,11 +286,5 @@ public class BankamountInfoController extends BaseController {
 		}
 		return this.toErroJSONString("请输入正确的信息");
 	}
-	public static void main(String[] args) {
-		
-	}
-
-	
-	
 }
 
