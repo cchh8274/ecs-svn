@@ -38,6 +38,11 @@ public class ConfigModel {
 		this.entity = GenConstants.PACKAGE_ENTITY;
 		this.dao = GenConstants.PACKAGE_DAO;
 	}
+	@Override
+	public String toString() {
+		return "ConfigModel [xml=" + xml + ", entity=" + entity + ", dao="
+				+ dao + "]";
+	}
 	
 	
 }

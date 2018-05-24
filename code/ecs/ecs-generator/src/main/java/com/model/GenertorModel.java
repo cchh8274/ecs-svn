@@ -27,5 +27,11 @@ public class GenertorModel {
 		
 		return target+project_url;
 	}
+
+	@Override
+	public String toString() {
+		return "GenertorModel [target=" + target + ", model=" + model.toString() + "]";
+	}
+	
 	
 }
