@@ -39,7 +39,7 @@
     	<include refid="Base_Column_List"/>
     	from tbl_bankamount_info 
     	 where openid=#{openid} 
-    	and bank_amount_no = #{bankAmountNo}
+    	and bank_name = #{bankName}
     </select>
       <!-- 判断用户是否已经添加过该银行的银行卡  -->
     <select id="judgeBankamountInfo" resultMap="BaseResultMap">
