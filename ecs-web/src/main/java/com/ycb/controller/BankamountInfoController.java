@@ -258,6 +258,7 @@ public class BankamountInfoController extends BaseController {
 			String reflectMoney = json.getString("reflectMoney");//提现金额
 			String forwardPwd = MD5Encryption.getEncryption(forwardPwda);
 			TblBankamountInfo bkif = bankamountInfoService.putforwardJudgePwd(openid,bankName);
+			if(bankAmountNo.substring(bankAmountNo.length()-4).equals(bkif.getBankAmountNo().substring(bkif.getBankAmountNo().length()-4))){
 			if(forwardPwd.equals(bkif.getForwardPwd())){
 				TblReflectInfo rf = new  TblReflectInfo();
 				rf.setId(IDGeneratorTools.createId());
@@ -281,10 +282,13 @@ public class BankamountInfoController extends BaseController {
 			}else{
 				return this.toErroJSONString("密码错误");
 			}
+			}
+			return this.toErroJSONString("卡号不正确");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return this.toErroJSONString("请输入正确的信息");
 	}
+
 }
 
