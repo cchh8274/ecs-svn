@@ -243,12 +243,12 @@ public class BankamountInfoController extends BaseController {
 	public String putforwardJudgePwd(String jsonStr) throws Exception{
 		HashMap<String, String> hmap = new HashMap<String, String>();
 		try {
-			/*String transNo = jsonStr;
-			String bankAmountNo = "6214830187854905";
-			String forwardPwda = "12346";
-			String bankName = jsonStr;
-			String reflectMoney =jsonStr;
-			String openid = jsonStr;*/
+//			String transNo = jsonStr;
+//			String bankAmountNo = "**************0015";
+//			String forwardPwda = "12346";
+//			String bankName = jsonStr;
+//			String reflectMoney =jsonStr;
+//			String openid = jsonStr;
 
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");//openid
