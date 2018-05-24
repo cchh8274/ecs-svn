@@ -1,7 +1,8 @@
 package com.exec;
 
-import com.model.GenertorModel;
-import com.util.Genertor;
+import com.context.Genertor;
+import com.model.TableModel;
+
 
 /**
  * 逆向生成的入口
@@ -11,9 +12,10 @@ import com.util.Genertor;
  */
 public class BMGexec {
 	public static void main(String[] args) {
-		Genertor genertor = new Genertor();
-		GenertorModel model=new GenertorModel();
-		model.setTarget("");
-		genertor.configuration(model);
+		Genertor  genertor=new Genertor();
+		TableModel tbles=new TableModel();
+		tbles.addTable("tbl_demo_info", "Demo");
+		genertor.configurationTblesList(tbles);
 	}
+	
 }
