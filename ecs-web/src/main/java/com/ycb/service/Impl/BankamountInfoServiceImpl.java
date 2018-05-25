@@ -30,25 +30,21 @@ public class BankamountInfoServiceImpl implements BankamountInfoService{
 	  	tif.setLimitStart(page);
 	    return tblBankamountInfoMapper.selectpage(tif);
 	}
-	//��ѯ��ǰ��û�����п�//������п�
 	@Override
 	public String seleBankamountInfo(String bankAmountNo) {
 		
 		return tblBankamountInfoMapper.seleBankamountInfo(bankAmountNo);
 	}
-	//Ìí¼ÓÒøÐÐ¿¨
 	@Override
 	public void addBankamountInfo(HashMap<String, String> hmap) {
 		tblBankamountInfoMapper.addBankamountInfo(hmap);
 		
 	}
-	//²éÑ¯¸ÃÓÃ»§ÓÐ¼¸ÕÅÒøÐÐ¿¨
 	@Override
 	public List<TblBankamountInfo> seleAllBankamountInfo(String openid) {
 		
 		return tblBankamountInfoMapper.seleAllBankamountInfo(openid);
 	}
-	 //²éÑ¯Ñ¡ÖÐµÄÒøÐÐ¿¨
 	@Override
 	public TblBankamountInfo dangeBankamountInfo(String bankAmountNo) {
 		

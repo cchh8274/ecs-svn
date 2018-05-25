@@ -58,29 +58,4 @@ public class ChatServiceImpl implements ChatService {
 		return tblMessageInfoMapper.queryMessagebyOpenid(id);
 	}
 
-
-//	/*
-//	 * 定时扫描长时间没有聊天的会话不展示
-//	 * 
-//	 * @see com.ycb.service.ChatService#myTest()
-//	 */
-//	// @Scheduled(cron="0/5 * *  * * ? ") //每5秒执行一次
-//	@Override
-//	public void myTest() {
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//		Date now = new Date();
-//		Date afterDate = new Date(now.getTime() - 600000);// 十分钟以前的时间
-//		String date = sdf.format(afterDate).toString();
-//		HashMap map = new HashMap();
-//		// 查询十分钟没有聊天的id
-//		List<TabMessage> list = messageMapper.querDateUser(date);
-//
-//		// 修改没有聊天的状态不在会话框展示
-//		if (list != null) {
-//			tabChatMapper.updateChat(list);
-//		}
-//
-//	}
-
-
 }

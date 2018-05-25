@@ -31,24 +31,20 @@ public class AmountInfoServiceImpl implements AmountInfoService{
 		tai.setLimitStart(page);
 	    return tblAmountInfoMapper.selectpage(tai);
 	}
-//	�ҵ�Ǯ��չʾ�ܽ��
 	@Override
 	public TblAmountInfo seleSumamountInfo(String openid) {
 		
 		return tblAmountInfoMapper.seleSumamountInfo(openid);
 	}
-	//����id��ѯ�޸ĵ�ֵ
 	@Override
 	public TblAmountInfo updateAmountInfo(String id) {
 		return tblAmountInfoMapper.updateAmountInfo(id);
 	}
-//	 ��������
 	@Override
 	public void addAmountInfo(TblAmountInfo taf) {
 		
 		tblAmountInfoMapper.addAmountInfo(taf);
 	}
-//	��������
 	@Override
 	public void insetAmountInfo(TblAmountInfo taf) {
 		tblAmountInfoMapper.insetAmountInfo(taf);

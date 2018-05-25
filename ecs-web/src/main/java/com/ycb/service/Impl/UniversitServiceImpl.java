@@ -32,19 +32,16 @@ public class UniversitServiceImpl implements UniversitService {
 	      return tblUniversityInfoMapper.selectAreaInfoa(tif);
 		
 	}
-	//�޸Ĵ�ѧ��Ϣ
 	@Override
 	public TblUniversityInfo updateUniversit(String id) {
 		
 		return tblUniversityInfoMapper.updateUniversit(id);
 	}
-	//�޸�����
 	@Override
 	public void addUniversit(TblUniversityInfo tui) {
 		tblUniversityInfoMapper.addUniversit(tui);
 		
 	}
-	//�����Ϣ
 	@Override
 	public void insetUniversita(TblUniversityInfo tui) {
 		tblUniversityInfoMapper.insetUniversita(tui);

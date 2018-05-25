@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.ycb.service.ReflectInfoService;
 
 import cn.kanmars.dao.TblReflectInfoMapper;
-import cn.kanmars.entity.TblPayResultInfo;
 import cn.kanmars.entity.TblReflectInfo;
 
 @Service
