@@ -1,4 +1,4 @@
-package com.ycb.controller;
+package com.ycb.controller.api;
 
 import java.util.HashMap;
 import java.util.Map;

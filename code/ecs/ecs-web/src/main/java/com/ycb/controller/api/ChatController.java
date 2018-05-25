@@ -1,4 +1,4 @@
-package com.ycb.controller;
+package com.ycb.controller.api;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import cn.kanmars.entity.TblMessageInfo;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -41,22 +39,22 @@ public class ChatController extends BaseController {
 	public String addMessage(String jsonStr){
 		try {
 			if (StringUtils.isEmpty(jsonStr)) {
-				return this.toJSONString("error", "参数为空!");
+				return this.toErroJSONString("参数为空!");
 			}
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
 			String message = json.getString("message");
 			if (StringUtils.isEmpty(openid)) {
-				return this.toJSONString("error", "openid不能为空!");
+				return this.toErroJSONString("openid不能为空!");
 			}
 			if (StringUtils.isEmpty(message)) {
-				return this.toJSONString("error", "消息不能为空!");
+				return this.toErroJSONString("消息不能为空!");
 			}
 			chatService.sendMessage(openid,message);
 			return this.toJSONString("success");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return this.toJSONString("error", "系统异常!");
+			return this.toErroJSONString("系统异常!");
 		}
 	}
 	/*
@@ -67,12 +65,12 @@ public class ChatController extends BaseController {
 	public String queryMessage(String jsonStr)  {
 		try {
 			if (StringUtils.isEmpty(jsonStr)) {
-				return this.toJSONString("error", "参数为空!");
+				return this.toErroJSONString("参数为空!");
 			}
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
 			if (StringUtils.isEmpty(openid)) {
-				return this.toJSONString("error", "openid不能为空!");
+				return this.toErroJSONString("openid不能为空!");
 			}
 			List<HashMap<String,String>> list=chatService.queryMessage(openid);
 			list.sort(new Comparator<HashMap<String,String>>() {
@@ -86,7 +84,7 @@ public class ChatController extends BaseController {
 			return this.toJSONString(list);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return this.toJSONString("error", "系统异常!");
+			return this.toErroJSONString("系统异常!");
 		}
 	}
 }

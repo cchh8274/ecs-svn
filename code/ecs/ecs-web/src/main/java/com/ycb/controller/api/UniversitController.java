@@ -1,5 +1,5 @@
 
-package com.ycb.controller;
+package com.ycb.controller.api;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -205,7 +205,6 @@ public class UniversitController extends BaseController{
 			try {
 				JSONObject json = JSON.parseObject(jsonStr);
 				String lawz = json.getString("lawz");
-//				String lawz = jsonStr;
 				List<TblUniversityInfo> unv = universitService.fuJinuniversityDetails(lawz);
 				List<Map<String,String>> list = new ArrayList<Map<String,String>>();
 				for (TblUniversityInfo tblUniversityInfo : unv) {
@@ -226,7 +225,7 @@ public class UniversitController extends BaseController{
 			e.printStackTrace();
 			}
 			
-			return this.toJSONString("error","错误信息");
+			return this.toErroJSONString("错误信息");
 		}
 
 }
