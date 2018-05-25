@@ -48,6 +48,7 @@ public class BankamountInfoController extends BaseController {
 	/*
 	 *银行账户表
 	 */
+	
 	@RequestMapping("selectList")
     @ResponseBody
     public Map<String,Object> selectList(Integer page,Integer rows,TblBankamountInfo tblBankamountInfo){
