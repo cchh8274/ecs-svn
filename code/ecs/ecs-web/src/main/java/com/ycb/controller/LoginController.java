@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -397,12 +395,6 @@ public class LoginController {
    return "UniversityInfo";
    }
    
-   //跳转区域信息页面
-   @RequestMapping("page3")
-   public String page3(){
-   return "AreaInfo";
-   }
-   
  //跳转机器信息页面
    @RequestMapping("page4")
    public String page4(){
@@ -421,18 +413,6 @@ public class LoginController {
    return "EarningsGather";
    }
    
- //跳转订单信息页面
-   @RequestMapping("page7")
-   public String page7(){
-   return "OrderInf";
-   }
-   
- //跳转订单支付信息页面
-   @RequestMapping("page8")
-   public String page8(){
-   return "OrderDeal";
-   }
-   
  //跳转用户咖啡机信息页面
    @RequestMapping("page9")
    public String page9(){
@@ -443,12 +423,6 @@ public class LoginController {
    @RequestMapping("page10")
    public String page10(){
    return "AmountInfo";
-   }
-   
- //跳转支付结果通知信息页面
-   @RequestMapping("page11")
-   public String page11(){
-   return "PayResultInfo";
    }
    
  //跳转体现记录信息页面

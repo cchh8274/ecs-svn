@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ycb.service.MachineGatherInfoService;
 
-import cn.kanmars.entity.TblEarningsGather;
 import cn.kanmars.entity.TblLogin;
 import cn.kanmars.entity.TblMachineGatherInfo;
 /**

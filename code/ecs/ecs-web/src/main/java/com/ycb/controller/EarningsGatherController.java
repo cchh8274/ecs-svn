@@ -3,7 +3,6 @@ package com.ycb.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,7 +18,6 @@ import com.ycb.base.BaseController;
 import com.ycb.service.EarningsGatherService;
 
 import cn.kanmars.entity.TblEarningsGather;
-import cn.kanmars.entity.TblEarningsInfo;
 import cn.kanmars.entity.TblLogin;
 
 /**
