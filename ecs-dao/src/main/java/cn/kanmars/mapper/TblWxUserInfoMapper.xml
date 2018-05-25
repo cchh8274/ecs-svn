@@ -734,57 +734,12 @@
         ) as TMP_COUNT_TABLE
         </if>
     </select>
-    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
-    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
-    <!--
-        ORACLE的写法
-        <insert id="insertBatch"  parameterType="java.util.List">
-            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
-                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
-            </foreach>
-        </insert>
-        MYSQL的写法
-        <insert id="insertBatch"  parameterType="java.util.List">
-            insert into test (a,b,c) values 
-            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
-                #{item.a},#{item.b},#{item.c}
-            </foreach>
-        </insert>
-        
-        
-    -->
     <insert id="insertBatch"  parameterType="java.util.List">
         insert into tbl_wx_user_info (id,openid,nickname,sex,city,country,province,language,headimgurl,subscribe_time,unionid,remark,groupid,tagid_list,subscribe_scene,qr_scene,qr_scene_str,createt_time,create_user) values 
         <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
             #{item.id},#{item.openid},#{item.nickname},#{item.sex},#{item.city},#{item.country},#{item.province},#{item.language},#{item.headimgurl},#{item.subscribeTime},#{item.unionid},#{item.remark},#{item.groupid},#{item.tagidList},#{item.subscribeScene},#{item.qrScene},#{item.qrSceneStr},#{item.createtTime},#{item.createUser}
         </foreach>
     </insert>
-    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
-    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
-    <!--
-         ORACLE的写法
-         <update id="updateBatch"  parameterType="java.util.List">
-             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
-                 update test
-                 <set>
-                     test=${item.test}+1
-                 </set>
-                 where id = ${item.id}
-             </foreach>
-         </update>
-         MYSQL的写法
-         <update id="updateBatch"  parameterType="java.util.List">
-             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
-                 update test
-                 <set>
-                     test=${item.test}+1
-                 </set>
-                 where id = ${item.id}
-             </foreach>
-         </update>
-         
-         
-    -->
     <update id="updateBatch" parameterType="java.util.List" >
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
             update tbl_wx_user_info
