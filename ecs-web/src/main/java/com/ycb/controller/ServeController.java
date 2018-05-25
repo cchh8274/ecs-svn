@@ -1,9 +1,7 @@
 package com.ycb.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,20 +40,6 @@ public class ServeController {
 	@ResponseBody
 	public List<TblMessageInfo> queryMassage(String id){
 		List<TblMessageInfo> list=servreService.queryMassage(id);
-		/*List<HashMap<String,String>>  items=new ArrayList<>();*/
-		/*for(TblMessageInfo info:list){
-			HashMap<String,String>  meg=new HashMap<>();
-			meg.put("stateZt", info.getStateZt());
-			if(info.getStateZt().equals("010")){
-				meg.put("userMessage", "用户："+info.getMessage());
-				meg.put("serviceMessage", "");
-			}
-			if(info.getStateZt().equals("020")){
-				meg.put("serviceMessage", info.getMessage()+"：客服");
-				meg.put("userMessage", "");
-			}
-			items.add(meg);
-		}*/
 		return list;
 	}
 	
