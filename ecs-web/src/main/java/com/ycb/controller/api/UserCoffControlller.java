@@ -1,4 +1,4 @@
-package com.ycb.controller;
+package com.ycb.controller.api;
 
 import java.util.List;
 
@@ -33,13 +33,13 @@ public class UserCoffControlller extends BaseController {
 	public String seleUserCoff(String jsonStr)throws Exception{
 		//String openid=jsonStr;
 		if(StringUtils.isEmpty(jsonStr)){
-			return this.toJSONString("error","不能为空");
+			return this.toErroJSONString("不能为空");
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 		String openid = json.getString("openid");
 		List<TblUserCoffeemachine> ucf = userCoffService.seleUserCoff(openid);
 		if(ucf ==null){
-			return this.toJSONString("erroe","当前没有咖啡机");
+			return this.toErroJSONString("当前没有咖啡机");
 		}
 		return this.toJSONString(ucf);
 	}

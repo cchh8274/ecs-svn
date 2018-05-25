@@ -1,4 +1,4 @@
-package com.ycb.controller;
+package com.ycb.controller.api;
 
 import java.util.HashMap;
 import java.util.List;
@@ -50,13 +50,12 @@ public class ReflectInfoController extends BaseController{
 		try {
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
-			//String openid = jsonStr;
 			List<TblReflectInfo> rfi = reflectInfoService.seleBringOutTheDetails(openid);
 			return this.toJSONString(rfi);
 		} catch (Exception e) {
 			
 		}
-		return this.toJSONString("error","输入错误");
+		return this.toErroJSONString("输入错误");
 	}
 	
 }

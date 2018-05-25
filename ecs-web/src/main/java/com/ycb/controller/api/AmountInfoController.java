@@ -49,14 +49,14 @@ public class AmountInfoController extends BaseController{
     public String seleSumamountInfo(String jsonStr) throws Exception{
 		//String openid = jsonStr;
 		if(StringUtils.isEmpty(jsonStr)){
-			return this.toJSONString("error","不能为空");
+			return this.toErroJSONString("不能为空");
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 		String openid = json.getString("openid");
 		
 		TblAmountInfo atf= amountInfoService.seleSumamountInfo(openid);
            if(atf == null){
-			return this.toJSONString("error","没有余额");
+			return this.toErroJSONString("没有余额");
 		 }
 
 		return this.toJSONString(atf);

@@ -1,4 +1,4 @@
-package com.ycb.controller;
+package com.ycb.controller.api;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -67,7 +67,6 @@ public class BankamountInfoController extends BaseController {
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 		String openid = json.getString("openid");
-//		String openid = jsonStr;
 		List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
 		if(CollectionUtils.isEmpty(yhk)){
 			return this.toErroJSONString("该用户没有银行卡");
@@ -87,7 +86,6 @@ public class BankamountInfoController extends BaseController {
 		}
 		JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");//银行账户
-		//String openid = jsonStr;
 		   //判断改用有几张银行卡
 		   List<TblBankamountInfo> yhk = bankamountInfoService.seleAllBankamountInfo(openid);
 		   	if(yhk.size()>=4){
@@ -114,12 +112,6 @@ public class BankamountInfoController extends BaseController {
 		if(StringUtils.isEmpty(jsonStr)){
 			return this.toErroJSONString("数据不能为空");
 		}
-//		String userName = jsonStr;
-//		String idcard = jsonStr;
-//		String phone = jsonStr;
-//		String bankAmountNo = jsonStr;
-//		String bankName = "中信银行储蓄卡";
-//		String openid =jsonStr;
 		   JSONObject json = JSON.parseObject(jsonStr);
 			String userName = json.getString("name");//用户名称
 			String idcard = json.getString("card");//用户身份证
@@ -148,13 +140,14 @@ public class BankamountInfoController extends BaseController {
 			hmap.put("bankName", bankName);
 			hmap.put("openid", openid);
 			if("中国招商银行储蓄卡".equals(bankName)){
-		     hmap.put("cartImg", "static/img/bank4.png");
+				hmap.put("cartImg", "static/img/bank4.png");
 			}else if("中国工商银行储蓄卡".equals(bankName)){
-		     hmap.put("cartImg", "static/img/bank1.png");
+				hmap.put("cartImg", "static/img/bank1.png");
 			}else if("中国建设银行储蓄卡".equals(bankName)){
-			hmap.put("cartImg", "static/img/bank2.png");
+				hmap.put("cartImg", "static/img/bank2.png");
+			}else{
+				hmap.put("cartImg", "static/img/bank3.png");
 			}
-			hmap.put("cartImg", "static/img/bank3.png");
 			String createTime = formata.format(new Date()).toString();
 			hmap.put("createTime", createTime);
 			bankamountInfoService.addBankamountInfo(hmap);   
@@ -189,7 +182,6 @@ public class BankamountInfoController extends BaseController {
 		try {
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
-//			String openid = jsonStr;
 			TblBankamountInfo bmi= bankamountInfoService.panduPwd(openid);
 			if(bmi.getForwardPwd() ==null || bmi.getForwardPwd().equals("") || bmi.getForwardPwd().length()<=0){
 				hmap.put("success", "该用户没有密码");
@@ -213,8 +205,6 @@ public class BankamountInfoController extends BaseController {
 	public String addToPwd(String jsonStr) throws Exception{
 		HashMap<String, String> hmap = new HashMap<String, String>();
 		try {
-				//String openid = jsonStr;
-			   //String forwardPwda = "12346";
 		     JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");
 			List<TblBankamountInfo> bki = bankamountInfoService.seleUserPwd(openid);
@@ -243,13 +233,6 @@ public class BankamountInfoController extends BaseController {
 	public String putforwardJudgePwd(String jsonStr) throws Exception{
 		HashMap<String, String> hmap = new HashMap<String, String>();
 		try {
-//			String transNo = jsonStr;
-//			String bankAmountNo = "**************0015";
-//			String forwardPwda = "12346";
-//			String bankName = jsonStr;
-//			String reflectMoney =jsonStr;
-//			String openid = jsonStr;
-
 			JSONObject json = JSON.parseObject(jsonStr);
 			String openid = json.getString("openid");//openid
 			String bankAmountNo = json.getString("bankAmountNo");//卡号
