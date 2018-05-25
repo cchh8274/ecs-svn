@@ -20,6 +20,13 @@ application.setAttribute("basePath", basePath);
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/zTree/js/jquery.ztree.all.min.js"></script>
 </head>
 <body>
+<div data-options="region:'north',title:'',split:true" style="height:100px;">
+	<center>
+		<h1>
+			易创吧科技有限公司
+		</h1>
+	</center>
+</div>
 <div id="cc" class="easyui-layout" style="width:600px;height:500px;"data-options="fit:true">     
     <div data-options="region:'west',title:'操作菜单',split:true" style="width:200px;">
     <a id="btn6" href="javascript:logout()" class="easyui-linkbutton" data-options="iconCls:'icon-no'" style="position:fixed;top:3px;right:15px">注销登陆</a> 
