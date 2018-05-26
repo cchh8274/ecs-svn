@@ -12,6 +12,10 @@ import com.model.TableModel;
  * 4.解决繁琐的命令行
  * 5.解决配置每次都需要配置的问题
  * 
+ * 待优化点
+ * 	1.判断库
+ *  2.判断表
+ *  3.优化jar包
  * @author chenghui
  *
  */

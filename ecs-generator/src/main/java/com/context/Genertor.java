@@ -6,11 +6,8 @@ import java.util.List;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
-import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
-import com.context.GenertorFactory;
-import com.exception.GenertorException;
 import com.model.GenertorModel;
 import com.model.TableModel;
 import com.util.DateUtils;
